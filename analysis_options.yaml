@@ -1,0 +1,18 @@
+include: package:very_good_analysis/analysis_options.yaml
+
+analyzer:
+  exclude:
+    - build/**
+    - android/**
+    - ios/**
+  language:
+    strict-casts: true
+    strict-inference: true
+    strict-raw-types: true
+
+linter:
+  rules:
+    # App de un solo paquete: la documentación pública obligatoria solo agrega ruido.
+    public_member_api_docs: false
+    # Constructores con el nombre de la clase (QCard(...)): forma clásica y legible.
+    unnecessary_type_name_in_constructor: false
