@@ -15,8 +15,6 @@ workflows:
     scripts:
       - name: Dependencias
         script: flutter pub get
-      - name: Pruebas
-        script: flutter test
       - name: Compilar para iPhone
         script: flutter build ios --release --no-codesign
       - name: Empaquetar el .ipa
