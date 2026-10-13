@@ -217,6 +217,12 @@ class ProfilePage extends ConsumerWidget {
                 onTap: () => context.push(Routes.businessHub),
               ),
             SettingsRow(
+              icon: Icons.groups_2_outlined,
+              title: 'Compartir con otros',
+              subtitle: 'Grupos, cuentas divididas, deudas y metas',
+              onTap: () => context.push(Routes.sharingHub),
+            ),
+            SettingsRow(
               icon: Icons.event_note_outlined,
               title: 'Impuestos y obligaciones',
               subtitle: 'Tus fechas, el 4x1000 y el resumen para la renta',

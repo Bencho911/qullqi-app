@@ -17,6 +17,7 @@ import 'package:qullqi/features/planning/presentation/planning_controller.dart';
 import 'package:qullqi/features/planning/presentation/widgets/plan_cards.dart';
 import 'package:qullqi/features/recurring/data/recurring_provider.dart';
 import 'package:qullqi/features/recurring/domain/recurring.dart';
+import 'package:qullqi/features/sharing/data/sharing_repositories.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/presentation/transaction_tile.dart';
 
@@ -55,7 +56,10 @@ class PlanningPage extends ConsumerWidget {
               ..._budgets(context, value),
               ..._recurringEntry(context, ref),
             ],
-            PlanningSection.goals => _goals(context, value),
+            PlanningSection.goals => [
+              ..._goals(context, value),
+              ..._sharedEntry(context, ref),
+            ],
             PlanningSection.reports => _reports(context, ref, value),
           },
           AsyncError() => [
@@ -92,6 +96,25 @@ class PlanningPage extends ConsumerWidget {
         },
       ],
     );
+  }
+
+  /// Acceso a las metas compartidas, debajo de las metas.
+  List<Widget> _sharedEntry(BuildContext context, WidgetRef ref) {
+    final shared = ref.watch(sharedGoalsProvider).value ?? const [];
+    return [
+      const SliverToBoxAdapter(child: SizedBox(height: AppSpace.md)),
+      GutterSliver(
+        child: OptionRow(
+          icon: Icons.volunteer_activism_outlined,
+          title: 'Metas compartidas',
+          subtitle: shared.isEmpty
+              ? 'Ahorra con tu pareja o tus amigos'
+              : '${shared.length} '
+                    '${shared.length == 1 ? 'meta' : 'metas'} compartidas',
+          onTap: () => context.push(Routes.sharedGoals),
+        ),
+      ),
+    ];
   }
 
   /// Acceso a los cobros que se repiten, debajo de los presupuestos.

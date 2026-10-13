@@ -40,6 +40,10 @@ import 'package:qullqi/features/rules/presentation/rules_pages.dart';
 import 'package:qullqi/features/sales/presentation/payment_links_pages.dart';
 import 'package:qullqi/features/sales/presentation/quotes_pages.dart';
 import 'package:qullqi/features/sales/presentation/recurring_invoices_pages.dart';
+import 'package:qullqi/features/sharing/presentation/groups_pages.dart';
+import 'package:qullqi/features/sharing/presentation/shared_goals_pages.dart';
+import 'package:qullqi/features/sharing/presentation/sharing_hub_page.dart';
+import 'package:qullqi/features/sharing/presentation/split_and_debts_pages.dart';
 import 'package:qullqi/features/statements/presentation/import_statement_page.dart';
 import 'package:qullqi/features/taxes/presentation/taxes_page.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
@@ -212,6 +216,56 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.sharingHub,
+        builder: (context, state) => const SharingHubPage(),
+      ),
+      GoRoute(
+        path: Routes.groups,
+        builder: (context, state) => const GroupsPage(),
+      ),
+      GoRoute(
+        path: Routes.newGroup,
+        pageBuilder: (context, state) => _modal(state, const NewGroupPage()),
+      ),
+      GoRoute(
+        path: Routes.addSharedExpensePattern,
+        pageBuilder: (context, state) => _modal(
+          state,
+          AddSharedExpensePage(groupId: state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: Routes.groupPattern,
+        builder: (context, state) =>
+            GroupDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.splitBill,
+        builder: (context, state) => const SplitBillPage(),
+      ),
+      GoRoute(
+        path: Routes.personDebts,
+        builder: (context, state) => const PersonDebtsPage(),
+      ),
+      GoRoute(
+        path: Routes.newDebt,
+        pageBuilder: (context, state) => _modal(state, const NewDebtPage()),
+      ),
+      GoRoute(
+        path: Routes.sharedGoals,
+        builder: (context, state) => const SharedGoalsPage(),
+      ),
+      GoRoute(
+        path: Routes.newSharedGoal,
+        pageBuilder: (context, state) =>
+            _modal(state, const NewSharedGoalPage()),
+      ),
+      GoRoute(
+        path: Routes.sharedGoalPattern,
+        builder: (context, state) =>
+            SharedGoalDetailPage(id: state.pathParameters['id']!),
       ),
       GoRoute(
         path: Routes.businessHub,

@@ -79,6 +79,22 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  // Compartir con otras personas.
+  static const sharingHub = '/compartir';
+  static const groups = '/grupos';
+  static const newGroup = '/grupo-nuevo';
+  static const groupPattern = '/grupo/:id';
+  static String group(String id) => '/grupo/$id';
+  static const addSharedExpensePattern = '/grupo/:id/gasto';
+  static String addSharedExpense(String groupId) => '/grupo/$groupId/gasto';
+  static const splitBill = '/dividir-cuenta';
+  static const personDebts = '/deudas-personas';
+  static const newDebt = '/deuda-nueva';
+  static const sharedGoals = '/metas-compartidas';
+  static const newSharedGoal = '/meta-compartida-nueva';
+  static const sharedGoalPattern = '/meta-compartida/:id';
+  static String sharedGoal(String id) => '/meta-compartida/$id';
+
   // Herramientas del negocio.
   static const businessHub = '/negocio';
   static const quotes = '/cotizaciones';
