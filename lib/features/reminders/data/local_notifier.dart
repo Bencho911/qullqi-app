@@ -37,6 +37,9 @@ abstract interface class LocalNotifier {
 
   /// Deja programados exactamente [reminders] (con lista vacía, ninguno).
   Future<void> replaceAll(List<Reminder> reminders);
+
+  /// Muestra una notificación ahora mismo (la de prueba).
+  Future<void> showNow(Reminder reminder);
 }
 
 /// No hace nada: pruebas y plataformas sin notificaciones.
@@ -51,6 +54,9 @@ class NoopLocalNotifier implements LocalNotifier {
 
   @override
   Future<void> replaceAll(List<Reminder> reminders) async {}
+
+  @override
+  Future<void> showNow(Reminder reminder) async {}
 }
 
 /// El notificador real se pone en `main`; por defecto no hace nada.
@@ -208,6 +214,10 @@ class FlutterLocalNotifier implements LocalNotifier {
       subtitle: subtitle,
       threadIdentifier: thread,
       categoryIdentifier: _category,
+      presentAlert: true,
+      presentBanner: true,
+      presentList: true,
+      presentSound: true,
     ),
     android: AndroidNotificationDetails(
       'avisos',
@@ -242,6 +252,21 @@ class FlutterLocalNotifier implements LocalNotifier {
           AndroidFlutterLocalNotificationsPlugin
         >();
     return await android?.requestNotificationsPermission() ?? false;
+  }
+
+  @override
+  Future<void> showNow(Reminder reminder) async {
+    await _plugin.show(
+      id: stableId('prueba:${reminder.id}'),
+      title: reminder.title,
+      body: reminder.body,
+      notificationDetails: _details(
+        subtitle: reminder.subtitle,
+        body: reminder.body,
+        thread: reminder.kind.name,
+      ),
+      payload: reminder.payload,
+    );
   }
 
   @override

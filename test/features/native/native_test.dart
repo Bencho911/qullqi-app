@@ -63,6 +63,11 @@ class FakeNotifier implements LocalNotifier {
   @override
   Future<void> replaceAll(List<Reminder> reminders) async =>
       plans.add(reminders);
+
+  final shown = <Reminder>[];
+
+  @override
+  Future<void> showNow(Reminder reminder) async => shown.add(reminder);
 }
 
 class FakeQuickActions implements QuickActionsService {

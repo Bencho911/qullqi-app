@@ -1,8 +1,9 @@
-import 'dart:async';
 
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:qullqi/app/routes.dart';
 import 'package:qullqi/core/security/identity.dart';
 import 'package:qullqi/core/security/pin_widgets.dart';
 import 'package:qullqi/core/session/session.dart';
@@ -15,6 +16,7 @@ import 'package:qullqi/features/profile/data/notification_prefs.dart';
 import 'package:qullqi/features/profile/data/push_prefs.dart';
 import 'package:qullqi/features/profile/presentation/profile_page.dart';
 import 'package:qullqi/features/reminders/data/local_notifier.dart';
+import 'package:qullqi/features/reminders/domain/reminders.dart';
 
 /// Editar nombre y celular. El correo es el usuario de la cuenta: se cambia
 /// con ayuda (para evitar robos de cuenta).
@@ -404,6 +406,33 @@ class NotificationSettingsPage extends ConsumerWidget {
       }
     }
 
+    Future<void> sendTest() async {
+      final notifier = ref.read(localNotifierProvider);
+      final granted = await notifier.requestPermission();
+      if (!context.mounted) return;
+      if (!granted) {
+        showQToast(
+          context,
+          'Activa los avisos de Qullqi en los ajustes del teléfono.',
+        );
+        return;
+      }
+      await notifier.showNow(
+        Reminder(
+          id: 1,
+          when: DateTime.now(),
+          title: 'Paga tu tarjeta Visa en 3 días',
+          subtitle: 'Vence en 3 días',
+          body: r'Tarjeta Visa •• 4521 · $1.320.000. Así te avisaríamos.',
+          route: Routes.home,
+          kind: NoticeKind.payments,
+        ),
+      );
+      if (context.mounted) {
+        showQToast(context, 'Listo: te enviamos una notificación de prueba.');
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Avisos')),
       body: ListView(
@@ -464,10 +493,7 @@ class NotificationSettingsPage extends ConsumerWidget {
                   QButton.text(
                     label: 'Enviarme una notificación de prueba',
                     icon: Icons.notifications_active_outlined,
-                    onPressed: () => showQToast(
-                      context,
-                      'Así te llegaría: Paga tu tarjeta Visa en 3 días',
-                    ),
+                    onPressed: () => unawaited(sendTest()),
                   ),
                 ],
               ],
