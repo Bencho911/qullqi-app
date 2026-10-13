@@ -5,6 +5,7 @@ import 'package:qullqi/core/clock/clock.dart';
 import 'package:qullqi/core/session/session.dart';
 import 'package:qullqi/core/storage/prefs.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
+import 'package:qullqi/features/anomalies/domain/anomalies.dart';
 import 'package:qullqi/features/business/data/invoices_repository.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
@@ -59,6 +60,7 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
       invoices: invoices.requireValue,
       investments: investments.requireValue,
       recurring: detectRecurring(txs, now),
+      anomalies: detectAnomalies(txs, now),
       hasBusiness: ref.watch(currentUserProvider).hasBusiness,
       enabled: ref.watch(noticePrefsProvider),
     ),

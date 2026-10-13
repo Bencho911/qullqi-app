@@ -68,6 +68,17 @@ abstract final class Routes {
   /// Cobros que se repiten cada mes.
   static const recurring = '/recurrentes';
 
+  /// Reglas de categorías y su editor (con un comercio y una categoría de
+  /// partida opcionales).
+  static const rules = '/reglas';
+  static const newRule = '/regla-nueva';
+  static String newRuleFor({
+    required String keyword,
+    required String categoryId,
+  }) =>
+      '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
+      '&categoria=$categoryId';
+
   // Inversiones.
   static const investments = '/inversiones';
   static const investmentPattern = '/inversion/:id';

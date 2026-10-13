@@ -7,6 +7,7 @@ import 'package:qullqi/core/format/dates.dart';
 import 'package:qullqi/core/money/money.dart';
 import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:qullqi/features/anomalies/domain/anomalies.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
@@ -38,6 +39,10 @@ enum NoticeKind {
   recurring(
     'Pagos recurrentes',
     'Cuando una suscripción sube de precio o se cobra en 3 días.',
+  ),
+  anomalies(
+    'Cobros raros',
+    'Un cobro duplicado, más alto de lo normal o una comisión del banco.',
   );
 
   NoticeKind(this.title, this.description);
@@ -108,6 +113,7 @@ List<Notice> buildNotices({
   required Set<NoticeKind> enabled,
   List<Investment> investments = const [],
   List<RecurringCharge> recurring = const [],
+  List<Anomaly> anomalies = const [],
 }) {
   bool visible(Ownership o) => hasBusiness || o == Ownership.personal;
   final notices = <Notice>[
@@ -187,6 +193,40 @@ List<Notice> buildNotices({
               route: Routes.recurring,
             ),
         ],
+    if (enabled.contains(NoticeKind.anomalies))
+      for (final a in anomalies)
+        if (visible(a.transaction.ownership))
+          Notice(
+            id: 'anomaly:${a.id}',
+            kind: NoticeKind.anomalies,
+            title: switch (a.kind) {
+              AnomalyKind.duplicate =>
+                'Posible cobro duplicado: ${a.transaction.title}',
+              AnomalyKind.unusual =>
+                'Cobro más alto de lo normal: ${a.transaction.title}',
+              AnomalyKind.bankFee => 'Cobro del banco: ${a.transaction.title}',
+            },
+            body: switch (a.kind) {
+              AnomalyKind.duplicate =>
+                '${Cop.format(a.transaction.amount)} dos veces en menos de 2 '
+                    'días. Si no lo reconoces, contacta a tu banco.',
+              AnomalyKind.unusual =>
+                'Pagaste ${Cop.format(a.transaction.amount)}; lo habitual es '
+                    '${Cop.format(a.reference!)}.',
+              AnomalyKind.bankFee =>
+                '${Cop.format(a.transaction.amount)}. Es una comisión o '
+                    'cuota de tu banco.',
+            },
+            icon: switch (a.kind) {
+              AnomalyKind.duplicate => Icons.content_copy_rounded,
+              AnomalyKind.unusual => Icons.priority_high_rounded,
+              AnomalyKind.bankFee => Icons.account_balance_rounded,
+            },
+            tone: a.kind == AnomalyKind.bankFee
+                ? NoticeTone.info
+                : NoticeTone.warning,
+            route: Routes.transaction(a.transaction.id),
+          ),
     if (enabled.contains(NoticeKind.invoices) && hasBusiness)
       for (final i in invoices)
         if (i.statusAt(now) == InvoiceStatus.overdue)

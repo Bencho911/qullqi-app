@@ -101,10 +101,10 @@ void main() {
     test('reporte del mes compara con el anterior', () {
       final r = MonthReport.of(txs, scope: Scope.all, now: now);
       expect(r.income, 4500000);
-      expect(r.expense, 423000);
-      // Arriendo 1.200.000 + Netflix 34.900 + Spotify 16.900.
-      expect(r.prevExpense, 1251800);
-      expect(r.expenseChange, -828800);
+      expect(r.expense, 511900);
+      // Arriendo 1.200.000 + Netflix 34.900 + Spotify 16.900 + Éxito 35.000.
+      expect(r.prevExpense, 1286800);
+      expect(r.expenseChange, -774900);
       expect(r.byCategory.first.$1.id, 'software'); // la más grande
       expect(r.topExpenses.first.title, 'Figma y Notion');
     });
@@ -222,7 +222,7 @@ void main() {
       await openPlanning(tester, section: 'Reportes');
       expect(find.text('Te sobró en octubre'), findsOneWidget);
       expect(
-        find.text(r'Gastaste $828.800 menos que el mes pasado'),
+        find.text(r'Gastaste $774.900 menos que el mes pasado'),
         findsOneWidget,
       );
       expect(find.text('En qué se fue la plata'), findsOneWidget);

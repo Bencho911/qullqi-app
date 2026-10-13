@@ -10,6 +10,8 @@ import 'package:qullqi/core/theme/app_tokens.dart';
 import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/accounts/presentation/widgets/account_picker.dart';
+import 'package:qullqi/features/rules/data/rules_provider.dart';
+import 'package:qullqi/features/rules/domain/category_rule.dart';
 import 'package:qullqi/features/transactions/data/ledger.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
@@ -120,10 +122,16 @@ class _AddTransactionPageState extends ConsumerState<AddTransactionPage> {
       builder: (context) => _DetailsForm(title: _title, note: _note),
     );
     if (result != null) {
+      // Si hay una regla para este comercio, la categoría sale sola.
+      final rule = ruleFor(result.$1, ref.read(categoryRulesProvider));
       setState(() {
         _title = result.$1;
         _note = result.$2;
+        if (rule != null) _categoryId = rule.categoryId;
       });
+      if (rule != null && mounted) {
+        showQToast(context, 'Categoría según tu regla: ${rule.category.name}');
+      }
     }
   }
 

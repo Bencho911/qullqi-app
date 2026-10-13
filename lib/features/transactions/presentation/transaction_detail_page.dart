@@ -12,6 +12,8 @@ import 'package:qullqi/core/theme/app_tokens.dart';
 import 'package:qullqi/core/theme/app_typography.dart';
 import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
+import 'package:qullqi/features/anomalies/data/anomalies_provider.dart';
+import 'package:qullqi/features/anomalies/domain/anomalies.dart';
 import 'package:qullqi/features/transactions/data/ledger.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
@@ -70,6 +72,9 @@ class _Detail extends ConsumerWidget {
         .value
         ?.where((a) => a.id == t.accountId)
         .firstOrNull;
+    final anomalies = (ref.watch(anomaliesProvider).value ?? const [])
+        .where((a) => a.transaction.id == t.id)
+        .toList();
     final (tileBg, tileFg, amountColor) = switch (t.kind) {
       TransactionKind.income => (
         c.primaryContainer,
@@ -203,6 +208,29 @@ class _Detail extends ConsumerWidget {
             onAction: () => context.push(Routes.reviewTransfers),
           ),
         ],
+        for (final a in anomalies) ...[
+          const SizedBox(height: AppSpace.md),
+          QBanner(
+            tone: a.kind == AnomalyKind.bankFee
+                ? BannerTone.info
+                : BannerTone.warning,
+            title: switch (a.kind) {
+              AnomalyKind.duplicate => 'Posible cobro duplicado',
+              AnomalyKind.unusual => 'Más alto de lo normal',
+              AnomalyKind.bankFee => 'Cobro del banco',
+            },
+            message: switch (a.kind) {
+              AnomalyKind.duplicate =>
+                'Hay otro cobro igual en menos de 2 días. Si no lo '
+                    'reconoces, contacta a tu banco.',
+              AnomalyKind.unusual =>
+                'Lo habitual aquí es ${Cop.format(a.reference!)}. Si no '
+                    'lo reconoces, contacta a tu banco.',
+              AnomalyKind.bankFee =>
+                'Es una comisión o cuota de tu banco, no una compra.',
+            },
+          ),
+        ],
         const SizedBox(height: AppSpace.lg),
         QCard(
           padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
@@ -214,6 +242,20 @@ class _Detail extends ConsumerWidget {
                 subtitle: t.category.name,
                 onTap: pickCategory,
               ),
+              if (t.kind != TransactionKind.transfer && !t.needsReview) ...[
+                const Divider(),
+                SettingsRow(
+                  icon: Icons.rule_rounded,
+                  title: 'Crear regla con este comercio',
+                  subtitle: 'Siempre «${t.title}» en ${t.category.name}',
+                  onTap: () => context.push(
+                    Routes.newRuleFor(
+                      keyword: t.title,
+                      categoryId: t.categoryId,
+                    ),
+                  ),
+                ),
+              ],
               const Divider(),
               SettingsRow(
                 icon: Icons.account_balance_wallet_outlined,

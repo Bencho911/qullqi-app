@@ -19,6 +19,7 @@ import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
+import 'package:qullqi/features/rules/data/rules_provider.dart';
 
 /// Versión que se muestra al final del perfil.
 const String appVersion = '0.1.0';
@@ -36,6 +37,7 @@ class ProfilePage extends ConsumerWidget {
     final mode = ref.watch(themeModeProvider);
     final biometrics = ref.watch(biometricsEnabledProvider);
     final notices = ref.watch(noticePrefsProvider);
+    final rules = ref.watch(categoryRulesProvider);
     final accounts = ref.watch(accountsProvider).value ?? const <Account>[];
     final c = context.colors;
     final toReconnect = accounts
@@ -206,6 +208,15 @@ class ProfilePage extends ConsumerWidget {
                   ? '${accounts.length} cuentas'
                   : '${accounts.length} cuentas · $toReconnect por reconectar',
               onTap: () => context.go(Routes.accounts),
+            ),
+            SettingsRow(
+              icon: Icons.rule_rounded,
+              title: 'Reglas de categorías',
+              subtitle: rules.isEmpty
+                  ? 'Que la app clasifique sola lo que repites'
+                  : '${rules.length} '
+                        '${rules.length == 1 ? 'regla' : 'reglas'}',
+              onTap: () => context.push(Routes.rules),
             ),
             SwitchRow(
               title: 'Tengo negocio o soy independiente',

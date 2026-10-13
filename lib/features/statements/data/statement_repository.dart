@@ -4,6 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qullqi/core/clock/clock.dart';
 import 'package:qullqi/core/data/latency.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:qullqi/features/rules/data/rules_provider.dart';
+import 'package:qullqi/features/rules/domain/category_rule.dart';
 import 'package:qullqi/features/statements/domain/statement.dart';
 import 'package:qullqi/features/transactions/data/ledger.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
@@ -121,10 +123,17 @@ class MockServerStatementReader implements StatementReader {
 /// No cambia el saldo: el extracto cuenta el pasado, y el saldo de hoy ya
 /// los incluye (lo trae el banco o lo escribió la persona).
 class StatementImporter {
-  StatementImporter({required this.transactions, required this.ledger});
+  StatementImporter({
+    required this.transactions,
+    required this.ledger,
+    this.rules = const [],
+  });
 
   final TransactionsRepository transactions;
   final Ledger ledger;
+
+  /// Reglas de categoría de la persona: mandan sobre la categoría supuesta.
+  final List<CategoryRule> rules;
 
   Future<int> import(Account account, List<StatementLine> lines) async {
     for (final l in lines) {
@@ -136,7 +145,8 @@ class StatementImporter {
           amount: l.amount.abs(),
           kind: l.amount > 0 ? TransactionKind.income : TransactionKind.expense,
           accountId: account.id,
-          categoryId: guessCategory(l),
+          categoryId:
+              ruleFor(l.description, rules)?.categoryId ?? guessCategory(l),
           ownership: account.ownership,
           date: l.date,
           needsReview: transfer,
@@ -152,5 +162,6 @@ final statementImporterProvider = Provider<StatementImporter>(
   (ref) => StatementImporter(
     transactions: ref.watch(transactionsRepositoryProvider),
     ledger: ref.watch(ledgerProvider),
+    rules: ref.watch(categoryRulesProvider),
   ),
 );

@@ -207,9 +207,9 @@ void main() {
       expect(f.dueThisMonth, 1498000);
       expect(f.free, 7800000 - 1498000);
       expect(f.perDay, (7800000 - 1498000) ~/ 8);
-      // Éxito + Starbucks + Figma + Terpel + Farmatodo en 30 días; Netflix,
-      // Spotify y el arriendo van aparte.
-      expect(f.typicalDaily, 384100 ~/ 30);
+      // Éxito + Starbucks + Figma + Terpel + Farmatodo + 2 Rappi + cuota de
+      // manejo en 30 días; Netflix, Spotify y el arriendo van aparte.
+      expect(f.typicalDaily, 473000 ~/ 30);
       expect(f.projectedEnd, f.free - f.typicalDaily * 7);
       expect(f.runsShort, isFalse);
     });

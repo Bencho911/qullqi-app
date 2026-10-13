@@ -59,6 +59,7 @@ void main() {
           'Pago nómina freelance',
           'Netflix',
           'Spotify',
+          'Éxito Chapinero',
         ]),
       );
     });
@@ -106,7 +107,11 @@ void main() {
     expect(transfers, isNotEmpty);
     // Ingresos de octubre: 2.500.000 + 150.000 + 1.850.000.
     expect(t.income, 4500000);
-    expect(t.expense, 85400 + 18500 + 142000 + 75000 + 63200 + 38900);
+    expect(
+      t.expense,
+      // Los de siempre + dos Rappi + la cuota de manejo.
+      85400 + 18500 + 142000 + 75000 + 63200 + 38900 + 32000 + 32000 + 24900,
+    );
   });
 
   test('agrupa por día del más reciente al más antiguo', () {
