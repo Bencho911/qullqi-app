@@ -79,6 +79,21 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  // Herramientas del negocio.
+  static const businessHub = '/negocio';
+  static const quotes = '/cotizaciones';
+  static const newQuote = '/cotizacion-nueva';
+  static const quotePattern = '/cotizacion/:id';
+  static String quote(String id) => '/cotizacion/$id';
+  static const invoiceTemplates = '/facturas-recurrentes';
+  static const newInvoiceTemplate = '/factura-recurrente-nueva';
+  static const paymentLinks = '/enlaces-de-pago';
+  static const newPaymentLink = '/enlace-de-pago-nuevo';
+
+  /// Crear un enlace de pago para una factura.
+  static String newPaymentLinkFor(String invoiceId) =>
+      '$newPaymentLink?factura=$invoiceId';
+
   /// Calendario tributario, 4x1000 y resumen para la renta.
   static const taxes = '/impuestos';
 

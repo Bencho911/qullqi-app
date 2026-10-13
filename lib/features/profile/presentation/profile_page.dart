@@ -209,6 +209,13 @@ class ProfilePage extends ConsumerWidget {
                   : '${accounts.length} cuentas · $toReconnect por reconectar',
               onTap: () => context.go(Routes.accounts),
             ),
+            if (user.hasBusiness)
+              SettingsRow(
+                icon: Icons.storefront_outlined,
+                title: 'Herramientas del negocio',
+                subtitle: 'Facturas, cotizaciones, enlaces de pago e IVA',
+                onTap: () => context.push(Routes.businessHub),
+              ),
             SettingsRow(
               icon: Icons.event_note_outlined,
               title: 'Impuestos y obligaciones',

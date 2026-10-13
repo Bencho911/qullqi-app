@@ -15,6 +15,7 @@ import 'package:qullqi/features/add/presentation/scan_receipt_page.dart';
 import 'package:qullqi/features/auth/presentation/sign_in_pages.dart';
 import 'package:qullqi/features/auth/presentation/sign_up_pages.dart';
 import 'package:qullqi/features/auth/presentation/welcome_page.dart';
+import 'package:qullqi/features/business/presentation/business_hub_page.dart';
 import 'package:qullqi/features/business/presentation/business_pages.dart';
 import 'package:qullqi/features/debts/presentation/debt_plan_page.dart';
 import 'package:qullqi/features/home/presentation/home_page.dart';
@@ -33,6 +34,9 @@ import 'package:qullqi/features/profile/presentation/profile_page.dart';
 import 'package:qullqi/features/profile/presentation/profile_pages.dart';
 import 'package:qullqi/features/recurring/presentation/recurring_page.dart';
 import 'package:qullqi/features/rules/presentation/rules_pages.dart';
+import 'package:qullqi/features/sales/presentation/payment_links_pages.dart';
+import 'package:qullqi/features/sales/presentation/quotes_pages.dart';
+import 'package:qullqi/features/sales/presentation/recurring_invoices_pages.dart';
 import 'package:qullqi/features/statements/presentation/import_statement_page.dart';
 import 'package:qullqi/features/taxes/presentation/taxes_page.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
@@ -205,6 +209,43 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.businessHub,
+        builder: (context, state) => const BusinessHubPage(),
+      ),
+      GoRoute(
+        path: Routes.quotes,
+        builder: (context, state) => const QuotesPage(),
+      ),
+      GoRoute(
+        path: Routes.newQuote,
+        pageBuilder: (context, state) => _modal(state, const NewQuotePage()),
+      ),
+      GoRoute(
+        path: Routes.quotePattern,
+        builder: (context, state) =>
+            QuoteDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.invoiceTemplates,
+        builder: (context, state) => const RecurringInvoicesPage(),
+      ),
+      GoRoute(
+        path: Routes.newInvoiceTemplate,
+        pageBuilder: (context, state) =>
+            _modal(state, const NewInvoiceTemplatePage()),
+      ),
+      GoRoute(
+        path: Routes.paymentLinks,
+        builder: (context, state) => const PaymentLinksPage(),
+      ),
+      GoRoute(
+        path: Routes.newPaymentLink,
+        pageBuilder: (context, state) => _modal(
+          state,
+          NewPaymentLinkPage(invoiceId: state.uri.queryParameters['factura']),
+        ),
       ),
       GoRoute(
         path: Routes.taxes,

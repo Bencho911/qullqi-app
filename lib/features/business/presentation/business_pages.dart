@@ -86,6 +86,12 @@ class BusinessSummaryCard extends StatelessWidget {
                 '${Dates.dueLabel(iva.due, now).toLowerCase()}',
             onTap: () => context.push(Routes.iva),
           ),
+          SettingsRow(
+            icon: Icons.storefront_outlined,
+            title: 'Más herramientas del negocio',
+            subtitle: 'Cotizaciones, facturas recurrentes y enlaces de pago',
+            onTap: () => context.push(Routes.businessHub),
+          ),
         ],
       ),
     );
@@ -422,6 +428,12 @@ class _InvoiceDetail extends ConsumerWidget {
             label: 'Copiar recordatorio',
             icon: Icons.copy_rounded,
             onPressed: remind,
+          ),
+          const SizedBox(height: AppSpace.xs),
+          QButton.secondary(
+            label: 'Crear enlace de pago',
+            icon: Icons.add_link_rounded,
+            onPressed: () => context.push(Routes.newPaymentLinkFor(i.id)),
           ),
         ],
         const SizedBox(height: AppSpace.xl),
