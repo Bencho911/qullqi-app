@@ -79,6 +79,10 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  /// Historial de patrimonio y plan para pagar las tarjetas.
+  static const netWorth = '/patrimonio';
+  static const debtPlan = '/plan-de-deudas';
+
   // Inversiones.
   static const investments = '/inversiones';
   static const investmentPattern = '/inversion/:id';

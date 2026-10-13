@@ -40,6 +40,16 @@ abstract final class Dates {
     return dayMonth(d);
   }
 
+  /// "10 meses", "1 año y 2 meses".
+  static String span(int months) {
+    String m(int n) => n == 1 ? '1 mes' : '$n meses';
+    if (months < 12) return m(months);
+    final y = months ~/ 12;
+    final rest = months % 12;
+    final years = y == 1 ? '1 año' : '$y años';
+    return rest == 0 ? years : '$years y ${m(rest)}';
+  }
+
   /// "Vence hoy", "Vence mañana", "Vence en 5 días", "Venció hace 2 días".
   static String dueLabel(DateTime due, DateTime now) {
     final days = daysBetween(now, due);

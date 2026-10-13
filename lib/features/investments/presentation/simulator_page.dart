@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'package:qullqi/core/clock/clock.dart';
+import 'package:qullqi/core/format/dates.dart';
 import 'package:qullqi/core/money/money.dart';
 import 'package:qullqi/core/theme/app_theme.dart';
 import 'package:qullqi/core/theme/app_tokens.dart';
@@ -23,16 +24,6 @@ const _rateOptions = <double>[0.04, 0.08, 0.12];
 String _ratePct(double rate) {
   final pct = rate * 100;
   return Cop.percent(pct, decimals: pct == pct.roundToDouble() ? 0 : 1);
-}
-
-/// "10 meses", "1 año y 2 meses".
-String _span(int months) {
-  String m(int n) => n == 1 ? '1 mes' : '$n meses';
-  if (months < 12) return m(months);
-  final y = months ~/ 12;
-  final rest = months % 12;
-  final years = y == 1 ? '1 año' : '$y años';
-  return rest == 0 ? years : '$years y ${m(rest)}';
 }
 
 /// Simulador: cuánto podría crecer lo que aportas cada mes.
@@ -363,7 +354,8 @@ class _GoalCompare extends StatelessWidget {
       monthly: monthly,
       annualRate: rate,
     );
-    String when(int? m) => m == null ? 'No llegas con este aporte' : _span(m);
+    String when(int? m) =>
+        m == null ? 'No llegas con este aporte' : Dates.span(m);
     final d = goal.deadline;
     final monthsToDeadline = d == null
         ? null

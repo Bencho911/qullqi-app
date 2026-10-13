@@ -242,7 +242,14 @@ class AccountsPage extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SectionHeader('Inversiones'),
+            const SectionHeader('Patrimonio'),
+            const SizedBox(height: AppSpace.xs),
+            OptionRow(
+              icon: Icons.show_chart_rounded,
+              title: 'Cómo ha crecido tu patrimonio',
+              subtitle: 'Mira tu historial y de qué está hecho',
+              onTap: () => context.push(Routes.netWorth),
+            ),
             const SizedBox(height: AppSpace.xs),
             OptionRow(
               icon: Icons.trending_up_rounded,
@@ -257,6 +264,15 @@ class AccountsPage extends ConsumerWidget {
               emphasized: portfolio.isEmpty,
               onTap: () => context.push(Routes.investments),
             ),
+            if (accounts.any((a) => a.isCard && a.debt > 0)) ...[
+              const SizedBox(height: AppSpace.xs),
+              OptionRow(
+                icon: Icons.credit_card_rounded,
+                title: 'Plan para pagar tus tarjetas',
+                subtitle: 'Cuánto tardas y cuánto te ahorras en intereses',
+                onTap: () => context.push(Routes.debtPlan),
+              ),
+            ],
           ],
         ),
       ),

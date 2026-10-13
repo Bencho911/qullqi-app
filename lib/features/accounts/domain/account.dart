@@ -47,6 +47,7 @@ class Account {
     this.minimumPayment,
     this.paymentDue,
     this.paymentsEnabled = false,
+    this.interestRate,
   });
 
   final String id;
@@ -74,6 +75,9 @@ class Account {
   final int? statementBalance;
   final int? minimumPayment;
   final DateTime? paymentDue;
+
+  /// Tasa efectiva anual de la tarjeta como fracción (0.27 = 27 % e. a.).
+  final double? interestRate;
 
   /// La persona autorizó mover plata desde esta cuenta (Open Finance).
   /// Las cuentas registradas a mano nunca lo tienen.
@@ -148,5 +152,6 @@ class Account {
     minimumPayment: minimumPayment,
     paymentDue: paymentDue,
     paymentsEnabled: paymentsEnabled ?? this.paymentsEnabled,
+    interestRate: interestRate,
   );
 }

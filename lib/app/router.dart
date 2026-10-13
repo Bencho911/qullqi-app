@@ -16,6 +16,7 @@ import 'package:qullqi/features/auth/presentation/sign_in_pages.dart';
 import 'package:qullqi/features/auth/presentation/sign_up_pages.dart';
 import 'package:qullqi/features/auth/presentation/welcome_page.dart';
 import 'package:qullqi/features/business/presentation/business_pages.dart';
+import 'package:qullqi/features/debts/presentation/debt_plan_page.dart';
 import 'package:qullqi/features/home/presentation/home_page.dart';
 import 'package:qullqi/features/investments/presentation/add_investment_page.dart';
 import 'package:qullqi/features/investments/presentation/connect_investment_page.dart';
@@ -23,6 +24,7 @@ import 'package:qullqi/features/investments/presentation/investment_pages.dart';
 import 'package:qullqi/features/investments/presentation/investments_page.dart';
 import 'package:qullqi/features/investments/presentation/simulator_page.dart';
 import 'package:qullqi/features/move_money/presentation/move_money_page.dart';
+import 'package:qullqi/features/networth/presentation/net_worth_page.dart';
 import 'package:qullqi/features/notifications/presentation/notifications_page.dart';
 import 'package:qullqi/features/planning/presentation/budget_pages.dart';
 import 'package:qullqi/features/planning/presentation/goal_pages.dart';
@@ -202,6 +204,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.netWorth,
+        builder: (context, state) => const NetWorthPage(),
+      ),
+      GoRoute(
+        path: Routes.debtPlan,
+        builder: (context, state) => const DebtPlanPage(),
       ),
       GoRoute(
         path: Routes.recurring,
