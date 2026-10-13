@@ -4,6 +4,21 @@
 <dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Usamos Face ID para que entres a Qullqi y confirmes cuando mueves plata.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>co.qullqi.qullqi</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>qullqi</string>
+			</array>
+		</dict>
+	</array>
+	<key>FlutterDeepLinkingEnabled</key>
+	<true/>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

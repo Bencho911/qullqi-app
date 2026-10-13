@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
 import 'package:qullqi/core/security/identity.dart';
 import 'package:qullqi/core/security/pin_widgets.dart';
 import 'package:qullqi/core/session/session.dart';
@@ -15,6 +14,7 @@ import 'package:qullqi/features/auth/presentation/validators.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
 import 'package:qullqi/features/profile/data/push_prefs.dart';
 import 'package:qullqi/features/profile/presentation/profile_page.dart';
+import 'package:qullqi/features/reminders/data/local_notifier.dart';
 
 /// Editar nombre y celular. El correo es el usuario de la cuenta: se cambia
 /// con ayuda (para evitar robos de cuenta).
@@ -393,7 +393,15 @@ class NotificationSettingsPage extends ConsumerWidget {
           ],
         ),
       );
-      if (allow ?? false) await pushNotifier.setEnabled(enabled: true);
+      if (!(allow ?? false) || !context.mounted) return;
+      final granted = await ref.read(localNotifierProvider).requestPermission();
+      await pushNotifier.setEnabled(enabled: granted);
+      if (!granted && context.mounted) {
+        showQToast(
+          context,
+          'Activa los avisos de Qullqi en los ajustes del teléfono.',
+        );
+      }
     }
 
     return Scaffold(

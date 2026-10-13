@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:qullqi/app/dev/gallery_page.dart';
 import 'package:qullqi/app/routes.dart';
 import 'package:qullqi/app/shell/app_shell.dart';
+import 'package:qullqi/app/shortcuts.dart';
 import 'package:qullqi/core/session/session.dart';
 import 'package:qullqi/features/accounts/presentation/account_detail_page.dart';
 import 'package:qullqi/features/accounts/presentation/accounts_page.dart';
@@ -218,6 +219,13 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.shortcutPattern,
+        redirect: (context, state) =>
+            AppShortcuts.routeFor(state.pathParameters['id'] ?? '') ??
+            Routes.home,
+        builder: (context, state) => const SizedBox.shrink(),
       ),
       GoRoute(
         path: Routes.summaries,

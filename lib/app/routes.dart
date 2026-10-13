@@ -79,6 +79,9 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  /// Enlace de un atajo (widgets, Siri y la app Atajos): `qullqi:///atajo/<id>`.
+  static const shortcutPattern = '/atajo/:id';
+
   /// Resumen semanal y cierre mensual.
   static const summaries = '/resumenes';
 

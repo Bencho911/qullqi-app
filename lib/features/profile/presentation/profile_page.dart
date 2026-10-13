@@ -20,6 +20,7 @@ import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
 import 'package:qullqi/features/profile/presentation/account_actions.dart';
 import 'package:qullqi/features/rules/data/rules_provider.dart';
+import 'package:qullqi/features/widgets/data/widget_bridge.dart';
 
 /// Versión que se muestra al final del perfil.
 const String appVersion = '0.1.0';
@@ -211,6 +212,15 @@ class ProfilePage extends ConsumerWidget {
             ),
           ]),
           group('Preferencias', [
+            SwitchRow(
+              title: 'Mostrar montos en los widgets',
+              subtitle:
+                  'Si lo apagas, los widgets dicen "Abre Qullqi" en vez '
+                  'de tus cifras.',
+              value: ref.watch(widgetAmountsProvider),
+              onChanged: (v) =>
+                  ref.read(widgetAmountsProvider.notifier).set(show: v),
+            ),
             SettingsRow(
               icon: Icons.notifications_none_rounded,
               title: 'Avisos',
