@@ -15,6 +15,8 @@ import 'package:qullqi/features/notifications/domain/notice.dart';
 import 'package:qullqi/features/planning/data/plans_repository.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
 import 'package:qullqi/features/recurring/domain/recurring.dart';
+import 'package:qullqi/features/taxes/data/tax_document_provider.dart';
+import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 
 /// Fuentes de los avisos (para reintentar si alguna falla).
@@ -35,6 +37,7 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
   final budgets = ref.watch(budgetsProvider);
   final invoices = ref.watch(invoicesProvider);
   final investments = ref.watch(investmentsProvider);
+  final taxDocument = ref.watch(taxDocumentProvider);
   final now = ref.watch(clockProvider)();
 
   for (final v in [
@@ -61,6 +64,13 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
       investments: investments.requireValue,
       recurring: detectRecurring(txs, now),
       anomalies: detectAnomalies(txs, now),
+      obligations: taxDocument == null
+          ? const []
+          : buildTaxCalendar(
+              document: taxDocument,
+              now: now,
+              hasBusiness: ref.watch(currentUserProvider).hasBusiness,
+            ),
       hasBusiness: ref.watch(currentUserProvider).hasBusiness,
       enabled: ref.watch(noticePrefsProvider),
     ),

@@ -14,6 +14,7 @@ import 'package:qullqi/features/home/domain/money_summary.dart';
 import 'package:qullqi/features/investments/domain/investment.dart';
 import 'package:qullqi/features/planning/domain/plans.dart';
 import 'package:qullqi/features/recurring/domain/recurring.dart';
+import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
 /// Tipos de aviso que la persona puede encender o apagar.
@@ -43,6 +44,10 @@ enum NoticeKind {
   anomalies(
     'Cobros raros',
     'Un cobro duplicado, más alto de lo normal o una comisión del banco.',
+  ),
+  obligations(
+    'Fechas de impuestos',
+    'Una semana antes de cada fecha de tu calendario.',
   );
 
   NoticeKind(this.title, this.description);
@@ -62,6 +67,9 @@ const int bigMovementDays = 7;
 
 /// Días antes del vencimiento de una inversión en que avisamos.
 const int maturityNoticeDays = 7;
+
+/// Días antes de una fecha de impuestos en que avisamos.
+const int obligationNoticeDays = 7;
 
 /// Días antes de un cobro recurrente en que avisamos.
 const int recurringNoticeDays = 3;
@@ -114,6 +122,7 @@ List<Notice> buildNotices({
   List<Investment> investments = const [],
   List<RecurringCharge> recurring = const [],
   List<Anomaly> anomalies = const [],
+  List<Obligation> obligations = const [],
 }) {
   bool visible(Ownership o) => hasBusiness || o == Ownership.personal;
   final notices = <Notice>[
@@ -226,6 +235,19 @@ List<Notice> buildNotices({
                 ? NoticeTone.info
                 : NoticeTone.warning,
             route: Routes.transaction(a.transaction.id),
+          ),
+    if (enabled.contains(NoticeKind.obligations))
+      for (final o in obligations)
+        if (daysBetween(now, o.due) >= 0 &&
+            daysBetween(now, o.due) <= obligationNoticeDays)
+          Notice(
+            id: 'tax:${o.id}',
+            kind: NoticeKind.obligations,
+            title: '${o.title}: ${Dates.dueLabel(o.due, now).toLowerCase()}',
+            body: '${o.detail}. Fecha de referencia: confírmala en la DIAN.',
+            icon: Icons.event_note_outlined,
+            tone: NoticeTone.warning,
+            route: Routes.taxes,
           ),
     if (enabled.contains(NoticeKind.invoices) && hasBusiness)
       for (final i in invoices)

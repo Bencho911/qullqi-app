@@ -34,6 +34,7 @@ import 'package:qullqi/features/profile/presentation/profile_pages.dart';
 import 'package:qullqi/features/recurring/presentation/recurring_page.dart';
 import 'package:qullqi/features/rules/presentation/rules_pages.dart';
 import 'package:qullqi/features/statements/presentation/import_statement_page.dart';
+import 'package:qullqi/features/taxes/presentation/taxes_page.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 import 'package:qullqi/features/transactions/presentation/review_transfers_page.dart';
 import 'package:qullqi/features/transactions/presentation/transaction_detail_page.dart';
@@ -204,6 +205,10 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.taxes,
+        builder: (context, state) => const TaxesPage(),
       ),
       GoRoute(
         path: Routes.netWorth,

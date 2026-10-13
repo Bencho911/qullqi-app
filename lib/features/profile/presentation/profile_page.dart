@@ -210,6 +210,12 @@ class ProfilePage extends ConsumerWidget {
               onTap: () => context.go(Routes.accounts),
             ),
             SettingsRow(
+              icon: Icons.event_note_outlined,
+              title: 'Impuestos y obligaciones',
+              subtitle: 'Tus fechas, el 4x1000 y el resumen para la renta',
+              onTap: () => context.push(Routes.taxes),
+            ),
+            SettingsRow(
               icon: Icons.rule_rounded,
               title: 'Reglas de categorías',
               subtitle: rules.isEmpty

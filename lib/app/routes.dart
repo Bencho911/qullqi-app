@@ -79,6 +79,9 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  /// Calendario tributario, 4x1000 y resumen para la renta.
+  static const taxes = '/impuestos';
+
   /// Historial de patrimonio y plan para pagar las tarjetas.
   static const netWorth = '/patrimonio';
   static const debtPlan = '/plan-de-deudas';
