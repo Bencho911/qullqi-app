@@ -10,8 +10,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 /// Grupo de apps que comparten la app y sus widgets en iOS.
 const String appGroupId = 'group.co.qullqi.qullqi';
 
-/// Nombre del widget en iOS (el `kind` del código nativo).
+/// Nombre del widget principal en iOS (el `kind` del código nativo).
 const String iosWidgetKind = 'QullqiWidget';
+
+/// Todos los `kind` de widgets de iOS: hay que refrescarlos juntos.
+const List<String> iosWidgetKinds = [
+  iosWidgetKind,
+  'QullqiPaymentsWidget',
+  'QullqiQuickActions',
+];
 
 /// Clave en las preferencias con la última foto para los widgets.
 const String snapshotPrefsKey = 'widget_snapshot';
@@ -50,6 +57,12 @@ class HomeWidgetBridge implements WidgetBridge {
     _ready = true;
   }
 
+  Future<void> _refreshAll() async {
+    for (final kind in iosWidgetKinds) {
+      await HomeWidget.updateWidget(iOSName: kind);
+    }
+  }
+
   @override
   Future<void> publish(WidgetSnapshot snapshot) async {
     final json = snapshot.encode();
@@ -57,7 +70,7 @@ class HomeWidgetBridge implements WidgetBridge {
     try {
       await _init();
       await HomeWidget.saveWidgetData<String>('snapshot', json);
-      await HomeWidget.updateWidget(iOSName: iosWidgetKind);
+      await _refreshAll();
     } on Object {
       // Sin widgets instalados o sin el grupo (firma gratuita): la app sigue.
     }
@@ -69,7 +82,7 @@ class HomeWidgetBridge implements WidgetBridge {
     try {
       await _init();
       await HomeWidget.saveWidgetData<String>('snapshot', null);
-      await HomeWidget.updateWidget(iOSName: iosWidgetKind);
+      await _refreshAll();
     } on Object {
       // Igual que arriba.
     }
