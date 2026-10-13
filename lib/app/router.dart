@@ -17,6 +17,11 @@ import 'package:qullqi/features/auth/presentation/sign_up_pages.dart';
 import 'package:qullqi/features/auth/presentation/welcome_page.dart';
 import 'package:qullqi/features/business/presentation/business_pages.dart';
 import 'package:qullqi/features/home/presentation/home_page.dart';
+import 'package:qullqi/features/investments/presentation/add_investment_page.dart';
+import 'package:qullqi/features/investments/presentation/connect_investment_page.dart';
+import 'package:qullqi/features/investments/presentation/investment_pages.dart';
+import 'package:qullqi/features/investments/presentation/investments_page.dart';
+import 'package:qullqi/features/investments/presentation/simulator_page.dart';
 import 'package:qullqi/features/move_money/presentation/move_money_page.dart';
 import 'package:qullqi/features/notifications/presentation/notifications_page.dart';
 import 'package:qullqi/features/planning/presentation/budget_pages.dart';
@@ -195,6 +200,40 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.investments,
+        builder: (context, state) => const InvestmentsPage(),
+      ),
+      GoRoute(
+        path: Routes.investmentPattern,
+        builder: (context, state) =>
+            InvestmentDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.updateInvestmentPattern,
+        pageBuilder: (context, state) => _modal(
+          state,
+          UpdateInvestmentValuePage(id: state.pathParameters['id']!),
+        ),
+      ),
+      GoRoute(
+        path: Routes.addInvestment,
+        pageBuilder: (context, state) =>
+            _modal(state, const AddInvestmentPage()),
+      ),
+      GoRoute(
+        path: Routes.connectInvestment,
+        pageBuilder: (context, state) =>
+            _modal(state, const ConnectInvestmentPage()),
+      ),
+      GoRoute(
+        path: Routes.simulator,
+        builder: (context, state) => SimulatorPage(
+          goalId: state.uri.queryParameters['meta'],
+          initial: int.tryParse(state.uri.queryParameters['inicial'] ?? ''),
+          rate: double.tryParse(state.uri.queryParameters['tasa'] ?? ''),
+        ),
       ),
       GoRoute(
         path: Routes.reviewTransfers,

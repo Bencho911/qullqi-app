@@ -88,7 +88,9 @@ void main() {
     testWidgets('patrimonio y cuentas agrupadas por tipo', (tester) async {
       await openAccounts(tester);
       expect(find.text('Patrimonio neto'), findsOneWidget);
-      expect(semanticsLabel('6.030.000 pesos'), findsWidgets);
+      // Cuentas (6.030.000) + inversiones (16.593.800).
+      expect(semanticsLabel('22.623.800 pesos'), findsWidgets);
+      expect(find.text('Tus inversiones'), findsOneWidget);
       expect(find.text('Cuentas de banco'), findsOneWidget);
       expect(find.text('Billeteras y efectivo'), findsOneWidget);
       expect(find.text('Tarjetas de crédito'), findsOneWidget);

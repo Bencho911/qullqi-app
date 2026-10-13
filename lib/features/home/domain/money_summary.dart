@@ -4,6 +4,7 @@ import 'package:qullqi/core/clock/clock.dart';
 import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
+import 'package:qullqi/features/investments/domain/investment.dart';
 
 enum PaymentKind { card, bill, tax }
 
@@ -85,6 +86,7 @@ class MoneySummary {
     required this.committed,
     required this.netWorth,
     required this.payments,
+    this.invested = 0,
   });
 
   factory MoneySummary.compute({
@@ -92,13 +94,18 @@ class MoneySummary {
     required List<Commitment> commitments,
     required Scope scope,
     required DateTime now,
+    List<Investment> investments = const [],
     int horizonDays = horizonDaysDefault,
   }) {
     final visible = accounts.where((a) => a.ownership.visibleIn(scope));
     final liquid = visible
         .where((a) => a.kind.isLiquid)
         .fold<int>(0, (s, a) => s + a.balance);
-    final netWorth = visible.fold<int>(0, (s, a) => s + a.netValue);
+    // Lo invertido suma al patrimonio, pero no es plata para gastar hoy.
+    final invested = investments
+        .where((i) => i.ownership.visibleIn(scope))
+        .fold<int>(0, (s, i) => s + i.value);
+    final netWorth = visible.fold<int>(0, (s, a) => s + a.netValue) + invested;
     final payments = upcomingPayments(
       accounts: accounts,
       commitments: commitments,
@@ -112,6 +119,7 @@ class MoneySummary {
       committed: committed,
       netWorth: netWorth,
       payments: payments,
+      invested: invested,
     );
   }
 
@@ -119,7 +127,12 @@ class MoneySummary {
 
   final int liquid;
   final int committed;
+
+  /// Cuentas + inversiones − deudas de tarjetas.
   final int netWorth;
+
+  /// Lo que valen las inversiones de la vista.
+  final int invested;
   final List<UpcomingPayment> payments;
 
   int get available => liquid - committed;

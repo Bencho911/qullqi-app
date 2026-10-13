@@ -15,6 +15,8 @@ import 'package:qullqi/core/theme/app_typography.dart';
 import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:qullqi/features/investments/data/investments_repository.dart';
+import 'package:qullqi/features/investments/domain/investment.dart';
 
 /// Grupo de cuentas de un mismo tipo.
 class _Group {
@@ -60,6 +62,8 @@ class AccountsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final accounts = ref.watch(accountsProvider);
+    // Las inversiones suman al patrimonio; si aún cargan, no frenan la lista.
+    final investments = ref.watch(investmentsProvider).value ?? const [];
     final scope = ref.watch(scopeProvider);
     final now = ref.watch(clockProvider)();
 
@@ -75,6 +79,7 @@ class AccountsPage extends ConsumerWidget {
         AsyncData(:final value) => _content(
           context,
           value.where((a) => a.ownership.visibleIn(scope)).toList(),
+          Portfolio.of(investments.where((i) => i.ownership.visibleIn(scope))),
           scope,
           now,
         ),
@@ -115,6 +120,7 @@ class AccountsPage extends ConsumerWidget {
   List<Widget> _content(
     BuildContext context,
     List<Account> accounts,
+    Portfolio portfolio,
     Scope scope,
     DateTime now,
   ) {
@@ -162,7 +168,8 @@ class AccountsPage extends ConsumerWidget {
         isDebt: true,
       ),
     ].where((g) => g.accounts.isNotEmpty).toList();
-    final netWorth = accounts.fold<int>(0, (s, a) => s + a.netValue);
+    final netWorth =
+        accounts.fold<int>(0, (s, a) => s + a.netValue) + portfolio.value;
     final liquid = accounts
         .where((a) => !a.isCard)
         .fold<int>(0, (s, a) => s + a.balance);
@@ -174,11 +181,18 @@ class AccountsPage extends ConsumerWidget {
         child: HeroBalance(
           label: 'Patrimonio neto',
           value: netWorth,
-          caption: 'Lo que tienes menos lo que debes en tarjetas',
+          caption: portfolio.isEmpty
+              ? 'Lo que tienes menos lo que debes en tarjetas'
+              : 'Lo que tienes y lo que invertiste, menos lo que debes en '
+                    'tarjetas',
           footer: Wrap(
             spacing: AppSpace.md,
             runSpacing: AppSpace.xxs,
-            children: [_HeroFact('Tienes', liquid), _HeroFact('Debes', debt)],
+            children: [
+              _HeroFact('Tienes', liquid),
+              if (!portfolio.isEmpty) _HeroFact('Invertido', portfolio.value),
+              _HeroFact('Debes', debt),
+            ],
           ),
         ),
       ),
@@ -223,6 +237,29 @@ class AccountsPage extends ConsumerWidget {
           ),
         ),
       ],
+      const SliverToBoxAdapter(child: SizedBox(height: AppSpace.xl)),
+      GutterSliver(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SectionHeader('Inversiones'),
+            const SizedBox(height: AppSpace.xs),
+            OptionRow(
+              icon: Icons.trending_up_rounded,
+              title: portfolio.isEmpty
+                  ? 'Mira lo que tienes invertido'
+                  : 'Tus inversiones',
+              subtitle: portfolio.isEmpty
+                  ? 'CDT, fondos, acciones o pensión voluntaria'
+                  : '${Cop.format(portfolio.value)} · '
+                        '${signedPercent(portfolio.returnRatio)} sobre lo '
+                        'que pusiste',
+              emphasized: portfolio.isEmpty,
+              onTap: () => context.push(Routes.investments),
+            ),
+          ],
+        ),
+      ),
       const SliverToBoxAdapter(child: SizedBox(height: AppSpace.xl)),
       GutterSliver(
         child: Column(

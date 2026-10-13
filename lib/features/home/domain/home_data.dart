@@ -11,6 +11,7 @@ import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
+import 'package:qullqi/features/investments/data/investments_repository.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
@@ -100,9 +101,12 @@ final homeDataProvider = Provider<AsyncValue<HomeData>>((ref) {
     now,
   );
   final allCommitments = withIvaCommitment(commitments.requireValue, business);
+  // Las inversiones suman al patrimonio; si aún cargan, no frenan el Inicio.
+  final allInvestments = ref.watch(investmentsProvider).value ?? const [];
   MoneySummary summaryFor(Scope s) => MoneySummary.compute(
     accounts: allAccounts,
     commitments: allCommitments,
+    investments: allInvestments,
     scope: s,
     now: now,
   );

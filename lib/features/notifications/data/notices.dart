@@ -9,6 +9,7 @@ import 'package:qullqi/features/business/data/invoices_repository.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/home/domain/home_data.dart';
+import 'package:qullqi/features/investments/data/investments_repository.dart';
 import 'package:qullqi/features/notifications/domain/notice.dart';
 import 'package:qullqi/features/planning/data/plans_repository.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
@@ -21,6 +22,7 @@ final List<ProviderBase<Object?>> noticeSources = [
   transactionsProvider,
   budgetsProvider,
   invoicesProvider,
+  investmentsProvider,
 ];
 
 /// Avisos vigentes, ya filtrados por lo que la persona eligió recibir.
@@ -30,9 +32,17 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
   final transactions = ref.watch(transactionsProvider);
   final budgets = ref.watch(budgetsProvider);
   final invoices = ref.watch(invoicesProvider);
+  final investments = ref.watch(investmentsProvider);
   final now = ref.watch(clockProvider)();
 
-  for (final v in [accounts, commitments, transactions, budgets, invoices]) {
+  for (final v in [
+    accounts,
+    commitments,
+    transactions,
+    budgets,
+    invoices,
+    investments,
+  ]) {
     if (v.hasError) return AsyncError(v.error!, v.stackTrace!);
     if (!v.hasValue) return const AsyncLoading();
   }
@@ -46,6 +56,7 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
       transactions: txs,
       budgets: budgets.requireValue,
       invoices: invoices.requireValue,
+      investments: investments.requireValue,
       hasBusiness: ref.watch(currentUserProvider).hasBusiness,
       enabled: ref.watch(noticePrefsProvider),
     ),

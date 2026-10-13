@@ -65,6 +65,22 @@ abstract final class Routes {
   static const contributePattern = '/meta/:id/aportar';
   static String contribute(String id) => '/meta/$id/aportar';
 
+  // Inversiones.
+  static const investments = '/inversiones';
+  static const investmentPattern = '/inversion/:id';
+  static String investment(String id) => '/inversion/$id';
+  static const updateInvestmentPattern = '/inversion/:id/valor';
+  static String updateInvestment(String id) => '/inversion/$id/valor';
+  static const addInvestment = '/inversion-nueva';
+  static const connectInvestment = '/conectar-inversion';
+
+  /// Simulador de crecimiento. Puede abrirse con valores de partida:
+  /// una meta (`meta`), o lo que ya tienes (`inicial`) y su tasa (`tasa`).
+  static const simulator = '/simulador';
+  static String simulatorForGoal(String goalId) => '$simulator?meta=$goalId';
+  static String simulatorFrom({required int initial, double? rate}) =>
+      '$simulator?inicial=$initial${rate == null ? '' : '&tasa=$rate'}';
+
   /// Detalle de una cuenta o tarjeta (encima de las pestañas).
   static const accountPattern = '/cuenta/:id';
   static String account(String id) => '/cuenta/$id';

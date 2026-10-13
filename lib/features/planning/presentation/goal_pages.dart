@@ -177,6 +177,12 @@ class _GoalDetail extends ConsumerWidget {
             icon: Icons.savings_outlined,
             onPressed: () => context.push(Routes.contribute(g.id)),
           ),
+          const SizedBox(height: AppSpace.xs),
+          QButton.secondary(
+            label: 'Simular invirtiéndola',
+            icon: Icons.trending_up_rounded,
+            onPressed: () => context.push(Routes.simulatorForGoal(g.id)),
+          ),
         ],
         const SizedBox(height: AppSpace.xl),
         const SectionHeader('Tus aportes'),

@@ -10,6 +10,7 @@ import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
+import 'package:qullqi/features/investments/domain/investment.dart';
 import 'package:qullqi/features/planning/domain/plans.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
@@ -28,6 +29,10 @@ enum NoticeKind {
   transfers(
     'Traslados por revisar',
     'Cuando detectamos plata que pasa entre tus cuentas.',
+  ),
+  investments(
+    'Vencimiento de inversiones',
+    'Una semana antes de que venza un CDT.',
   );
 
   NoticeKind(this.title, this.description);
@@ -44,6 +49,9 @@ const int bigMovementAmount = 1000000;
 
 /// Cuántos días atrás miramos los movimientos grandes.
 const int bigMovementDays = 7;
+
+/// Días antes del vencimiento de una inversión en que avisamos.
+const int maturityNoticeDays = 7;
 
 enum NoticeTone { info, warning, danger }
 
@@ -87,6 +95,7 @@ List<Notice> buildNotices({
   required List<Invoice> invoices,
   required bool hasBusiness,
   required Set<NoticeKind> enabled,
+  List<Investment> investments = const [],
 }) {
   bool visible(Ownership o) => hasBusiness || o == Ownership.personal;
   final notices = <Notice>[
@@ -104,6 +113,34 @@ List<Notice> buildNotices({
           tone: NoticeTone.danger,
           route: Routes.reconnect(a.id),
         ),
+    for (final i in investments)
+      if (i.needsReconnect && visible(i.ownership))
+        Notice(
+          id: 'reconnect-investment:${i.id}',
+          kind: null,
+          title: 'Reconecta ${i.place}',
+          body: 'Venció el permiso y no vemos el valor de hoy de ${i.name}.',
+          icon: Icons.link_off_rounded,
+          tone: NoticeTone.danger,
+          route: Routes.investment(i.id),
+        ),
+    if (enabled.contains(NoticeKind.investments))
+      for (final i in investments)
+        if (visible(i.ownership) &&
+            i.maturity != null &&
+            i.daysToMaturity(now)! >= 0 &&
+            i.daysToMaturity(now)! <= maturityNoticeDays)
+          Notice(
+            id: 'maturity:${i.id}:${_ymd(i.maturity!)}',
+            kind: NoticeKind.investments,
+            title: 'Se acerca el vencimiento de ${i.name}',
+            body:
+                '${Dates.dueLabel(i.maturity!, now)}. Decide si lo renuevas '
+                'o lo retiras en tu entidad.',
+            icon: Icons.hourglass_bottom_rounded,
+            tone: NoticeTone.warning,
+            route: Routes.investment(i.id),
+          ),
     if (enabled.contains(NoticeKind.invoices) && hasBusiness)
       for (final i in invoices)
         if (i.statusAt(now) == InvoiceStatus.overdue)

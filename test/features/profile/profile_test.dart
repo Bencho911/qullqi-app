@@ -115,14 +115,14 @@ void main() {
 
   testWidgets('apagar un aviso se refleja en el perfil', (tester) async {
     await openProfile(tester);
-    expect(find.text('5 de 5 encendidos'), findsOneWidget);
+    expect(find.text('6 de 6 encendidos'), findsOneWidget);
     await tester.tap(find.text('Avisos'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Movimientos grandes'));
     await tester.pumpAndSettle();
     await tester.tap(find.byType(BackButton));
     await tester.pumpAndSettle();
-    expect(find.text('4 de 5 encendidos'), findsOneWidget);
+    expect(find.text('5 de 6 encendidos'), findsOneWidget);
   });
 
   testWidgets('cerrar la sesión en otros dispositivos', (tester) async {

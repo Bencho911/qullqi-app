@@ -28,6 +28,9 @@ void main() {
     expect(titles, contains('Vas en el 85 % de Mercado'));
     expect(titles, contains('2 movimientos parecen traslados'));
     expect(titles, contains(r'Entraron $2.500.000'));
+    // Inversiones: permiso vencido y un CDT que vence en 6 días.
+    expect(titles, contains('Reconecta Protección'));
+    expect(titles, contains('Se acerca el vencimiento de CDT Confiar'));
     // Del más urgente al menos urgente.
     final tones = notices.map((n) => n.tone.index).toList();
     expect(tones, [...tones]..sort((a, b) => b.compareTo(a)));
@@ -84,6 +87,7 @@ void main() {
     expect(notices.where((n) => n.kind == NoticeKind.invoices), isEmpty);
     expect(notices.where((n) => n.title.contains('Software')), isEmpty);
     expect(notices.where((n) => n.title.contains('Entraron')), isEmpty);
+    expect(notices.where((n) => n.title.contains('CDT Confiar')), isEmpty);
   });
 
   group('Capturas y accesibilidad', () {
