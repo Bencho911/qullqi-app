@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+import 'package:qullqi/core/money/currency.dart';
 import 'package:qullqi/core/scope/scope.dart';
 
 enum AccountKind {
@@ -48,6 +49,8 @@ class Account {
     this.paymentDue,
     this.paymentsEnabled = false,
     this.interestRate,
+    this.currency = Currency.cop,
+    this.rate = 1,
   });
 
   final String id;
@@ -83,6 +86,17 @@ class Account {
   /// Las cuentas registradas a mano nunca lo tienen.
   final bool paymentsEnabled;
 
+  /// Moneda en que se lleva la cuenta. [balance] siempre está en pesos.
+  final Currency currency;
+
+  /// Pesos por una unidad de [currency] con que se convirtió el saldo.
+  final double rate;
+
+  bool get isForeign => !currency.isHome;
+
+  /// El saldo en la moneda de la cuenta (`null` si es en pesos).
+  int? get foreignBalance => isForeign ? (balance / rate).round() : null;
+
   bool get isManual => status == ConnectionStatus.manual;
 
   bool get isCard => kind == AccountKind.creditCard;
@@ -102,11 +116,16 @@ class Account {
 
   /// Segunda línea bajo [shortName] sin repetir datos: el banco en una
   /// tarjeta ("Bancolombia"), el producto en una cuenta ("Ahorros •• 4521").
-  String get secondaryLine => isCard
-      ? institution
-      : kind == AccountKind.cash
-      ? kind.label
-      : detail;
+  String get secondaryLine {
+    final base = isCard
+        ? institution
+        : kind == AccountKind.cash
+        ? kind.label
+        : detail;
+    return isForeign
+        ? '$base · ${formatForeign(foreignBalance!, currency)}'
+        : base;
+  }
 
   /// "Ahorros •• 4521".
   String get detail => '${nickname ?? kind.label} •• $last4';
@@ -153,5 +172,7 @@ class Account {
     paymentDue: paymentDue,
     paymentsEnabled: paymentsEnabled ?? this.paymentsEnabled,
     interestRate: interestRate,
+    currency: currency,
+    rate: rate,
   );
 }

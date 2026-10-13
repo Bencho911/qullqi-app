@@ -33,9 +33,11 @@ import 'package:qullqi/features/notifications/presentation/notifications_page.da
 import 'package:qullqi/features/planning/presentation/budget_pages.dart';
 import 'package:qullqi/features/planning/presentation/goal_pages.dart';
 import 'package:qullqi/features/planning/presentation/planning_page.dart';
+import 'package:qullqi/features/privacy/presentation/my_data_page.dart';
 import 'package:qullqi/features/profile/presentation/profile_page.dart';
 import 'package:qullqi/features/profile/presentation/profile_pages.dart';
 import 'package:qullqi/features/recurring/presentation/recurring_page.dart';
+import 'package:qullqi/features/reports/presentation/summaries_page.dart';
 import 'package:qullqi/features/rules/presentation/rules_pages.dart';
 import 'package:qullqi/features/sales/presentation/payment_links_pages.dart';
 import 'package:qullqi/features/sales/presentation/quotes_pages.dart';
@@ -216,6 +218,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.goalPattern,
         builder: (context, state) =>
             GoalDetailPage(id: state.pathParameters['id']!),
+      ),
+      GoRoute(
+        path: Routes.summaries,
+        builder: (context, state) => const SummariesPage(),
+      ),
+      GoRoute(
+        path: Routes.myData,
+        builder: (context, state) => const MyDataPage(),
       ),
       GoRoute(
         path: Routes.sharingHub,

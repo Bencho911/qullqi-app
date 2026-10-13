@@ -1,53 +1,43 @@
-# Qullqi: completar el front antes del backend
+# Qullqi: front completo antes del backend
 
 Todo corre con datos de demostración detrás de las mismas interfaces
-(`*Repository`) que usará el backend. Cada hito termina con: pruebas,
+(`*Repository`) que usará el backend. Cada hito terminó con: pruebas,
 capturas claro/oscuro, texto al 200 %, guías de accesibilidad y analizador
 limpio.
 
-## Hito 11 — Inteligencia sobre tu plata
-- Pagos recurrentes y suscripciones (detección, próximo cobro, subidas de
-  precio).
-- Cómo va tu mes: cifra diaria y pronóstico de fin de mes.
-- Reglas de categorías (crear, aplicar a lo anterior, aprender de tus
-  correcciones).
-- Cobros raros: duplicados, montos fuera de lo normal y cobros del banco.
+## Hecho
 
-## Hito 12 — Patrimonio y deudas
-- Historial de patrimonio (gráfica y variación).
-- Plan de deudas: tarjetas por "bola de nieve" o "avalancha".
-
-## Hito 13 — Colombia
-- Calendario tributario según el documento (NIT o cédula).
-- Seguimiento del 4x1000 (GMF).
-- Independientes: recordatorios de PILA, prima y cesantías.
-- Ayuda para la declaración de renta (resumen de ingresos, retenciones y
-  deducciones).
-
-## Hito 14 — Negocio avanzado
-- Cotizaciones y facturas recurrentes.
-- Enlaces de pago (pantalla y estados; el cobro real es del backend).
-- Conciliación: cruzar cada cobro con el depósito que llegó.
-- Cuentas por pagar a proveedores.
-- Acceso del contador (invitar, permisos de solo lectura, exportar).
-
-## Hito 15 — Compartir
-- Hogar o pareja con gastos compartidos.
-- Dividir una cuenta y deudas entre personas.
-- Metas compartidas.
-
-## Hito 16 — Confianza y retención
-- Exportar y borrar mis datos.
-- Resumen semanal y cierre mensual (PDF).
-- Varias monedas.
-- Centro de notificaciones listo para push real.
-
-## Fuera del front (necesitan backend, aliado o regulación)
-| Función | Por qué espera |
+| Hito | Qué |
 |---|---|
-| Pagos Bre-B y pago de servicios | Requiere aliado y autorización |
-| Facturación electrónica DIAN | Requiere proveedor tecnológico autorizado |
-| Asistente en lenguaje natural | Requiere backend y decidir qué datos salen a un modelo |
-| Notificaciones push reales | Requiere APNs/FCM desde el servidor |
-| Widgets en la pantalla de inicio | Código nativo por plataforma; se evalúa al final |
-| Invertir desde la app | Regulado (decidido: solo ver) |
+| 0–10 | Sistema de diseño, cuentas, movimientos, mover plata, planes, negocio, avisos, extractos, seguridad |
+| Inversiones | Resumen, registro manual y conectado, simulador y avisos de vencimiento |
+| 11 | Pagos recurrentes, cómo va tu mes, reglas de categorías y cobros raros |
+| 12 | Historial de patrimonio y plan de deudas |
+| 13 | Calendario tributario de referencia, 4x1000 y resumen para la renta |
+| 14 | Cotizaciones, facturas recurrentes, enlaces de pago, conciliación, cuentas por pagar y contador |
+| 15 | Grupos con gastos compartidos, dividir una cuenta, deudas entre personas y metas compartidas |
+| 16 | Mis datos (copia y borrado), resúmenes semanal y mensual, cuentas en otras monedas y avisos en el teléfono |
+
+## Lo que el backend tiene que reemplazar (hoy es de demostración)
+
+| Pieza | Hoy | Backend |
+|---|---|---|
+| Cuentas, movimientos, saldos | Repositorios en memoria | Agregador de datos bancarios y libro de movimientos |
+| Tasas de cambio | Valores fijos (`ExchangeRates`) | TRM y tasas del día |
+| Fechas de impuestos | Mecánica de referencia por documento | Calendario oficial de la DIAN por año |
+| Enlaces de pago | Estados simulados | Aliado de pagos autorizado |
+| Invitación al contador | Solo la lista | Correo, aceptación y permisos de solo lectura |
+| Grupos, metas y deudas compartidas | Una sola persona anota todo | Usuarios reales, sincronización e invitaciones |
+| Avisos | Calculados en el teléfono | Tareas programadas y notificaciones push (APNs/FCM) |
+| Historial de patrimonio | Serie de demostración | Foto diaria guardada |
+| Resúmenes | Texto para copiar | PDF generado (decidir librería o servidor) |
+
+## Decisiones que quedan abiertas
+- **PDF:** hoy los resúmenes se copian como texto. Un PDF necesita un paquete
+  (`pdf` más uno para compartir) o generarlo en el servidor.
+- **Conexión de cuentas, pagos y facturación electrónica:** dependen de
+  elegir aliados y de la regulación aplicable.
+- **Asistente en lenguaje natural:** requiere backend y decidir qué datos
+  salen a un modelo.
+- **Widgets en la pantalla de inicio:** código nativo por plataforma.
+- **Invertir desde la app:** regulado; la decisión es solo mostrar.

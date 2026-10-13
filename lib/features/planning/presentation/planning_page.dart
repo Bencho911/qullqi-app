@@ -60,7 +60,20 @@ class PlanningPage extends ConsumerWidget {
               ..._goals(context, value),
               ..._sharedEntry(context, ref),
             ],
-            PlanningSection.reports => _reports(context, ref, value),
+            PlanningSection.reports => [
+              ..._reports(context, ref, value),
+              GutterSliver(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: AppSpace.xl),
+                  child: OptionRow(
+                    icon: Icons.summarize_outlined,
+                    title: 'Resumen semanal y cierre mensual',
+                    subtitle: 'Para copiar y mandar a quien quieras',
+                    onTap: () => context.push(Routes.summaries),
+                  ),
+                ),
+              ),
+            ],
           },
           AsyncError() => [
             GutterSliver(

@@ -13,6 +13,7 @@ import 'package:qullqi/core/theme/app_typography.dart';
 import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/auth/presentation/validators.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
+import 'package:qullqi/features/profile/data/push_prefs.dart';
 import 'package:qullqi/features/profile/presentation/profile_page.dart';
 
 /// Editar nombre y celular. El correo es el usuario de la cuenta: se cambia
@@ -360,6 +361,41 @@ class NotificationSettingsPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final on = ref.watch(noticePrefsProvider);
+    final push = ref.watch(pushPrefsProvider);
+    final pushNotifier = ref.read(pushPrefsProvider.notifier);
+
+    Future<void> togglePush({required bool enabled}) async {
+      if (!enabled) {
+        await pushNotifier.setEnabled(enabled: false);
+        return;
+      }
+      final allow = await showQSheet<bool>(
+        context,
+        title: '¿Recibir avisos en tu teléfono?',
+        builder: (sheet) => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Text(
+              'Te avisamos de pagos, cobros y cosas de seguridad aunque '
+              'no tengas Qullqi abierta. Solo lo que elijas abajo.',
+              style: AppTypography.body.copyWith(color: sheet.colors.inkMuted),
+            ),
+            const SizedBox(height: AppSpace.lg),
+            QButton(
+              label: 'Permitir avisos',
+              onPressed: () => Navigator.of(sheet).pop(true),
+            ),
+            const SizedBox(height: AppSpace.xs),
+            QButton.text(
+              label: 'Ahora no',
+              onPressed: () => Navigator.of(sheet).pop(false),
+            ),
+          ],
+        ),
+      );
+      if (allow ?? false) await pushNotifier.setEnabled(enabled: true);
+    }
+
     return Scaffold(
       appBar: AppBar(title: const Text('Avisos')),
       body: ListView(
@@ -370,6 +406,68 @@ class NotificationSettingsPage extends ConsumerWidget {
           AppSpace.xl,
         ),
         children: [
+          const SectionHeader('En tu teléfono'),
+          const SizedBox(height: AppSpace.xs),
+          QCard(
+            padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                SwitchRow(
+                  title: 'Avisos como notificación',
+                  subtitle: push.enabled
+                      ? 'Te llegan aunque no tengas la app abierta.'
+                      : 'Actívalos para no perderte un pago.',
+                  value: push.enabled,
+                  onChanged: (v) => togglePush(enabled: v),
+                ),
+                if (push.enabled) ...[
+                  const Divider(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: AppSpace.sm),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text('No molestar', style: context.text.titleSmall),
+                        const SizedBox(height: AppSpace.xs),
+                        Wrap(
+                          spacing: AppSpace.xs,
+                          runSpacing: AppSpace.xs,
+                          children: [
+                            for (final q in QuietHours.values)
+                              ChoiceChip(
+                                label: Text(q.label),
+                                selected: push.quiet == q,
+                                onSelected: (_) => pushNotifier.setQuiet(q),
+                              ),
+                          ],
+                        ),
+                        const SizedBox(height: AppSpace.xs),
+                        Text(
+                          push.quiet == QuietHours.off
+                              ? 'Te avisamos a cualquier hora.'
+                              : 'En ese horario los avisos esperan; los '
+                                    'de seguridad siempre suenan.',
+                          style: context.text.bodySmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  QButton.text(
+                    label: 'Enviarme una notificación de prueba',
+                    icon: Icons.notifications_active_outlined,
+                    onPressed: () => showQToast(
+                      context,
+                      'Así te llegaría: Paga tu tarjeta Visa en 3 días',
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+          const SizedBox(height: AppSpace.xl),
+          const SectionHeader('Qué avisos quieres'),
+          const SizedBox(height: AppSpace.xs),
           QCard(
             padding: const EdgeInsets.symmetric(horizontal: AppSpace.md),
             child: Column(

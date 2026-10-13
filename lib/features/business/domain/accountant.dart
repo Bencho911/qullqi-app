@@ -61,7 +61,8 @@ enum ExportPeriod {
 const accountantCsvHeader =
     'tipo,fecha,descripcion,tercero,valor_base,iva,total,estado';
 
-String _cell(String v) {
+/// Escapa una celda de CSV: comas, comillas y saltos van entre comillas.
+String csvCell(String v) {
   final needsQuotes =
       v.contains(',') || v.contains('"') || v.contains('\n') || v.contains(';');
   final escaped = v.replaceAll('"', '""');
@@ -151,7 +152,7 @@ AccountantExport buildAccountantExport({
   rows.sort((a, b) => a.$1.compareTo(b.$1));
   final lines = [
     accountantCsvHeader,
-    for (final r in rows) r.$2.map(_cell).join(','),
+    for (final r in rows) r.$2.map(csvCell).join(','),
   ];
   return AccountantExport(csv: lines.join('\n'), rows: rows.length);
 }

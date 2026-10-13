@@ -8,7 +8,6 @@ import 'package:qullqi/app/routes.dart';
 import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/core/scope/scope_provider.dart';
 import 'package:qullqi/core/security/biometrics_pref.dart';
-import 'package:qullqi/core/security/confirm_identity.dart';
 import 'package:qullqi/core/security/identity.dart';
 import 'package:qullqi/core/session/session.dart';
 import 'package:qullqi/core/theme/app_theme.dart';
@@ -19,6 +18,7 @@ import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
+import 'package:qullqi/features/profile/presentation/account_actions.dart';
 import 'package:qullqi/features/rules/data/rules_provider.dart';
 
 /// Versión que se muestra al final del perfil.
@@ -70,40 +70,6 @@ class ProfilePage extends ConsumerWidget {
           .update(user.copyWith(hasBusiness: on));
       // Sin negocio, la app vuelve a ser solo personal.
       if (!on) await ref.read(scopeProvider.notifier).select(Scope.personal);
-    }
-
-    Future<void> downloadData() async {
-      final ok = await confirmIdentity(
-        context,
-        reason: 'Para enviarte una copia de todos tus datos.',
-      );
-      if (ok && context.mounted) {
-        showQToast(
-          context,
-          'Te enviamos un archivo con tus datos a ${user.email}',
-        );
-      }
-    }
-
-    Future<void> deleteAccount() async {
-      final sure = await confirmDestructive(
-        context,
-        title: '¿Eliminar tu cuenta de Qullqi?',
-        message:
-            'Borramos tus datos, revocamos los permisos con tus bancos y '
-            'cerramos tu sesión. No se puede deshacer.',
-        confirmLabel: 'Eliminar mi cuenta',
-        cancelLabel: 'Conservar mi cuenta',
-      );
-      if (!sure || !context.mounted) return;
-      final ok = await confirmIdentity(
-        context,
-        reason: 'Confirma que quieres eliminar tu cuenta.',
-        pinOnly: true,
-      );
-      if (!ok) return;
-      await ref.read(identityVerifierProvider).clearPin();
-      await ref.read(sessionProvider.notifier).signOut();
     }
 
     Future<void> signOut() async {
@@ -294,10 +260,10 @@ class ProfilePage extends ConsumerWidget {
           ]),
           group('Privacidad y datos', [
             SettingsRow(
-              icon: Icons.download_outlined,
-              title: 'Descargar mis datos',
-              subtitle: 'Te enviamos una copia a tu correo.',
-              onTap: downloadData,
+              icon: Icons.shield_outlined,
+              title: 'Mis datos',
+              subtitle: 'Mira qué guardamos, llévate una copia o bórralos.',
+              onTap: () => context.push(Routes.myData),
             ),
             SettingsRow(
               icon: Icons.mail_outline_rounded,
@@ -324,7 +290,7 @@ class ProfilePage extends ConsumerWidget {
             label: 'Eliminar mi cuenta',
             icon: Icons.delete_outline_rounded,
             color: c.danger,
-            onPressed: deleteAccount,
+            onPressed: () => deleteAccountFlow(context, ref),
           ),
           const SizedBox(height: AppSpace.md),
           Text(

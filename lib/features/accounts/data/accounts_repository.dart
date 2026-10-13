@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:qullqi/core/clock/clock.dart';
 import 'package:qullqi/core/data/latency.dart';
 import 'package:qullqi/core/data/live_stream.dart';
+import 'package:qullqi/core/money/currency.dart';
 import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/accounts/domain/institution.dart';
@@ -36,6 +37,7 @@ abstract interface class AccountsRepository {
     required int balance,
     required Ownership ownership,
     String last4,
+    Currency currency,
   });
 
   /// Quita la cuenta de Qullqi y revoca el permiso con el banco.
@@ -169,6 +171,7 @@ class MockAccountsRepository implements AccountsRepository {
     required int balance,
     required Ownership ownership,
     String last4 = '',
+    Currency currency = Currency.cop,
   }) async {
     await Future<void>.delayed(latency);
     final account = Account(
@@ -180,6 +183,8 @@ class MockAccountsRepository implements AccountsRepository {
       balance: balance,
       status: ConnectionStatus.manual,
       lastSync: now(),
+      currency: currency,
+      rate: ExchangeRates.of(currency),
     );
     _items = [..._items, account];
     _emit();

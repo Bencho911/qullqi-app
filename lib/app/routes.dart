@@ -79,6 +79,12 @@ abstract final class Routes {
       '$newRule?comercio=${Uri.encodeQueryComponent(keyword)}'
       '&categoria=$categoryId';
 
+  /// Resumen semanal y cierre mensual.
+  static const summaries = '/resumenes';
+
+  /// Qué guardamos, copia y borrado de los datos.
+  static const myData = '/mis-datos';
+
   // Compartir con otras personas.
   static const sharingHub = '/compartir';
   static const groups = '/grupos';

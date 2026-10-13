@@ -6,6 +6,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:qullqi/app/routes.dart';
+import 'package:qullqi/core/money/currency.dart';
 import 'package:qullqi/core/money/money.dart';
 import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/core/session/session.dart';
@@ -30,6 +31,7 @@ class _ManualAccountPageState extends ConsumerState<ManualAccountPage> {
   final _last4 = TextEditingController();
   AccountKind _kind = AccountKind.savings;
   Ownership _ownership = Ownership.personal;
+  Currency _currency = Currency.cop;
   bool _tried = false;
   bool _saving = false;
 
@@ -47,6 +49,9 @@ class _ManualAccountPageState extends ConsumerState<ManualAccountPage> {
 
   int get _amount => AmountInput.value(_balance.text);
 
+  /// Lo que vale el saldo en pesos, al cambio de referencia.
+  int get _balanceInPesos => ExchangeRates.toCop(_amount, _currency);
+
   Future<void> _save() async {
     setState(() => _tried = true);
     if (_nameError != null) return;
@@ -57,9 +62,11 @@ class _ManualAccountPageState extends ConsumerState<ManualAccountPage> {
           .addManual(
             name: _name.text,
             kind: _kind,
-            balance: _amount,
+            // El saldo se guarda en pesos, al cambio de referencia.
+            balance: _balanceInPesos,
             ownership: _ownership,
             last4: _last4.text,
+            currency: _currency,
           );
       if (!mounted) return;
       showQToast(context, 'Agregamos ${account.shortName}');
@@ -137,6 +144,21 @@ class _ManualAccountPageState extends ConsumerState<ManualAccountPage> {
                 onSelectionChanged: (s) => setState(() => _kind = s.first),
               ),
               const SizedBox(height: AppSpace.lg),
+              const SectionHeader('Moneda'),
+              const SizedBox(height: AppSpace.xs),
+              Wrap(
+                spacing: AppSpace.xs,
+                runSpacing: AppSpace.xs,
+                children: [
+                  for (final cur in Currency.values)
+                    ChoiceChip(
+                      label: Text(cur.isHome ? 'Pesos' : cur.label),
+                      selected: _currency == cur,
+                      onSelected: (_) => setState(() => _currency = cur),
+                    ),
+                ],
+              ),
+              const SizedBox(height: AppSpace.lg),
               // Es un formulario de varios campos: el saldo usa el teclado del
               // sistema (el teclado propio es para pantallas de solo monto).
               TextField(
@@ -148,11 +170,16 @@ class _ManualAccountPageState extends ConsumerState<ManualAccountPage> {
                 ],
                 onChanged: (_) => setState(() {}),
                 decoration: InputDecoration(
-                  labelText: 'Saldo de hoy',
-                  prefixText: r'$ ',
+                  labelText: _currency.isHome
+                      ? 'Saldo de hoy'
+                      : 'Saldo de hoy en ${_currency.code}',
+                  prefixText: _currency.isHome ? r'$ ' : '${_currency.code} ',
                   helperText: _amount == 0
                       ? 'Puedes dejarlo en 0 y registrar después.'
-                      : Cop.format(_amount),
+                      : _currency.isHome
+                      ? Cop.format(_amount)
+                      : '≈ ${Cop.format(_balanceInPesos)} '
+                            'al cambio de referencia',
                 ),
               ),
               const SizedBox(height: AppSpace.md),
