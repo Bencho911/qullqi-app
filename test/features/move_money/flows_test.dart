@@ -81,11 +81,9 @@ void main() {
       await tester.tap(find.text('Guardar gasto'));
       await tester.pumpAndSettle();
       // El gasto nuevo aparece primero en "Últimos movimientos".
-      await tester.scrollUntilVisible(
-        find.text('Mercado'),
-        200,
-        scrollable: find.byType(Scrollable).first,
-      );
+      // Con "Cómo va tu mes" la lista queda más abajo: se centra antes de
+      // tocar para que no la tape la barra inferior.
+      await scrollIntoView(tester, find.text('Mercado'));
       await tester.tap(find.text('Mercado').first);
       await tester.pumpAndSettle();
       await tester.scrollUntilVisible(

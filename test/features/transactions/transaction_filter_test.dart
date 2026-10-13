@@ -54,7 +54,12 @@ void main() {
       final last = run(const TransactionFilter(range: DateRange.lastMonth));
       expect(
         last.map((t) => t.title),
-        unorderedEquals(['Arriendo septiembre', 'Pago nómina freelance']),
+        unorderedEquals([
+          'Arriendo septiembre',
+          'Pago nómina freelance',
+          'Netflix',
+          'Spotify',
+        ]),
       );
     });
 

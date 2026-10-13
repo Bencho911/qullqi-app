@@ -10,8 +10,10 @@ import 'package:qullqi/features/business/data/invoices_repository.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
+import 'package:qullqi/features/home/domain/forecast.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
 import 'package:qullqi/features/investments/data/investments_repository.dart';
+import 'package:qullqi/features/recurring/domain/recurring.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
@@ -28,6 +30,7 @@ class HomeData {
     required this.needsReconnect,
     required this.hasAnyAccount,
     required this.business,
+    required this.forecast,
   });
 
   final Scope scope;
@@ -49,6 +52,9 @@ class HomeData {
 
   /// Utilidad, cobros e IVA del negocio en el mes.
   final BusinessMonth business;
+
+  /// Cuánto puedes gastar por día y cómo terminarías el mes.
+  final MonthForecast forecast;
 
   static const recentCount = 4;
 }
@@ -118,11 +124,27 @@ final homeDataProvider = Provider<AsyncValue<HomeData>>((ref) {
           return b.balance.compareTo(a.balance);
         });
 
+  final summary = summaryFor(scope);
+  final visibleTxs = transactions.requireValue
+      .where((t) => t.ownership.visibleIn(scope))
+      .toList();
+  // Lo fijo (pagos y cobros recurrentes) se cuenta aparte del gasto típico.
+  final fixedKeys = {
+    for (final c in detectRecurring(visibleTxs, now)) c.key,
+    for (final c in allCommitments) recurringKey(c.title),
+  };
+
   return AsyncData(
     HomeData(
       scope: scope,
       now: now,
-      summary: summaryFor(scope),
+      summary: summary,
+      forecast: MonthForecast.compute(
+        summary: summary,
+        transactions: visibleTxs,
+        fixedKeys: fixedKeys,
+        now: now,
+      ),
       byOwnership: {
         for (final o in Ownership.values)
           o: summaryFor(

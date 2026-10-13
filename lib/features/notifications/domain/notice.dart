@@ -12,6 +12,7 @@ import 'package:qullqi/features/commitments/domain/commitment.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
 import 'package:qullqi/features/investments/domain/investment.dart';
 import 'package:qullqi/features/planning/domain/plans.dart';
+import 'package:qullqi/features/recurring/domain/recurring.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
 
 /// Tipos de aviso que la persona puede encender o apagar.
@@ -33,6 +34,10 @@ enum NoticeKind {
   investments(
     'Vencimiento de inversiones',
     'Una semana antes de que venza un CDT.',
+  ),
+  recurring(
+    'Pagos recurrentes',
+    'Cuando una suscripción sube de precio o se cobra en 3 días.',
   );
 
   NoticeKind(this.title, this.description);
@@ -52,6 +57,12 @@ const int bigMovementDays = 7;
 
 /// Días antes del vencimiento de una inversión en que avisamos.
 const int maturityNoticeDays = 7;
+
+/// Días antes de un cobro recurrente en que avisamos.
+const int recurringNoticeDays = 3;
+
+/// Cuánto tiempo después de una subida de precio se sigue avisando.
+const int recurringRaiseNoticeDays = 30;
 
 enum NoticeTone { info, warning, danger }
 
@@ -96,6 +107,7 @@ List<Notice> buildNotices({
   required bool hasBusiness,
   required Set<NoticeKind> enabled,
   List<Investment> investments = const [],
+  List<RecurringCharge> recurring = const [],
 }) {
   bool visible(Ownership o) => hasBusiness || o == Ownership.personal;
   final notices = <Notice>[
@@ -141,6 +153,40 @@ List<Notice> buildNotices({
             tone: NoticeTone.warning,
             route: Routes.investment(i.id),
           ),
+    if (enabled.contains(NoticeKind.recurring))
+      for (final r in recurring)
+        if (visible(r.ownership)) ...[
+          if (r.priceUp &&
+              daysBetween(r.lastDate, now) <= recurringRaiseNoticeDays)
+            Notice(
+              id: 'recurring-up:${r.key}:${_ymd(r.lastDate)}',
+              kind: NoticeKind.recurring,
+              title: '${r.title} subió de precio',
+              body:
+                  'Pasó de ${Cop.format(r.previousAmount!)} a '
+                  '${Cop.format(r.amount)} al mes.',
+              icon: Icons.trending_up_rounded,
+              tone: NoticeTone.warning,
+              route: Routes.recurring,
+            ),
+          if (daysBetween(now, r.nextDate) >= 0 &&
+              daysBetween(now, r.nextDate) <= recurringNoticeDays)
+            Notice(
+              id: 'recurring-next:${r.key}:${_ymd(r.nextDate)}',
+              kind: NoticeKind.recurring,
+              title:
+                  '${r.title} se cobra '
+                  '${switch (daysBetween(now, r.nextDate)) {
+                    0 => 'hoy',
+                    1 => 'mañana',
+                    final n => 'en $n días',
+                  }}',
+              body: '${Cop.format(r.amount)}, como cada mes.',
+              icon: Icons.autorenew_rounded,
+              tone: NoticeTone.info,
+              route: Routes.recurring,
+            ),
+        ],
     if (enabled.contains(NoticeKind.invoices) && hasBusiness)
       for (final i in invoices)
         if (i.statusAt(now) == InvoiceStatus.overdue)

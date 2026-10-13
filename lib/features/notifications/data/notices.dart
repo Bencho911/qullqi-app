@@ -13,6 +13,7 @@ import 'package:qullqi/features/investments/data/investments_repository.dart';
 import 'package:qullqi/features/notifications/domain/notice.dart';
 import 'package:qullqi/features/planning/data/plans_repository.dart';
 import 'package:qullqi/features/profile/data/notification_prefs.dart';
+import 'package:qullqi/features/recurring/domain/recurring.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 
 /// Fuentes de los avisos (para reintentar si alguna falla).
@@ -57,6 +58,7 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
       budgets: budgets.requireValue,
       invoices: invoices.requireValue,
       investments: investments.requireValue,
+      recurring: detectRecurring(txs, now),
       hasBusiness: ref.watch(currentUserProvider).hasBusiness,
       enabled: ref.watch(noticePrefsProvider),
     ),

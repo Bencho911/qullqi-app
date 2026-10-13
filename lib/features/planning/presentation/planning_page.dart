@@ -6,6 +6,7 @@ import 'package:qullqi/app/routes.dart';
 import 'package:qullqi/app/shell/tab_page.dart';
 import 'package:qullqi/core/format/dates.dart';
 import 'package:qullqi/core/money/money.dart';
+import 'package:qullqi/core/scope/scope_provider.dart';
 import 'package:qullqi/core/theme/app_theme.dart';
 import 'package:qullqi/core/theme/app_tokens.dart';
 import 'package:qullqi/core/theme/app_typography.dart';
@@ -14,6 +15,8 @@ import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/planning/data/plans_repository.dart';
 import 'package:qullqi/features/planning/presentation/planning_controller.dart';
 import 'package:qullqi/features/planning/presentation/widgets/plan_cards.dart';
+import 'package:qullqi/features/recurring/data/recurring_provider.dart';
+import 'package:qullqi/features/recurring/domain/recurring.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/presentation/transaction_tile.dart';
 
@@ -48,7 +51,10 @@ class PlanningPage extends ConsumerWidget {
         ),
         ...switch (view) {
           AsyncData(:final value) => switch (section) {
-            PlanningSection.budgets => _budgets(context, value),
+            PlanningSection.budgets => [
+              ..._budgets(context, value),
+              ..._recurringEntry(context, ref),
+            ],
             PlanningSection.goals => _goals(context, value),
             PlanningSection.reports => _reports(context, ref, value),
           },
@@ -86,6 +92,29 @@ class PlanningPage extends ConsumerWidget {
         },
       ],
     );
+  }
+
+  /// Acceso a los cobros que se repiten, debajo de los presupuestos.
+  List<Widget> _recurringEntry(BuildContext context, WidgetRef ref) {
+    final scope = ref.watch(scopeProvider);
+    final charges = (ref.watch(recurringProvider).value ?? const [])
+        .where((c) => c.ownership.visibleIn(scope))
+        .toList();
+    return [
+      const SliverToBoxAdapter(child: SizedBox(height: AppSpace.md)),
+      GutterSliver(
+        child: OptionRow(
+          icon: Icons.autorenew_rounded,
+          title: 'Pagos recurrentes',
+          subtitle: charges.isEmpty
+              ? 'Suscripciones y cobros que se repiten'
+              : '${charges.length} '
+                    '${charges.length == 1 ? 'cobro' : 'cobros'} · '
+                    '${Cop.format(monthlyTotal(charges))} al mes',
+          onTap: () => context.push(Routes.recurring),
+        ),
+      ),
+    ];
   }
 
   List<Widget> _budgets(BuildContext context, PlanningView v) {

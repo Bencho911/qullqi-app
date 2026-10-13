@@ -20,6 +20,7 @@ import 'package:qullqi/features/business/presentation/business_pages.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/home/domain/home_data.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
+import 'package:qullqi/features/home/presentation/widgets/forecast_card.dart';
 import 'package:qullqi/features/home/presentation/widgets/payment_row.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/presentation/transaction_tile.dart';
@@ -152,6 +153,13 @@ class HomePage extends ConsumerWidget {
           child: BusinessTeaser(month: d.business, now: d.now),
         ),
       ],
+      const _SectionGap(),
+      GutterSliver(
+        child: ForecastCard(
+          forecast: d.forecast,
+          onSeeBudgets: () => context.go(Routes.planning),
+        ),
+      ),
       const _SectionGap(),
       GutterSliver(
         child: Column(

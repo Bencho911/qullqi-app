@@ -65,6 +65,9 @@ abstract final class Routes {
   static const contributePattern = '/meta/:id/aportar';
   static String contribute(String id) => '/meta/$id/aportar';
 
+  /// Cobros que se repiten cada mes.
+  static const recurring = '/recurrentes';
+
   // Inversiones.
   static const investments = '/inversiones';
   static const investmentPattern = '/inversion/:id';
