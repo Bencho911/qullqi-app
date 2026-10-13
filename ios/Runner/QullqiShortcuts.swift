@@ -14,15 +14,15 @@ import Foundation
 
 private enum QullqiPrefs {
     static let pendingRoute = "flutter.pending_route"
-    static let snapshot = "flutter.widget_snapshot"
+    static let snapshotKey = "flutter.widget_snapshot"
 
     static func setRoute(_ id: String) {
         UserDefaults.standard.set(id, forKey: pendingRoute)
     }
 
-    static func snapshot() -> [String: Any]? {
+    static func loadSnapshot() -> [String: Any]? {
         guard
-            let json = UserDefaults.standard.string(forKey: snapshot),
+            let json = UserDefaults.standard.string(forKey: snapshotKey),
             let data = json.data(using: .utf8),
             let object = try? JSONSerialization.jsonObject(with: data)
         else { return nil }
@@ -97,7 +97,7 @@ struct CuantoPuedoGastarIntent: AppIntent {
     static var openAppWhenRun: Bool = false
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        guard let snap = QullqiPrefs.snapshot() else {
+        guard let snap = QullqiPrefs.loadSnapshot() else {
             return .result(dialog: "Abre Qullqi una vez para que pueda decirte tu disponible.")
         }
         if (snap["amountsHidden"] as? Bool) == true {
