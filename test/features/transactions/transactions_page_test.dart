@@ -27,7 +27,7 @@ void main() {
     testWidgets('agrupa por día y resume el mes sin traslados', (tester) async {
       await openTransactions(tester, size: const Size(390, 1600));
       expect(find.text('Este mes · sin traslados'), findsOneWidget);
-      expect(semanticsLabel('Ingresos: 4.500.000 pesos'), findsOneWidget);
+      expect(semanticsLabel('Ingresos: 5.571.000 pesos'), findsOneWidget);
       expect(find.text('Hoy'), findsWidgets);
       expect(find.text('Ayer'), findsOneWidget);
       expect(find.text('Éxito Chapinero'), findsOneWidget);

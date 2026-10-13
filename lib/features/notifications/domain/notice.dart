@@ -9,6 +9,7 @@ import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/anomalies/domain/anomalies.dart';
 import 'package:qullqi/features/business/domain/business.dart';
+import 'package:qullqi/features/business/domain/reconcile.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
 import 'package:qullqi/features/home/domain/money_summary.dart';
 import 'package:qullqi/features/investments/domain/investment.dart';
@@ -48,6 +49,10 @@ enum NoticeKind {
   obligations(
     'Fechas de impuestos',
     'Una semana antes de cada fecha de tu calendario.',
+  ),
+  reconcile(
+    'Cobros por conciliar',
+    'Cuando un depósito parece pagar una factura abierta.',
   );
 
   NoticeKind(this.title, this.description);
@@ -123,6 +128,7 @@ List<Notice> buildNotices({
   List<RecurringCharge> recurring = const [],
   List<Anomaly> anomalies = const [],
   List<Obligation> obligations = const [],
+  List<ReconcileSuggestion> reconcile = const [],
 }) {
   bool visible(Ownership o) => hasBusiness || o == Ownership.personal;
   final notices = <Notice>[
@@ -249,6 +255,19 @@ List<Notice> buildNotices({
             tone: NoticeTone.warning,
             route: Routes.taxes,
           ),
+    if (enabled.contains(NoticeKind.reconcile) && hasBusiness)
+      for (final s in reconcile)
+        Notice(
+          id: 'reconcile:${s.id}',
+          kind: NoticeKind.reconcile,
+          title: 'Parece que ${s.invoice.client} ya pagó',
+          body:
+              '${s.deposit.title} por ${Cop.format(s.deposit.amount)} puede '
+              'ser el pago de ${s.invoice.number}.',
+          icon: Icons.compare_arrows_rounded,
+          tone: NoticeTone.info,
+          route: Routes.reconcile,
+        ),
     if (enabled.contains(NoticeKind.invoices) && hasBusiness)
       for (final i in invoices)
         if (i.statusAt(now) == InvoiceStatus.overdue)

@@ -64,9 +64,9 @@ void main() {
     ) async {
       await pumpApp(tester);
       expect(find.text('Disponible para gastar'), findsOneWidget);
-      expect(semanticsLabel('3.838.672 pesos'), findsOneWidget);
+      expect(semanticsLabel('3.208.672 pesos'), findsOneWidget);
       expect(semanticsLabel('Personal: 991.000 pesos'), findsOneWidget);
-      expect(semanticsLabel('Negocio: 2.847.672 pesos'), findsOneWidget);
+      expect(semanticsLabel('Negocio: 2.217.672 pesos'), findsOneWidget);
     });
 
     testWidgets('Personal y Negocio cambian el número', (tester) async {
@@ -76,7 +76,7 @@ void main() {
       expect(semanticsLabel('991.000 pesos'), findsOneWidget);
       await tester.tap(scopeOption('Negocio'));
       await tester.pumpAndSettle();
-      expect(semanticsLabel('2.847.672 pesos'), findsOneWidget);
+      expect(semanticsLabel('2.217.672 pesos'), findsOneWidget);
     });
 
     testWidgets('explica el cálculo en una hoja', (tester) async {
@@ -125,9 +125,9 @@ void main() {
     testWidgets('muestra 3 pagos y el resto en "Ver todos"', (tester) async {
       await pumpApp(tester);
       await scrollTo(tester, find.text('Próximos pagos'));
-      expect(find.text('Ver todos (6)'), findsOneWidget);
+      expect(find.text('Ver todos (8)'), findsOneWidget);
       expect(find.text('Vence en 3 días'), findsOneWidget);
-      await tester.tap(find.text('Ver todos (6)'));
+      await tester.tap(find.text('Ver todos (8)'));
       await tester.pumpAndSettle();
       expect(find.text('IVA de septiembre y octubre'), findsWidgets);
       expect(find.text('Vence en 27 días'), findsOneWidget);

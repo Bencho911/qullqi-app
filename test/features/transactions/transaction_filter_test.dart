@@ -105,8 +105,8 @@ void main() {
       const TransactionFilter(kind: TransactionKind.transfer),
     );
     expect(transfers, isNotEmpty);
-    // Ingresos de octubre: 2.500.000 + 150.000 + 1.850.000.
-    expect(t.income, 4500000);
+    // Ingresos de octubre: 2.500.000 + 150.000 + 1.850.000 + 1.071.000.
+    expect(t.income, 5571000);
     expect(
       t.expense,
       // Los de siempre + dos Rappi + la cuota de manejo.

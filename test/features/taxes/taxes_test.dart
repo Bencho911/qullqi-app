@@ -153,9 +153,9 @@ void main() {
       expect(gmf.estimated, gmf.base * 4 ~/ 1000);
 
       final year = YearSummary.of(txs, scope: Scope.all, now: now);
-      expect(year.income, 2500000 + 150000 + 1850000 + 2500000);
+      expect(year.income, 2500000 + 150000 + 1850000 + 2500000 + 1071000);
       expect(year.incomeByCategory.first.$1.id, 'honorarios');
-      expect(year.incomeByCategory.first.$2, 6850000);
+      expect(year.incomeByCategory.first.$2, 6850000 + 1071000);
       expect(year.health, 63200);
     });
 
@@ -228,7 +228,7 @@ void main() {
       expect(find.text(r'$1.492'), findsOneWidget);
       await scrollIntoView(tester, find.text('Resumen para tu renta de 2026'));
       expect(find.text('Resumen para tu renta de 2026'), findsOneWidget);
-      expect(find.text(r'$7.000.000'), findsOneWidget);
+      expect(find.text(r'$8.071.000'), findsOneWidget);
     });
 
     testWidgets('cambiar el documento vuelve al formulario', (tester) async {

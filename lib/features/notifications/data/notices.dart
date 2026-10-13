@@ -6,7 +6,9 @@ import 'package:qullqi/core/session/session.dart';
 import 'package:qullqi/core/storage/prefs.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/anomalies/domain/anomalies.dart';
+import 'package:qullqi/features/business/data/business_back_office.dart';
 import 'package:qullqi/features/business/data/invoices_repository.dart';
+import 'package:qullqi/features/business/domain/bill.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/home/domain/home_data.dart';
@@ -57,7 +59,11 @@ final noticesProvider = Provider<AsyncValue<List<Notice>>>((ref) {
     buildNotices(
       now: now,
       accounts: accounts.requireValue,
-      commitments: withIvaCommitment(commitments.requireValue, business),
+      commitments: withBillCommitments(
+        withIvaCommitment(commitments.requireValue, business),
+        ref.watch(billsProvider).value ?? const <Bill>[],
+      ),
+      reconcile: ref.watch(reconcileSuggestionsProvider).value ?? const [],
       transactions: txs,
       budgets: budgets.requireValue,
       invoices: invoices.requireValue,

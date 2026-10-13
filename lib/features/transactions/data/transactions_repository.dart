@@ -297,6 +297,16 @@ class MockTransactionsRepository implements TransactionsRepository {
         p,
         DateTime(now.year, now.month - 3, 28, 7),
       ),
+      t(
+        't25',
+        'Transferencia Café Origen',
+        1071000,
+        i,
+        'davivienda',
+        Categories.fees,
+        b,
+        at(2, 10, 5),
+      ),
       // Cobros que conviene mirar dos veces: un duplicado, una comisión y un
       // Éxito muy por encima de lo habitual (sus compras previas eran de
       // $35.000).

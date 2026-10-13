@@ -88,6 +88,10 @@ abstract final class Routes {
   static const invoiceTemplates = '/facturas-recurrentes';
   static const newInvoiceTemplate = '/factura-recurrente-nueva';
   static const paymentLinks = '/enlaces-de-pago';
+  static const reconcile = '/conciliar';
+  static const bills = '/cuentas-por-pagar';
+  static const newBill = '/cuenta-por-pagar-nueva';
+  static const accountant = '/contador';
   static const newPaymentLink = '/enlace-de-pago-nuevo';
 
   /// Crear un enlace de pago para una factura.

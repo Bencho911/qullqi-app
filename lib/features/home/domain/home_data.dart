@@ -6,7 +6,9 @@ import 'package:qullqi/core/scope/scope.dart';
 import 'package:qullqi/core/scope/scope_provider.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:qullqi/features/business/data/business_back_office.dart';
 import 'package:qullqi/features/business/data/invoices_repository.dart';
+import 'package:qullqi/features/business/domain/bill.dart';
 import 'package:qullqi/features/business/domain/business.dart';
 import 'package:qullqi/features/commitments/data/commitments_repository.dart';
 import 'package:qullqi/features/commitments/domain/commitment.dart';
@@ -106,7 +108,12 @@ final homeDataProvider = Provider<AsyncValue<HomeData>>((ref) {
     transactions.requireValue,
     now,
   );
-  final allCommitments = withIvaCommitment(commitments.requireValue, business);
+  // Las cuentas por pagar abiertas del negocio cuentan como pagos próximos.
+  final bills = ref.watch(billsProvider).value ?? const <Bill>[];
+  final allCommitments = withBillCommitments(
+    withIvaCommitment(commitments.requireValue, business),
+    bills,
+  );
   // Las inversiones suman al patrimonio; si aún cargan, no frenan el Inicio.
   final allInvestments = ref.watch(investmentsProvider).value ?? const [];
   MoneySummary summaryFor(Scope s) => MoneySummary.compute(

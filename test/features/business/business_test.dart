@@ -67,9 +67,10 @@ void main() {
 
     test('resumen del negocio en el mes', () {
       final m = BusinessMonth.of(invoices, txs, now);
-      expect(m.income, 2500000 + 1850000);
+      // Anticipo + asesoría + el depósito de Café Origen.
+      expect(m.income, 2500000 + 1850000 + 1071000);
       expect(m.expense, 142000);
-      expect(m.profit, 4208000);
+      expect(m.profit, 5279000);
       expect(m.receivable, 1785000 + 1071000);
       expect(m.overdueCount, 1);
     });
@@ -81,7 +82,7 @@ void main() {
     ) async {
       await openBusinessHome(tester);
       expect(find.text('Utilidad de octubre'), findsOneWidget);
-      expect(find.text(r'$4.208.000'), findsOneWidget);
+      expect(find.text(r'$5.279.000'), findsOneWidget);
       expect(find.text(r'$2.856.000 · 1 vencida'), findsOneWidget);
       expect(find.text('IVA de septiembre y octubre'), findsWidgets);
     });
@@ -117,7 +118,7 @@ void main() {
       await tester.tap(find.byType(BackButton));
       await tester.pumpAndSettle();
       // El ingreso llegó: subió la utilidad del mes.
-      expect(find.text(r'$5.279.000'), findsOneWidget);
+      expect(find.text(r'$6.350.000'), findsOneWidget);
     });
 
     testWidgets('registrar un cobro con IVA', (tester) async {

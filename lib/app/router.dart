@@ -15,8 +15,11 @@ import 'package:qullqi/features/add/presentation/scan_receipt_page.dart';
 import 'package:qullqi/features/auth/presentation/sign_in_pages.dart';
 import 'package:qullqi/features/auth/presentation/sign_up_pages.dart';
 import 'package:qullqi/features/auth/presentation/welcome_page.dart';
+import 'package:qullqi/features/business/presentation/accountant_page.dart';
+import 'package:qullqi/features/business/presentation/bills_pages.dart';
 import 'package:qullqi/features/business/presentation/business_hub_page.dart';
 import 'package:qullqi/features/business/presentation/business_pages.dart';
+import 'package:qullqi/features/business/presentation/reconcile_page.dart';
 import 'package:qullqi/features/debts/presentation/debt_plan_page.dart';
 import 'package:qullqi/features/home/presentation/home_page.dart';
 import 'package:qullqi/features/investments/presentation/add_investment_page.dart';
@@ -235,6 +238,22 @@ final routerProvider = Provider<GoRouter>((ref) {
         path: Routes.newInvoiceTemplate,
         pageBuilder: (context, state) =>
             _modal(state, const NewInvoiceTemplatePage()),
+      ),
+      GoRoute(
+        path: Routes.reconcile,
+        builder: (context, state) => const ReconcilePage(),
+      ),
+      GoRoute(
+        path: Routes.bills,
+        builder: (context, state) => const BillsPage(),
+      ),
+      GoRoute(
+        path: Routes.newBill,
+        pageBuilder: (context, state) => _modal(state, const NewBillPage()),
+      ),
+      GoRoute(
+        path: Routes.accountant,
+        builder: (context, state) => const AccountantPage(),
       ),
       GoRoute(
         path: Routes.paymentLinks,

@@ -7,8 +7,11 @@ import 'package:qullqi/core/clock/clock.dart';
 import 'package:qullqi/core/money/money.dart';
 import 'package:qullqi/core/theme/app_tokens.dart';
 import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:qullqi/features/business/data/business_back_office.dart';
 import 'package:qullqi/features/business/data/invoices_repository.dart';
+import 'package:qullqi/features/business/domain/bill.dart';
 import 'package:qullqi/features/business/domain/business.dart';
+import 'package:qullqi/features/business/domain/reconcile.dart';
 import 'package:qullqi/features/sales/data/sales_repositories.dart';
 import 'package:qullqi/features/sales/domain/sales.dart';
 
@@ -31,6 +34,13 @@ class BusinessHubPage extends ConsumerWidget {
         ref.watch(paymentLinksProvider).value ?? const <PaymentLink>[];
 
     final open = invoices.where((i) => i.paidOn == null).toList();
+    final openBills = (ref.watch(billsProvider).value ?? const <Bill>[])
+        .where((b) => b.paidOn == null)
+        .toList();
+    final owed = openBills.fold<int>(0, (s, b) => s + b.amount);
+    final reconcile =
+        ref.watch(reconcileSuggestionsProvider).value ??
+        const <ReconcileSuggestion>[];
     final waiting = quotes
         .where((q) => q.statusAt(now) == QuoteStatus.sent)
         .length;
@@ -108,6 +118,31 @@ class BusinessHubPage extends ConsumerWidget {
               Routes.paymentLinks,
             ),
             const SizedBox(height: AppSpace.lg),
+            const SectionHeader('Cuadrar y pagar'),
+            const SizedBox(height: AppSpace.xs),
+            option(
+              Icons.compare_arrows_rounded,
+              'Conciliar cobros',
+              reconcile.isEmpty
+                  ? 'Todo cuadra'
+                  : _count(
+                      reconcile.length,
+                      'depósito parece pagar una factura',
+                      'depósitos parecen pagar facturas',
+                    ),
+              Routes.reconcile,
+              emphasized: reconcile.isNotEmpty,
+            ),
+            option(
+              Icons.request_page_outlined,
+              'Cuentas por pagar',
+              openBills.isEmpty
+                  ? 'Anota lo que le debes a tus proveedores'
+                  : '${_count(openBills.length, 'pendiente', 'pendientes')} · '
+                        '${Cop.format(owed)}',
+              Routes.bills,
+            ),
+            const SizedBox(height: AppSpace.lg),
             const SectionHeader('Impuestos'),
             const SizedBox(height: AppSpace.xs),
             option(
@@ -121,6 +156,12 @@ class BusinessHubPage extends ConsumerWidget {
               'Impuestos y obligaciones',
               'Tus fechas, el 4x1000 y el resumen para la renta',
               Routes.taxes,
+            ),
+            option(
+              Icons.groups_outlined,
+              'Tu contador',
+              'Dale acceso de solo lectura o mándale un archivo',
+              Routes.accountant,
             ),
           ],
         ),

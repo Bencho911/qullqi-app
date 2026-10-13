@@ -100,7 +100,7 @@ void main() {
 
     test('reporte del mes compara con el anterior', () {
       final r = MonthReport.of(txs, scope: Scope.all, now: now);
-      expect(r.income, 4500000);
+      expect(r.income, 5571000);
       expect(r.expense, 511900);
       // Arriendo 1.200.000 + Netflix 34.900 + Spotify 16.900 + Éxito 35.000.
       expect(r.prevExpense, 1286800);

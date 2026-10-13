@@ -16,8 +16,10 @@ import 'package:qullqi/core/widgets/widgets.dart';
 import 'package:qullqi/features/accounts/data/accounts_repository.dart';
 import 'package:qullqi/features/accounts/domain/account.dart';
 import 'package:qullqi/features/accounts/presentation/widgets/account_picker.dart';
+import 'package:qullqi/features/business/data/business_back_office.dart';
 import 'package:qullqi/features/business/data/invoices_repository.dart';
 import 'package:qullqi/features/business/domain/business.dart';
+import 'package:qullqi/features/business/domain/reconcile.dart';
 import 'package:qullqi/features/transactions/data/ledger.dart';
 import 'package:qullqi/features/transactions/data/transactions_repository.dart';
 import 'package:qullqi/features/transactions/domain/transaction.dart';
@@ -299,6 +301,11 @@ class _InvoiceDetail extends ConsumerWidget {
     final c = context.colors;
     final now = ref.watch(clockProvider)();
     final status = i.statusAt(now);
+    final reconcileHint =
+        (ref.watch(reconcileSuggestionsProvider).value ??
+                const <ReconcileSuggestion>[])
+            .where((s) => s.invoice.id == i.id)
+            .firstOrNull;
     final businessAccounts = (ref.watch(accountsProvider).value ?? const [])
         .where((a) => !a.isCard && a.ownership == Ownership.business)
         .toList();
@@ -384,6 +391,19 @@ class _InvoiceDetail extends ConsumerWidget {
           child: Text(i.client, style: context.text.headlineSmall),
         ),
         Text(i.number, style: context.text.bodySmall),
+        if (reconcileHint != null) ...[
+          const SizedBox(height: AppSpace.md),
+          QBanner(
+            tone: BannerTone.info,
+            title: 'Parece que ya te pagaron',
+            message:
+                '${reconcileHint.deposit.title} por '
+                '${Cop.format(reconcileHint.deposit.amount)} puede ser este '
+                'pago.',
+            actionLabel: 'Conciliar',
+            onAction: () => context.push(Routes.reconcile),
+          ),
+        ],
         const SizedBox(height: AppSpace.md),
         Align(alignment: Alignment.centerLeft, child: invoicePill(i, now)),
         const SizedBox(height: AppSpace.md),
