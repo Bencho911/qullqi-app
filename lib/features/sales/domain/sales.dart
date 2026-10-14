@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/features/business/domain/business.dart' show ivaRate;
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/features/business/domain/business.dart' show ivaRate;
 
 // ---------------------------------------------------------------------------
 // Cotizaciones
@@ -171,7 +171,7 @@ enum PaymentLinkStatus {
 }
 
 /// Enlace con el que un cliente te paga. El cobro lo procesa un aliado de
-/// pagos; Qullqi no guarda datos de tarjetas.
+/// pagos; Inti no guarda datos de tarjetas.
 @immutable
 class PaymentLink {
   const PaymentLink({

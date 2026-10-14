@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/domain/account.dart';
 
 /// Tope diario para mover plata desde la app.
 const int dailyMoveLimit = 5000000;

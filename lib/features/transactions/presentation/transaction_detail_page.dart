@@ -2,22 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/anomalies/data/anomalies_provider.dart';
-import 'package:qullqi/features/anomalies/domain/anomalies.dart';
-import 'package:qullqi/features/transactions/data/ledger.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
-import 'package:qullqi/features/transactions/presentation/transactions_controller.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/anomalies/data/anomalies_provider.dart';
+import 'package:inti/features/anomalies/domain/anomalies.dart';
+import 'package:inti/features/transactions/data/ledger.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
+import 'package:inti/features/transactions/presentation/transactions_controller.dart';
 
 /// Detalle de un movimiento: qué fue, de qué cuenta, y cómo clasificarlo.
 class TransactionDetailPage extends ConsumerWidget {

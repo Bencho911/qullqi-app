@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
 
 /// Pantalla provisional para flujos que se construyen en hitos siguientes.
 /// Mantiene la navegación completa sin callejones sin salida.

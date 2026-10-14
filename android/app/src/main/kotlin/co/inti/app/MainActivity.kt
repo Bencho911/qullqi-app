@@ -1,4 +1,4 @@
-package co.qullqi.qullqi
+package co.inti.app
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 

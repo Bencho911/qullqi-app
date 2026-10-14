@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 

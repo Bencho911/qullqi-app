@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/domain/account.dart';
 
 /// Banco o billetera con la que se puede conectar una cuenta.
 @immutable
@@ -28,7 +28,7 @@ class Institution {
   /// `false`: todavía no tiene Open Finance (se puede agregar a mano).
   final bool available;
 
-  /// Si permite iniciar pagos (mover plata) desde Qullqi.
+  /// Si permite iniciar pagos (mover plata) desde Inti.
   final bool supportsPayments;
 }
 

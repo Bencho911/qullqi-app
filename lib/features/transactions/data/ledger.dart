@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Registra movimientos manuales y mantiene los saldos coherentes: cada
 /// gasto, ingreso o borrado se refleja en la cuenta que corresponde.

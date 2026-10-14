@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/basics.dart';
-import 'package:qullqi/core/widgets/money_text.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/basics.dart';
+import 'package:inti/core/widgets/money_text.dart';
 
 enum FlowKind { income, expense, transfer }
 

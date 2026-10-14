@@ -6,15 +6,15 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/statements/data/statement_repository.dart';
-import 'package:qullqi/features/statements/domain/statement.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/statements/data/statement_repository.dart';
+import 'package:inti/features/statements/domain/statement.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 
@@ -227,7 +227,7 @@ void main() {
         find.text('Encontramos 4 movimientos para Nequi.'),
         findsOneWidget,
       );
-      expect(find.text('Ya está en Qullqi'), findsOneWidget);
+      expect(find.text('Ya está en Inti'), findsOneWidget);
       expect(find.text('Importar 3 movimientos'), findsOneWidget);
       // Quitar uno.
       await tester.tap(find.text('Uber Trip'));

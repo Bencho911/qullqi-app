@@ -1,7 +1,7 @@
 import AppIntents
 import Foundation
 
-// Atajos de Qullqi para la app Atajos, Siri y Spotlight.
+// Atajos de Inti para la app Atajos, Siri y Spotlight.
 //
 // Cómo hablan con la app de Flutter:
 //  - Los que abren la app dejan la pantalla pedida en la clave
@@ -12,7 +12,7 @@ import Foundation
 //
 // Nada de esto toca tus cuentas ni sale del teléfono.
 
-private enum QullqiPrefs {
+private enum IntiPrefs {
     static let pendingRoute = "flutter.pending_route"
     static let snapshotKey = "flutter.widget_snapshot"
 
@@ -43,11 +43,11 @@ private enum QullqiPrefs {
 @available(iOS 16.0, *)
 struct RegistrarGastoIntent: AppIntent {
     static var title: LocalizedStringResource = "Registrar un gasto"
-    static var description = IntentDescription("Abre Qullqi para anotar un gasto.")
+    static var description = IntentDescription("Abre Inti para anotar un gasto.")
     static var openAppWhenRun: Bool = true
 
     func perform() async throws -> some IntentResult {
-        QullqiPrefs.setRoute("registrar-gasto")
+        IntiPrefs.setRoute("registrar-gasto")
         return .result()
     }
 }
@@ -55,11 +55,11 @@ struct RegistrarGastoIntent: AppIntent {
 @available(iOS 16.0, *)
 struct MoverPlataIntent: AppIntent {
     static var title: LocalizedStringResource = "Mover plata"
-    static var description = IntentDescription("Abre Qullqi para mover plata entre tus cuentas.")
+    static var description = IntentDescription("Abre Inti para mover plata entre tus cuentas.")
     static var openAppWhenRun: Bool = true
 
     func perform() async throws -> some IntentResult {
-        QullqiPrefs.setRoute("mover-plata")
+        IntiPrefs.setRoute("mover-plata")
         return .result()
     }
 }
@@ -67,11 +67,11 @@ struct MoverPlataIntent: AppIntent {
 @available(iOS 16.0, *)
 struct EscanearFacturaIntent: AppIntent {
     static var title: LocalizedStringResource = "Escanear una factura"
-    static var description = IntentDescription("Abre Qullqi para escanear una factura.")
+    static var description = IntentDescription("Abre Inti para escanear una factura.")
     static var openAppWhenRun: Bool = true
 
     func perform() async throws -> some IntentResult {
-        QullqiPrefs.setRoute("escanear-factura")
+        IntiPrefs.setRoute("escanear-factura")
         return .result()
     }
 }
@@ -79,11 +79,11 @@ struct EscanearFacturaIntent: AppIntent {
 @available(iOS 16.0, *)
 struct ProximosPagosIntent: AppIntent {
     static var title: LocalizedStringResource = "Ver próximos pagos"
-    static var description = IntentDescription("Abre Qullqi en lo que vence pronto.")
+    static var description = IntentDescription("Abre Inti en lo que vence pronto.")
     static var openAppWhenRun: Bool = true
 
     func perform() async throws -> some IntentResult {
-        QullqiPrefs.setRoute("pagos")
+        IntiPrefs.setRoute("pagos")
         return .result()
     }
 }
@@ -97,18 +97,18 @@ struct CuantoPuedoGastarIntent: AppIntent {
     static var openAppWhenRun: Bool = false
 
     func perform() async throws -> some IntentResult & ProvidesDialog {
-        guard let snap = QullqiPrefs.loadSnapshot() else {
-            return .result(dialog: "Abre Qullqi una vez para que pueda decirte tu disponible.")
+        guard let snap = IntiPrefs.loadSnapshot() else {
+            return .result(dialog: "Abre Inti una vez para que pueda decirte tu disponible.")
         }
         if (snap["amountsHidden"] as? Bool) == true {
-            return .result(dialog: "Ocultaste los montos. Abre Qullqi para verlos.")
+            return .result(dialog: "Ocultaste los montos. Abre Inti para verlos.")
         }
         guard let available = snap["available"] as? Int else {
-            return .result(dialog: "Abre Qullqi para ver tu disponible.")
+            return .result(dialog: "Abre Inti para ver tu disponible.")
         }
-        var text = "Puedes gastar \(QullqiPrefs.spoken(available))."
+        var text = "Puedes gastar \(IntiPrefs.spoken(available))."
         if let perDay = snap["perDay"] as? Int {
-            text += " Eso es hasta \(QullqiPrefs.spoken(perDay)) por día."
+            text += " Eso es hasta \(IntiPrefs.spoken(perDay)) por día."
         }
         if (snap["runsShort"] as? Bool) == true {
             text += " Ojo: a este ritmo el mes se te puede quedar corto."
@@ -118,7 +118,7 @@ struct CuantoPuedoGastarIntent: AppIntent {
 }
 
 @available(iOS 16.0, *)
-struct QullqiShortcuts: AppShortcutsProvider {
+struct IntiShortcuts: AppShortcutsProvider {
     static var appShortcuts: [AppShortcut] {
         AppShortcut(
             intent: CuantoPuedoGastarIntent(),

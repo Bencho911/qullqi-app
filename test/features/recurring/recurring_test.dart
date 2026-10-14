@@ -2,17 +2,17 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/commitments/data/commitments_repository.dart';
-import 'package:qullqi/features/home/domain/forecast.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/notifications/data/notices.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/commitments/data/commitments_repository.dart';
+import 'package:inti/features/home/domain/forecast.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/notifications/data/notices.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 

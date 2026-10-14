@@ -4,27 +4,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/app/quick_actions_service.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/shortcuts.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/theme_mode.dart';
-import 'package:qullqi/features/reminders/data/local_notifier.dart';
-import 'package:qullqi/features/widgets/data/widget_bridge.dart';
+import 'package:inti/app/quick_actions_service.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/shortcuts.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/theme_mode.dart';
+import 'package:inti/features/reminders/data/local_notifier.dart';
+import 'package:inti/features/widgets/data/widget_bridge.dart';
 
 /// Tiempo en segundo plano tras el cual la app pide desbloquear.
 const Duration lockAfter = Duration(minutes: 1);
 
-class QullqiApp extends ConsumerStatefulWidget {
-  const QullqiApp({super.key});
+class IntiApp extends ConsumerStatefulWidget {
+  const IntiApp({super.key});
 
   @override
-  ConsumerState<QullqiApp> createState() => _QullqiAppState();
+  ConsumerState<IntiApp> createState() => _IntiAppState();
 }
 
-class _QullqiAppState extends ConsumerState<QullqiApp> {
+class _IntiAppState extends ConsumerState<IntiApp> {
   late final AppLifecycleListener _lifecycle;
   DateTime? _hiddenAt;
 
@@ -115,7 +115,7 @@ class _QullqiAppState extends ConsumerState<QullqiApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Qullqi',
+      title: 'Inti',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.light(),
       darkTheme: AppTheme.dark(),

@@ -3,20 +3,20 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/security/pin_widgets.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/auth/presentation/validators.dart';
-import 'package:qullqi/features/profile/data/notification_prefs.dart';
-import 'package:qullqi/features/profile/data/push_prefs.dart';
-import 'package:qullqi/features/profile/presentation/profile_page.dart';
-import 'package:qullqi/features/reminders/data/local_notifier.dart';
-import 'package:qullqi/features/reminders/domain/reminders.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/security/pin_widgets.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/auth/presentation/validators.dart';
+import 'package:inti/features/profile/data/notification_prefs.dart';
+import 'package:inti/features/profile/data/push_prefs.dart';
+import 'package:inti/features/profile/presentation/profile_page.dart';
+import 'package:inti/features/reminders/data/local_notifier.dart';
+import 'package:inti/features/reminders/domain/reminders.dart';
 
 /// Editar nombre y celular. El correo es el usuario de la cuenta: se cambia
 /// con ayuda (para evitar robos de cuenta).
@@ -379,7 +379,7 @@ class NotificationSettingsPage extends ConsumerWidget {
           children: [
             Text(
               'Te avisamos de pagos, cobros y cosas de seguridad aunque '
-              'no tengas Qullqi abierta. Solo lo que elijas abajo.',
+              'no tengas Inti abierta. Solo lo que elijas abajo.',
               style: AppTypography.body.copyWith(color: sheet.colors.inkMuted),
             ),
             const SizedBox(height: AppSpace.lg),
@@ -401,7 +401,7 @@ class NotificationSettingsPage extends ConsumerWidget {
       if (!granted && context.mounted) {
         showQToast(
           context,
-          'Activa los avisos de Qullqi en los ajustes del teléfono.',
+          'Activa los avisos de Inti en los ajustes del teléfono.',
         );
       }
     }
@@ -413,7 +413,7 @@ class NotificationSettingsPage extends ConsumerWidget {
       if (!granted) {
         showQToast(
           context,
-          'Activa los avisos de Qullqi en los ajustes del teléfono.',
+          'Activa los avisos de Inti en los ajustes del teléfono.',
         );
         return;
       }

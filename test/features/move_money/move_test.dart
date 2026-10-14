@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/move_money/data/money_mover.dart';
-import 'package:qullqi/features/move_money/domain/move.dart';
-import 'package:qullqi/features/transactions/data/ledger.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/move_money/data/money_mover.dart';
+import 'package:inti/features/move_money/domain/move.dart';
+import 'package:inti/features/transactions/data/ledger.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 void main() {
   final now = DateTime(2026, 10, 24, 14, 45);

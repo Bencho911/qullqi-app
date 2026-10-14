@@ -3,26 +3,26 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/quick_actions_service.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/app/shortcuts.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/commitments/data/commitments_repository.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/notifications/domain/notice.dart';
-import 'package:qullqi/features/profile/data/push_prefs.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/reminders/data/local_notifier.dart';
-import 'package:qullqi/features/reminders/domain/reminders.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/widgets/data/widget_bridge.dart';
-import 'package:qullqi/features/widgets/domain/widget_snapshot.dart';
+import 'package:inti/app/quick_actions_service.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/app/shortcuts.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/commitments/data/commitments_repository.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/notifications/domain/notice.dart';
+import 'package:inti/features/profile/data/push_prefs.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/reminders/data/local_notifier.dart';
+import 'package:inti/features/reminders/domain/reminders.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/widgets/data/widget_bridge.dart';
+import 'package:inti/features/widgets/domain/widget_snapshot.dart';
 
 import '../../helpers/pump.dart';
 
@@ -247,7 +247,7 @@ void main() {
       expect(AppShortcuts.routeFor('no-existe'), isNull);
       expect(
         AppShortcuts.linkFor(AppShortcuts.moveMoney),
-        'qullqi:///atajo/mover-plata',
+        'inti:///atajo/mover-plata',
       );
     });
 
@@ -409,7 +409,7 @@ void main() {
       // El teléfono lo negó: queda apagado y se explica qué hacer.
       expect(container.read(pushPrefsProvider).enabled, isFalse);
       expect(
-        find.text('Activa los avisos de Qullqi en los ajustes del teléfono.'),
+        find.text('Activa los avisos de Inti en los ajustes del teléfono.'),
         findsOneWidget,
       );
     });

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show ProviderFamily;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
 
 /// Filtros activos de la lista de movimientos (se conservan al cambiar de
 /// pestaña y volver).

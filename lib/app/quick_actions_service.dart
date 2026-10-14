@@ -1,7 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:inti/app/shortcuts.dart';
 import 'package:quick_actions/quick_actions.dart';
-
-import 'package:qullqi/app/shortcuts.dart';
 
 /// Atajos que salen al mantener presionado el ícono de la app.
 abstract interface class QuickActionsService {

@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
+import 'package:inti/core/storage/prefs.dart';
 
 /// Horarios en que los avisos del teléfono no suenan.
 enum QuietHours {

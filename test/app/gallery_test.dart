@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/dev/gallery_page.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:inti/app/dev/gallery_page.dart';
+import 'package:inti/core/widgets/widgets.dart';
 
 import '../helpers/pump.dart';
 

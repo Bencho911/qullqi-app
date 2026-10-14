@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/investments/presentation/widgets/investment_widgets.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/presentation/widgets/investment_widgets.dart';
 
 /// Pantalla de "no existe" o "no cargó" para una inversión.
 Widget _missingOrFailed(
@@ -94,8 +94,8 @@ class _DetailState extends ConsumerState<_Detail> {
       context,
       title: '¿Quitar ${i.name}?',
       message: i.isManual
-          ? 'Se borra de Qullqi. Tu plata no se mueve.'
-          : 'Se quita de Qullqi y revocamos el permiso. Tu inversión sigue '
+          ? 'Se borra de Inti. Tu plata no se mueve.'
+          : 'Se quita de Inti y revocamos el permiso. Tu inversión sigue '
                 'en ${i.place}.',
       confirmLabel: 'Quitar ${i.name}',
     );
@@ -213,7 +213,7 @@ class _DetailState extends ConsumerState<_Detail> {
         ),
         const SizedBox(height: AppSpace.xl),
         const TrustNote(
-          'Qullqi solo muestra esta inversión: no la compra, la vende ni '
+          'Inti solo muestra esta inversión: no la compra, la vende ni '
           'mueve tu plata.',
         ),
         const SizedBox(height: AppSpace.lg),
@@ -298,7 +298,7 @@ class _UpdateInvestmentValuePageState
                     ),
                     const SizedBox(height: AppSpace.sm),
                     const TrustNote(
-                      'Solo cambia lo que ves en Qullqi: no mueve plata.',
+                      'Solo cambia lo que ves en Inti: no mueve plata.',
                     ),
                   ],
                   keypad: AmountKeypad(

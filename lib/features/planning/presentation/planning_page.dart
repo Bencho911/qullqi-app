@@ -2,24 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/app/shell/tab_page.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/planning/data/plans_repository.dart';
-import 'package:qullqi/features/planning/presentation/planning_controller.dart';
-import 'package:qullqi/features/planning/presentation/widgets/plan_cards.dart';
-import 'package:qullqi/features/recurring/data/recurring_provider.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/sharing/data/sharing_repositories.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/presentation/transaction_tile.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/app/shell/tab_page.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/planning/data/plans_repository.dart';
+import 'package:inti/features/planning/presentation/planning_controller.dart';
+import 'package:inti/features/planning/presentation/widgets/plan_cards.dart';
+import 'package:inti/features/recurring/data/recurring_provider.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/sharing/data/sharing_repositories.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/presentation/transaction_tile.dart';
 
 /// Planes: presupuestos del mes, metas de ahorro y reportes.
 class PlanningPage extends ConsumerWidget {

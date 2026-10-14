@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/domain/institution.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/domain/institution.dart';
 
 import '../../helpers/pump.dart';
 

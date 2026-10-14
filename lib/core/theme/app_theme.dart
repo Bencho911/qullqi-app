@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:qullqi/core/theme/app_colors.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
+import 'package:inti/core/theme/app_colors.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
 
 /// Construye el [ThemeData] a partir de los tokens. Es el único lugar donde
 /// se decide cómo se ven los widgets de Material.

@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/memory_list.dart';
-import 'package:qullqi/features/sales/domain/sales.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/memory_list.dart';
+import 'package:inti/features/sales/domain/sales.dart';
 
 /// Siguiente número consecutivo con prefijo: "C-0004".
 String _nextNumber(String prefix, Iterable<String> existing) {
@@ -307,7 +307,7 @@ class MockPaymentLinksRepository implements PaymentLinksRepository {
   final MemoryList<PaymentLink> _store;
   int _seq = 0;
 
-  static String _url(String code) => 'https://pago.qullqi.app/l/$code';
+  static String _url(String code) => 'https://pago.inti.app/l/$code';
 
   @override
   Stream<List<PaymentLink>> watch() => _store.watch();

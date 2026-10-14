@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/networth/domain/net_worth_history.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/networth/domain/net_worth_history.dart';
 
 /// Gráfica de línea del patrimonio. Tocando o arrastrando el dedo se ve el
 /// valor de cada día; el lector de pantalla oye un resumen.

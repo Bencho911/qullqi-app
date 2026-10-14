@@ -4,13 +4,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/notifications/domain/notice.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/notifications/domain/notice.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
 
 import '../../helpers/pump.dart';
 

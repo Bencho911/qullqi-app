@@ -1,3 +1,3 @@
-# qullqi
+# inti
 
 A new Flutter project.

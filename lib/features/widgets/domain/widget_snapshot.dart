@@ -2,10 +2,10 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/home/domain/home_data.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/home/domain/home_data.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
 
 /// Un pago próximo tal como lo muestra un widget.
 @immutable
@@ -57,7 +57,7 @@ class WidgetSnapshot {
   /// "Todo", "Personal" o "Negocio".
   final String scopeLabel;
 
-  /// Los montos van en `null`: se muestra "Abre Qullqi".
+  /// Los montos van en `null`: se muestra "Abre Inti".
   final bool amountsHidden;
   final bool runsShort;
   final int unread;

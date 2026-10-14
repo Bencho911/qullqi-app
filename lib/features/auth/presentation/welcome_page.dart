@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
 
 class _Slide {
   const _Slide(this.icon, this.title, this.text);
@@ -62,7 +62,7 @@ class _WelcomePageState extends State<WelcomePage> {
               padding: EdgeInsets.all(AppSpace.gutter),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: QullqiLockup(),
+                child: IntiLockup(),
               ),
             ),
             Expanded(

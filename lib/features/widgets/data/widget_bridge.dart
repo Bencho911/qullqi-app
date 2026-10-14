@@ -1,23 +1,23 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_widget/home_widget.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/home/domain/home_data.dart';
-import 'package:qullqi/features/notifications/data/notices.dart';
-import 'package:qullqi/features/widgets/domain/widget_snapshot.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/home/domain/home_data.dart';
+import 'package:inti/features/notifications/data/notices.dart';
+import 'package:inti/features/widgets/domain/widget_snapshot.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// Grupo de apps que comparten la app y sus widgets en iOS.
-const String appGroupId = 'group.co.qullqi.qullqi';
+const String appGroupId = 'group.co.inti.app';
 
 /// Nombre del widget principal en iOS (el `kind` del código nativo).
-const String iosWidgetKind = 'QullqiWidget';
+const String iosWidgetKind = 'IntiWidget';
 
 /// Todos los `kind` de widgets de iOS: hay que refrescarlos juntos.
 const List<String> iosWidgetKinds = [
   iosWidgetKind,
-  'QullqiPaymentsWidget',
-  'QullqiQuickActions',
+  'IntiPaymentsWidget',
+  'IntiQuickActions',
 ];
 
 /// Clave en las preferencias con la última foto para los widgets.

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/planning/data/plans_repository.dart';
-import 'package:qullqi/features/planning/domain/plans.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/planning/data/plans_repository.dart';
+import 'package:inti/features/planning/domain/plans.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 

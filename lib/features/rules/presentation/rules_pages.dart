@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/rules/data/rules_provider.dart';
-import 'package:qullqi/features/rules/domain/category_rule.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/rules/data/rules_provider.dart';
+import 'package:inti/features/rules/domain/category_rule.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// "1 movimiento" / "3 movimientos".
 String _movements(int n) => n == 1 ? '1 movimiento' : '$n movimientos';

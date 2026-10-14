@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
 
 enum QButtonVariant { primary, secondary, text, danger }
 
-/// Botón de Qullqi. Los textos empiezan por verbo ("Guardar gasto",
+/// Botón de Inti. Los textos empiezan por verbo ("Guardar gasto",
 /// nunca "OK").
 ///
 /// Con [loading] el botón queda ocupado, conserva su ancho y anuncia

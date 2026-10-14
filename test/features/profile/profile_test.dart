@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/security/biometrics_pref.dart';
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/core/widgets/scope_switcher.dart';
+import 'package:inti/core/security/biometrics_pref.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/core/widgets/scope_switcher.dart';
 
 import '../../helpers/pump.dart';
 
@@ -150,7 +150,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('monto alto'), findsNothing);
     expect(
-      find.text('Por seguridad, escribe tu PIN de Qullqi.'),
+      find.text('Por seguridad, escribe tu PIN de Inti.'),
       findsOneWidget,
     );
     await typePin(tester, '123456');

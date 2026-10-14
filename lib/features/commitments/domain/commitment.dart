@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:qullqi/core/scope/scope.dart';
+import 'package:inti/core/scope/scope.dart';
 
 enum CommitmentKind {
   /// Pago fijo (arriendo, internet, plan de celular).

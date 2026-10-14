@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
 
 /// Documento con el que se arma el calendario. Se recuerda en el teléfono.
 final taxDocumentProvider = NotifierProvider<TaxDocumentNotifier, TaxDocument?>(

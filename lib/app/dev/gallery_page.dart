@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/theme/theme_mode.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/theme/theme_mode.dart';
+import 'package:inti/core/widgets/widgets.dart';
 
 /// Galería del sistema de diseño (Hito 0). Herramienta interna: muestra cada
 /// componente con datos de ejemplo en claro y oscuro.
@@ -42,7 +42,7 @@ class _GalleryPageState extends ConsumerState<GalleryPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const QullqiLockup(),
+        title: const IntiLockup(),
         actions: [
           IconButton(
             tooltip: dark ? 'Usar tema claro' : 'Usar tema oscuro',
@@ -67,7 +67,7 @@ class _GalleryPageState extends ConsumerState<GalleryPage> {
           Text('Sistema de diseño', style: context.text.headlineSmall),
           const SizedBox(height: AppSpace.xxs),
           Text(
-            'Calma verde · componentes de Qullqi',
+            'Calma verde · componentes de Inti',
             style: AppTypography.body.copyWith(color: c.inkMuted),
           ),
           const _Gap(),

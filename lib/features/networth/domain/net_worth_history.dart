@@ -2,8 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
 
 /// Lo que valía tu patrimonio un día.
 @immutable

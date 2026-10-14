@@ -1,15 +1,15 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/rules/data/rules_provider.dart';
-import 'package:qullqi/features/rules/domain/category_rule.dart';
-import 'package:qullqi/features/statements/domain/statement.dart';
-import 'package:qullqi/features/transactions/data/ledger.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/rules/data/rules_provider.dart';
+import 'package:inti/features/rules/domain/category_rule.dart';
+import 'package:inti/features/statements/domain/statement.dart';
+import 'package:inti/features/transactions/data/ledger.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Abre el selector de archivos del teléfono.
 abstract interface class StatementPicker {

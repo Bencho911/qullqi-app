@@ -3,10 +3,10 @@ import 'dart:math' as math;
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:flutter/material.dart' show IconData, Icons;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/domain/account.dart';
 
 /// Tipos de inversión que la persona puede registrar o conectar.
 enum InvestmentKind {

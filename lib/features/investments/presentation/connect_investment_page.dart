@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart'
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart'
     show ConnectionFailure;
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/investments/domain/investment_source.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/domain/investment_source.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
 
 enum _Step { pick, consent, connecting, done, failed }
 
@@ -204,7 +204,7 @@ class _ConnectInvestmentPageState extends ConsumerState<ConnectInvestmentPage> {
       ),
       children: [
         Text(
-          'Qullqi va a pedirle a $_name permiso para leer lo que tienes '
+          'Inti va a pedirle a $_name permiso para leer lo que tienes '
           'invertido. Esto es lo que verás:',
           style: AppTypography.body.copyWith(color: c.inkMuted),
         ),
@@ -222,7 +222,7 @@ class _ConnectInvestmentPageState extends ConsumerState<ConnectInvestmentPage> {
         permission(
           Icons.visibility_off_outlined,
           'Solo lectura, nunca tus claves',
-          'Qullqi no compra, vende ni mueve tu plata. Entras en $_name y '
+          'Inti no compra, vende ni mueve tu plata. Entras en $_name y '
               'autorizas un permiso que puedes revocar.',
         ),
         const SizedBox(height: AppSpace.md),
@@ -230,7 +230,7 @@ class _ConnectInvestmentPageState extends ConsumerState<ConnectInvestmentPage> {
           value: _accepted,
           onChanged: (v) => setState(() => _accepted = v),
           label:
-              'Autorizo a Qullqi a consultar mi información financiera según '
+              'Autorizo a Inti a consultar mi información financiera según '
               'la Ley 1581 de Habeas Data.',
         ),
         const SizedBox(height: AppSpace.md),

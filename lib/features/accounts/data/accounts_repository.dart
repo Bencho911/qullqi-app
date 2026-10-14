@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/live_stream.dart';
-import 'package:qullqi/core/money/currency.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/domain/institution.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/live_stream.dart';
+import 'package:inti/core/money/currency.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/domain/institution.dart';
 
 /// Fuente de las cuentas de la persona. La implementación real hablará con
 /// el agregador Open Finance; la app solo depende de esta interfaz.
@@ -40,7 +40,7 @@ abstract interface class AccountsRepository {
     Currency currency,
   });
 
-  /// Quita la cuenta de Qullqi y revoca el permiso con el banco.
+  /// Quita la cuenta de Inti y revoca el permiso con el banco.
   Future<void> remove(String accountId);
 
   /// Activa o desactiva mover plata desde la cuenta (pide el permiso de

@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/debts/domain/debt_plan.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/debts/domain/debt_plan.dart';
 
 /// Tasa que se supone cuando la tarjeta no la trae.
 const double _assumedCardRate = 0.26;

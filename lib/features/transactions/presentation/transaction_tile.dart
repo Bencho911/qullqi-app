@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Un movimiento como fila: "Hoy 14:32 · Nequi".
 class TransactionTile extends StatelessWidget {

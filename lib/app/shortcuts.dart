@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
+import 'package:inti/app/routes.dart';
 
 /// Clave en las preferencias donde Siri y la app Atajos anotan qué abrir.
 const String pendingShortcutKey = 'pending_route';
@@ -11,7 +11,7 @@ const String pendingShortcutKey = 'pending_route';
 /// app Atajos y Siri, y los que abren los widgets.
 ///
 /// Todos comparten un identificador corto y un enlace
-/// `qullqi:///atajo/<id>` que abre la pantalla correspondiente.
+/// `inti:///atajo/<id>` que abre la pantalla correspondiente.
 abstract final class AppShortcuts {
   static const addExpense = 'registrar-gasto';
   static const addIncome = 'registrar-ingreso';
@@ -43,7 +43,7 @@ abstract final class AppShortcuts {
   };
 
   /// Enlace que abre el atajo desde fuera de la app (widgets, Atajos).
-  static String linkFor(String id) => 'qullqi:///atajo/$id';
+  static String linkFor(String id) => 'inti:///atajo/$id';
 }
 
 /// Pestañas: se abren con `go`; lo demás se apila sobre el Inicio para que

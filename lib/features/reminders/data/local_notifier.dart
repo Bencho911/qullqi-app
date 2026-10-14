@@ -4,25 +4,25 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/commitments/data/commitments_repository.dart';
-import 'package:qullqi/features/home/domain/home_data.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/profile/data/notification_prefs.dart';
-import 'package:qullqi/features/profile/data/push_prefs.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/reminders/domain/reminders.dart';
-import 'package:qullqi/features/taxes/data/tax_document_provider.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/commitments/data/commitments_repository.dart';
+import 'package:inti/features/home/domain/home_data.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/profile/data/notification_prefs.dart';
+import 'package:inti/features/profile/data/push_prefs.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/reminders/domain/reminders.dart';
+import 'package:inti/features/taxes/data/tax_document_provider.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
 import 'package:timezone/data/latest.dart' as tzdata;
 import 'package:timezone/timezone.dart' as tz;
 
@@ -123,7 +123,7 @@ class FlutterLocalNotifier implements LocalNotifier {
   final FlutterLocalNotificationsPlugin _plugin;
   void Function(String route)? _onOpen;
 
-  static const _category = 'qullqi.reminder';
+  static const _category = 'inti.reminder';
   static const _openAction = 'open';
   static const _snoozeAction = 'snooze';
 
@@ -199,7 +199,7 @@ class FlutterLocalNotifier implements LocalNotifier {
         thread: '${data['kind'] ?? 'avisos'}',
       ),
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
-      title: '${data['title'] ?? 'Qullqi'}',
+      title: '${data['title'] ?? 'Inti'}',
       body: '${data['body'] ?? ''}',
       payload: jsonEncode(data),
     );
@@ -221,7 +221,7 @@ class FlutterLocalNotifier implements LocalNotifier {
     ),
     android: AndroidNotificationDetails(
       'avisos',
-      'Avisos de Qullqi',
+      'Avisos de Inti',
       channelDescription: 'Pagos, cobros y cosas por revisar.',
       importance: Importance.high,
       priority: Priority.high,
@@ -290,7 +290,7 @@ class FlutterLocalNotifier implements LocalNotifier {
   }
 }
 
-/// Lee lo que guarda una notificación; `null` si no es de Qullqi.
+/// Lee lo que guarda una notificación; `null` si no es de Inti.
 @visibleForTesting
 Map<String, Object?>? decodePayload(String? payload) {
   if (payload == null) return null;

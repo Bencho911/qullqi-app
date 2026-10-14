@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Tarifa general de IVA en Colombia.
 const double ivaRate = 0.19;

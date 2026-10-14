@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Escala tipográfica de Qullqi: cinco roles, tres pesos (400, 600, 700).
+/// Escala tipográfica de Inti: cinco roles, tres pesos (400, 600, 700).
 ///
 /// Ningún texto con información baja de 13 px. Todos los tamaños escalan con
 /// el tamaño de texto del sistema (no se fija `textScaler`).

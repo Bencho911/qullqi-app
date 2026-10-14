@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/security/pin_widgets.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/security/pin_widgets.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
 
 /// Pide confirmar la identidad antes de una acción sensible.
 ///
@@ -19,7 +19,7 @@ Future<bool> confirmIdentity(
   BuildContext context, {
   required String reason,
   bool pinOnly = false,
-  String pinOnlyNote = 'Por seguridad, escribe tu PIN de Qullqi.',
+  String pinOnlyNote = 'Por seguridad, escribe tu PIN de Inti.',
 }) async {
   final outcome = await showQSheet<_Outcome>(
     context,

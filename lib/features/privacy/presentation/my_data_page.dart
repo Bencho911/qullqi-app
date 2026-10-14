@@ -4,21 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/security/confirm_identity.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/planning/data/plans_repository.dart';
-import 'package:qullqi/features/privacy/domain/data_export.dart';
-import 'package:qullqi/features/profile/presentation/account_actions.dart';
-import 'package:qullqi/features/rules/data/rules_provider.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/security/confirm_identity.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/planning/data/plans_repository.dart';
+import 'package:inti/features/privacy/domain/data_export.dart';
+import 'package:inti/features/profile/presentation/account_actions.dart';
+import 'package:inti/features/rules/data/rules_provider.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
 
 /// Etiqueta legible de cada sección de la copia.
 const _labels = {

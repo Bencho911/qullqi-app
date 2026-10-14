@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/features/transactions/domain/transaction.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart'
+import 'package:inti/features/transactions/domain/transaction.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart'
     show normalizeForSearch;
 
 /// "Cuando el comercio diga X, la categoría es Y".

@@ -1,8 +1,8 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/commitments/domain/commitment.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/commitments/domain/commitment.dart';
 
 enum BillStatus { pending, overdue, paid }
 

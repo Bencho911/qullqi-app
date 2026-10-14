@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/investments/presentation/widgets/investment_widgets.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/presentation/widgets/investment_widgets.dart';
 
 /// Días antes del vencimiento de un CDT en que lo destacamos arriba.
 const int _maturityBannerDays = 30;
@@ -184,7 +184,7 @@ class _Content extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpace.md),
           const TrustNote(
-            'Qullqi solo te muestra lo que tienes: no compra ni vende '
+            'Inti solo te muestra lo que tienes: no compra ni vende '
             'inversiones. La rentabilidad pasada no garantiza la futura.',
           ),
         ],

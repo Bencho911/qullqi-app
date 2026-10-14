@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:qullqi/core/data/live_stream.dart';
+import 'package:inti/core/data/live_stream.dart';
 
 /// Lista en memoria que se puede observar: la base de los repositorios de
 /// demostración. El backend real reemplaza cada repositorio entero; la app

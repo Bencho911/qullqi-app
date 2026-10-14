@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
 
 /// Tamaño de cada punto del PIN.
 const double _dot = AppSpace.md;

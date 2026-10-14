@@ -5,16 +5,16 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/money/currency.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/money/currency.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
 
 /// Agregar una cuenta a mano: efectivo, cooperativas o bancos sin conexión.
 /// Sus saldos se actualizan con lo que registres.

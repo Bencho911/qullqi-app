@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart'
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart'
     show normalizeForSearch;
 
 enum AnomalyKind { duplicate, unusual, bankFee }

@@ -3,16 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/anomalies/domain/anomalies.dart';
-import 'package:qullqi/features/notifications/data/notices.dart';
-import 'package:qullqi/features/rules/data/rules_provider.dart';
-import 'package:qullqi/features/rules/domain/category_rule.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/anomalies/domain/anomalies.dart';
+import 'package:inti/features/notifications/data/notices.dart';
+import 'package:inti/features/rules/data/rules_provider.dart';
+import 'package:inti/features/rules/domain/category_rule.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 

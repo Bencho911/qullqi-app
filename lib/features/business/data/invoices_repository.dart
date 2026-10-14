@@ -2,10 +2,10 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/live_stream.dart';
-import 'package:qullqi/features/business/domain/business.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/live_stream.dart';
+import 'package:inti/features/business/domain/business.dart';
 
 /// Facturas de venta del negocio.
 abstract interface class InvoicesRepository {

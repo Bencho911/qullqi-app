@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/memory_list.dart';
-import 'package:qullqi/features/sharing/domain/sharing.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/memory_list.dart';
+import 'package:inti/features/sharing/domain/sharing.dart';
 
 /// "Tú" siempre va de primero en un grupo.
 const Person _me = Person(id: meId, name: 'Tú');

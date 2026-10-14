@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/format/dates.dart';
+import 'package:inti/core/format/dates.dart';
 
 void main() {
   final now = DateTime(2026, 10, 24, 14, 45); // sábado

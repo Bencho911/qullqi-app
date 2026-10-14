@@ -1,4 +1,4 @@
-import 'package:qullqi/core/clock/clock.dart';
+import 'package:inti/core/clock/clock.dart';
 
 /// Fechas en español de Colombia, sin depender de cargar datos regionales.
 abstract final class Dates {

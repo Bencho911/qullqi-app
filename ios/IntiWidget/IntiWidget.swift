@@ -4,7 +4,7 @@ import WidgetKit
 // MARK: - Datos
 //
 // La app escribe una foto pequeña en el grupo compartido
-// (`group.co.qullqi.qullqi`, clave `snapshot`). Los widgets solo la leen:
+// (`group.co.inti.app`, clave `snapshot`). Los widgets solo la leen:
 // no consultan nada ni tocan tus cuentas.
 
 struct QSnapshot: Codable {
@@ -47,7 +47,7 @@ struct QSnapshot: Codable {
 }
 
 enum QStore {
-    static let group = "group.co.qullqi.qullqi"
+    static let group = "group.co.inti.app"
 
     static func load() -> QSnapshot? {
         guard
@@ -135,7 +135,7 @@ enum QColor {
 
 enum QLink {
     static func shortcut(_ id: String) -> URL {
-        URL(string: "qullqi:///atajo/\(id)")!
+        URL(string: "inti:///atajo/\(id)")!
     }
 }
 
@@ -178,7 +178,7 @@ extension View {
     }
 }
 
-/// El monto grande, o "Abre Qullqi" si la persona los ocultó.
+/// El monto grande, o "Abre Inti" si la persona los ocultó.
 struct QAmount: View {
     let value: Int?
     let hidden: Bool
@@ -187,7 +187,7 @@ struct QAmount: View {
 
     var body: some View {
         if hidden || value == nil {
-            Label("Abre Qullqi", systemImage: "lock.fill")
+            Label("Abre Inti", systemImage: "lock.fill")
                 .font(.system(size: size * 0.55, weight: .semibold, design: .rounded))
                 .foregroundStyle(color)
                 .lineLimit(1)
@@ -247,7 +247,7 @@ struct QEmpty: View {
             Image(systemName: "leaf.fill")
                 .font(.system(size: 22))
                 .foregroundStyle(QColor.accent)
-            Text("Abre Qullqi")
+            Text("Abre Inti")
                 .font(.system(size: 14, weight: .semibold))
                 .foregroundStyle(.white)
             Text("para ver tu disponible")
@@ -378,7 +378,7 @@ struct AvailableView: View {
                         .privacySensitive()
                 }
             } else {
-                Label("Abre Qullqi", systemImage: "lock.fill")
+                Label("Abre Inti", systemImage: "lock.fill")
                     .font(.system(size: 13, weight: .semibold))
             }
         }
@@ -410,15 +410,15 @@ struct AvailableView: View {
             if let s = entry.snapshot, !s.amountsHidden, let value = s.available {
                 Text("Disponible \(QMoney.compact(value))").privacySensitive()
             } else {
-                Text("Abre Qullqi")
+                Text("Abre Inti")
             }
         }
         .widgetURL(QLink.shortcut("disponible"))
     }
 }
 
-struct QullqiAvailableWidget: Widget {
-    let kind = "QullqiWidget"
+struct IntiAvailableWidget: Widget {
+    let kind = "IntiWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: QProvider()) { entry in
@@ -476,8 +476,8 @@ struct PaymentsView: View {
     }
 }
 
-struct QullqiPaymentsWidget: Widget {
-    let kind = "QullqiPaymentsWidget"
+struct IntiPaymentsWidget: Widget {
+    let kind = "IntiPaymentsWidget"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: QProvider()) { entry in
@@ -556,12 +556,12 @@ struct QuickActionsView: View {
         if let name = entry.snapshot?.firstName, !name.isEmpty {
             return "Hola, \(name)"
         }
-        return "Qullqi"
+        return "Inti"
     }
 }
 
-struct QullqiQuickWidget: Widget {
-    let kind = "QullqiQuickActions"
+struct IntiQuickWidget: Widget {
+    let kind = "IntiQuickActions"
 
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: QProvider()) { entry in
@@ -576,10 +576,10 @@ struct QullqiQuickWidget: Widget {
 // MARK: - Paquete
 
 @main
-struct QullqiWidgets: WidgetBundle {
+struct IntiWidgets: WidgetBundle {
     var body: some Widget {
-        QullqiAvailableWidget()
-        QullqiPaymentsWidget()
-        QullqiQuickWidget()
+        IntiAvailableWidget()
+        IntiPaymentsWidget()
+        IntiQuickWidget()
     }
 }

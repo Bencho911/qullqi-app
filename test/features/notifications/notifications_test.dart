@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/features/notifications/data/notices.dart';
-import 'package:qullqi/features/profile/data/notification_prefs.dart';
+import 'package:inti/features/notifications/data/notices.dart';
+import 'package:inti/features/profile/data/notification_prefs.dart';
 
 import '../../helpers/pump.dart';
 

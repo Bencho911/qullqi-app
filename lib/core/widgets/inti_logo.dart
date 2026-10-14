@@ -1,9 +1,12 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 
-/// Símbolo de Qullqi: una "Q" geométrica cuya cola es un brote
-/// ("plata que crece") sobre un cuadrado redondeado verde profundo.
-class QullqiMark extends StatelessWidget {
-  const QullqiMark({super.key, this.size = 32});
+/// Símbolo de Inti ("sol" en quechua): un disco con ocho rayos cortos sobre
+/// un cuadrado redondeado verde profundo. Es el mismo dibujo del ícono de la
+/// app (ver `tool/make_icons.py`).
+class IntiMark extends StatelessWidget {
+  const IntiMark({super.key, this.size = 32});
 
   final double size;
 
@@ -20,8 +23,8 @@ class _MarkPainter extends CustomPainter {
   const _MarkPainter();
 
   static const _bg = Color(0xFF0B2A1F);
-  static const _ring = Color(0xFF3CC594);
-  static const _leaf = Color(0xFF7FE3B8);
+  static const _ray = Color(0xFF3CC594);
+  static const _disc = Color(0xFF7FE3B8);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -30,23 +33,22 @@ class _MarkPainter extends CustomPainter {
       RRect.fromRectAndRadius(Offset.zero & size, Radius.circular(s * 0.3)),
       Paint()..color = _bg,
     );
-    final stroke = s * 0.11;
-    final center = Offset(s * 0.47, s * 0.46);
-    canvas.drawCircle(
-      center,
-      s * 0.22,
-      Paint()
-        ..color = _ring
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = stroke,
-    );
-    // Brote: una hoja que sale de la base del anillo hacia abajo a la derecha.
-    final leaf = Path()
-      ..moveTo(s * 0.55, s * 0.62)
-      ..quadraticBezierTo(s * 0.80, s * 0.58, s * 0.80, s * 0.82)
-      ..quadraticBezierTo(s * 0.58, s * 0.84, s * 0.55, s * 0.62)
-      ..close();
-    canvas.drawPath(leaf, Paint()..color = _leaf);
+    final center = Offset(s / 2, s / 2);
+    final rays = Paint()
+      ..color = _ray
+      ..style = PaintingStyle.stroke
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = s * 0.075;
+    for (var i = 0; i < 8; i++) {
+      final a = i * math.pi / 4;
+      final dir = Offset(math.cos(a), math.sin(a));
+      canvas.drawLine(
+        center + dir * (s * 0.29),
+        center + dir * (s * 0.39),
+        rays,
+      );
+    }
+    canvas.drawCircle(center, s * 0.19, Paint()..color = _disc);
   }
 
   @override
@@ -54,23 +56,23 @@ class _MarkPainter extends CustomPainter {
 }
 
 /// Marca con nombre, para encabezados y bienvenida.
-class QullqiLockup extends StatelessWidget {
-  const QullqiLockup({super.key, this.size = 28});
+class IntiLockup extends StatelessWidget {
+  const IntiLockup({super.key, this.size = 28});
 
   final double size;
 
   @override
   Widget build(BuildContext context) {
     return Semantics(
-      label: 'Qullqi',
+      label: 'Inti',
       excludeSemantics: true,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          QullqiMark(size: size),
+          IntiMark(size: size),
           SizedBox(width: size * 0.32),
           Text(
-            'Qullqi',
+            'Inti',
             style: Theme.of(context).textTheme.titleMedium
                 ?.copyWith(fontWeight: FontWeight.w700, letterSpacing: -0.2),
           ),

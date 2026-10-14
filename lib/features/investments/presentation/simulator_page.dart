@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/planning/data/plans_repository.dart';
-import 'package:qullqi/features/planning/domain/plans.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/planning/data/plans_repository.dart';
+import 'package:inti/features/planning/domain/plans.dart';
 
 /// Plazos que se ofrecen (en años).
 const _yearOptions = <int>[1, 3, 5, 10];

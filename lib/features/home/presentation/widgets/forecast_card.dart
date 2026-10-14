@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/home/domain/forecast.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/home/domain/forecast.dart';
 
 /// "Cómo va tu mes": cuánto puedes gastar por día y cuánto tendrías al
 /// terminar. Es un estimado, y la tarjeta lo dice.

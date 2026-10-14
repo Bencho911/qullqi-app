@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Porcentaje desde el que un presupuesto avisa ("vas cerca del límite").
 const double budgetWarnAt = 0.8;

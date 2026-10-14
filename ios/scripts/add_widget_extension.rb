@@ -2,9 +2,9 @@
 # frozen_string_literal: true
 
 # Añade al proyecto de Xcode:
-#   - la extensión de widgets "QullqiWidget" (SwiftUI + WidgetKit),
-#   - los atajos de Siri/Atajos (QullqiShortcuts.swift) dentro de Runner,
-#   - el App Group `group.co.qullqi.qullqi` (entitlements) en ambos.
+#   - la extensión de widgets "IntiWidget" (SwiftUI + WidgetKit),
+#   - los atajos de Siri/Atajos (IntiShortcuts.swift) dentro de Runner,
+#   - el App Group `group.co.inti.app` (entitlements) en ambos.
 #
 # Se ejecuta en el Mac de Codemagic antes de compilar (ver codemagic.yaml).
 # Es idempotente: si la extensión ya existe, no hace nada.
@@ -17,8 +17,8 @@ require 'xcodeproj'
 
 ROOT = File.expand_path('..', __dir__) # carpeta ios/
 PROJECT_PATH = File.join(ROOT, 'Runner.xcodeproj')
-EXT_NAME = 'QullqiWidget'
-APP_BUNDLE_ID = 'co.qullqi.qullqi'
+EXT_NAME = 'IntiWidget'
+APP_BUNDLE_ID = 'co.inti.app'
 EXT_BUNDLE_ID = "#{APP_BUNDLE_ID}.#{EXT_NAME}"
 EXT_DEPLOYMENT = '16.0'
 
@@ -36,7 +36,7 @@ end
 runner_group = project.main_group.find_subpath('Runner', false)
 abort 'No encontré el grupo Runner' if runner_group.nil?
 
-shortcuts_ref = runner_group.new_file('QullqiShortcuts.swift')
+shortcuts_ref = runner_group.new_file('IntiShortcuts.swift')
 runner.add_file_references([shortcuts_ref])
 
 runner_entitlements = runner_group.new_file('Runner.entitlements')
@@ -50,9 +50,9 @@ end
 ext = project.new_target(:app_extension, EXT_NAME, :ios, EXT_DEPLOYMENT)
 
 ext_group = project.main_group.new_group(EXT_NAME, EXT_NAME)
-swift_ref = ext_group.new_file('QullqiWidget.swift')
+swift_ref = ext_group.new_file('IntiWidget.swift')
 ext_group.new_file('Info.plist')
-ext_group.new_file('QullqiWidget.entitlements')
+ext_group.new_file('IntiWidget.entitlements')
 ext.add_file_references([swift_ref])
 
 runner_configs = runner.build_configurations.to_h { |c| [c.name, c] }

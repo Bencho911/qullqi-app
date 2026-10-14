@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Tokens de color de Qullqi (dirección "Calma verde").
+/// Tokens de color de Inti (dirección "Calma verde").
 ///
 /// Regla 60/30/10: fondo y superficies neutras, tinta para el contenido y el
 /// verde solo para acciones e indicadores clave. Cada par texto/fondo cumple

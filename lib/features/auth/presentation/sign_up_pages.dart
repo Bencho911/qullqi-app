@@ -5,17 +5,17 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/security/biometrics_pref.dart';
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/security/pin_widgets.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/auth/data/auth_repository.dart';
-import 'package:qullqi/features/auth/presentation/validators.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/security/biometrics_pref.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/security/pin_widgets.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/auth/data/auth_repository.dart';
+import 'package:inti/features/auth/presentation/validators.dart';
 
 /// Persona ya verificada que aún no crea su PIN (registro o nuevo teléfono).
 final pendingUserProvider = NotifierProvider<PendingUserNotifier, AppUser?>(

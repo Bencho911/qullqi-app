@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
 
 void main() {
   final now = DateTime(2026, 10, 24, 14, 45);

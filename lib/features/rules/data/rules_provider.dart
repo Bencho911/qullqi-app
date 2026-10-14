@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/rules/domain/category_rule.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/rules/domain/category_rule.dart';
 
 /// Reglas de categoría de la persona. Se recuerdan en el teléfono.
 final categoryRulesProvider =

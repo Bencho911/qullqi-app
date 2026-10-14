@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/domain/investment.dart';
 
 /// Entidad con la que se puede conectar el portafolio (solo lectura).
 @immutable

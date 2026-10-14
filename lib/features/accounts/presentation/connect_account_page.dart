@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/domain/institution.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/domain/institution.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
 
 enum _Step { pick, consent, connecting, done, failed }
 
@@ -213,7 +213,7 @@ class _ConnectAccountPageState extends ConsumerState<ConnectAccountPage> {
           _isReconnect
               ? 'Tu permiso con $_name venció. Renuévalo para volver a ver '
                     'tus saldos de hoy.'
-              : 'Qullqi va a pedirle a $_name permiso para leer tu '
+              : 'Inti va a pedirle a $_name permiso para leer tu '
                     'información. Esto es lo que verás:',
           style: AppTypography.body.copyWith(color: c.inkMuted),
         ),
@@ -252,7 +252,7 @@ class _ConnectAccountPageState extends ConsumerState<ConnectAccountPage> {
           value: _accepted,
           onChanged: (v) => setState(() => _accepted = v),
           label:
-              'Autorizo a Qullqi a consultar mi información financiera según '
+              'Autorizo a Inti a consultar mi información financiera según '
               'la Ley 1581 de Habeas Data.',
         ),
         const SizedBox(height: AppSpace.md),

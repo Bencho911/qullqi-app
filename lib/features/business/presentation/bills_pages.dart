@@ -3,22 +3,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/presentation/widgets/account_picker.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/transactions/data/ledger.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/presentation/widgets/account_picker.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/transactions/data/ledger.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Etiqueta de estado de una cuenta por pagar.
 StatusPill billPill(Bill b, DateTime now) => switch (b.statusAt(now)) {

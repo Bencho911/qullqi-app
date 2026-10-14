@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/notifications/domain/notice.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/notifications/domain/notice.dart';
 
-export 'package:qullqi/features/notifications/domain/notice.dart'
+export 'package:inti/features/notifications/domain/notice.dart'
     show NoticeKind;
 
 /// Avisos encendidos. Por defecto todos; se recuerda en el teléfono.

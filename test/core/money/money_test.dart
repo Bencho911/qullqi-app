@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/money/money.dart';
+import 'package:inti/core/money/money.dart';
 
 void main() {
   group('Cop.format', () {

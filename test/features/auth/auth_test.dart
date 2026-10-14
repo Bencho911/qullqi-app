@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/features/auth/presentation/validators.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/features/auth/presentation/validators.dart';
 
 import '../../helpers/pump.dart';
 

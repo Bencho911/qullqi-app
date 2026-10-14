@@ -1,11 +1,11 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/planning/domain/plans.dart'
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/planning/domain/plans.dart'
     show daysLeftInMonth;
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Días hacia atrás con que se calcula el gasto típico.
 const int forecastWindowDays = 30;

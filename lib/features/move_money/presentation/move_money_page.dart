@@ -4,18 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/security/confirm_identity.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/presentation/widgets/account_picker.dart';
-import 'package:qullqi/features/move_money/data/money_mover.dart';
-import 'package:qullqi/features/move_money/domain/move.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/security/confirm_identity.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/presentation/widgets/account_picker.dart';
+import 'package:inti/features/move_money/data/money_mover.dart';
+import 'package:inti/features/move_money/domain/move.dart';
 
 enum _Step { form, review, sending, result }
 
@@ -79,7 +79,7 @@ class _MoveMoneyPageState extends ConsumerState<MoveMoneyPage> {
           'Para mover ${Cop.format(_amount)} de ${from.shortName} a '
           '${to.shortName}.',
       pinOnly: _amount >= highAmountThreshold,
-      pinOnlyNote: 'Por ser un monto alto, escribe tu PIN de Qullqi.',
+      pinOnlyNote: 'Por ser un monto alto, escribe tu PIN de Inti.',
     );
     if (!ok || !mounted) return;
     setState(() => _step = _Step.sending);

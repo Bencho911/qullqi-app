@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
+import 'package:inti/core/storage/prefs.dart';
 
 /// Si la persona quiere entrar con huella o Face ID. Se recuerda.
 final biometricsEnabledProvider =

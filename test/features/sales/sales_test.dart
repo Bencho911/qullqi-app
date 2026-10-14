@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/sales/data/sales_repositories.dart';
-import 'package:qullqi/features/sales/domain/sales.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/sales/data/sales_repositories.dart';
+import 'package:inti/features/sales/domain/sales.dart';
 
 import '../../helpers/pump.dart';
 
@@ -142,7 +142,7 @@ void main() {
       createdAt: DateTime(2026, 10, 20),
       expiresAt: DateTime(2026, 10, 30),
       status: PaymentLinkStatus.active,
-      url: 'https://pago.qullqi.app/l/abc',
+      url: 'https://pago.inti.app/l/abc',
     );
 
     test('vence con la fecha', () {
@@ -211,7 +211,7 @@ void main() {
         validDays: 7,
       );
       expect(l.status, PaymentLinkStatus.active);
-      expect(l.url, startsWith('https://pago.qullqi.app/l/'));
+      expect(l.url, startsWith('https://pago.inti.app/l/'));
       expect(l.expiresAt, DateTime(2026, 10, 31));
       await repo.cancel(l.id);
       final saved = (await repo.watch().first).firstWhere((x) => x.id == l.id);
@@ -362,7 +362,7 @@ void main() {
       await openRoute(tester, Routes.paymentLinks);
       await tester.tap(find.text('Anticipo del sitio web'));
       await tester.pumpAndSettle();
-      expect(find.text('https://pago.qullqi.app/l/qa7k2'), findsOneWidget);
+      expect(find.text('https://pago.inti.app/l/qa7k2'), findsOneWidget);
       await tester.tap(find.text('Cancelar enlace'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Cancelar enlace de Anticipo del sitio web'));

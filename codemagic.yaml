@@ -1,4 +1,4 @@
-# Compila Qullqi para iPhone en un Mac en la nube y deja un .ipa SIN FIRMAR
+# Compila Inti para iPhone en un Mac en la nube y deja un .ipa SIN FIRMAR
 # para instalarlo desde Windows con Sideloadly (firma con tu Apple ID).
 #
 # Hay dos flujos:
@@ -29,9 +29,9 @@ workflows:
           mkdir -p build/ipa/Payload
           cp -R build/ios/iphoneos/Runner.app build/ipa/Payload/Runner.app
           cd build/ipa
-          zip -qr Qullqi.ipa Payload
+          zip -qr Inti.ipa Payload
     artifacts:
-      - build/ipa/Qullqi.ipa
+      - build/ipa/Inti.ipa
 
   ios-con-widgets:
     name: iPhone con widgets y atajos (experimental)
@@ -51,12 +51,12 @@ workflows:
       - name: Revisar que la extensión quedó dentro
         script: |
           ls build/ios/iphoneos/Runner.app/PlugIns
-          test -d build/ios/iphoneos/Runner.app/PlugIns/QullqiWidget.appex
+          test -d build/ios/iphoneos/Runner.app/PlugIns/IntiWidget.appex
       - name: Empaquetar el .ipa
         script: |
           mkdir -p build/ipa/Payload
           cp -R build/ios/iphoneos/Runner.app build/ipa/Payload/Runner.app
           cd build/ipa
-          zip -qr Qullqi-widgets.ipa Payload
+          zip -qr Inti-widgets.ipa Payload
     artifacts:
-      - build/ipa/Qullqi-widgets.ipa
+      - build/ipa/Inti-widgets.ipa

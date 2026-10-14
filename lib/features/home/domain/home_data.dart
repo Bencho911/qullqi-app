@@ -1,23 +1,23 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/commitments/data/commitments_repository.dart';
-import 'package:qullqi/features/commitments/domain/commitment.dart';
-import 'package:qullqi/features/home/domain/forecast.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/commitments/data/commitments_repository.dart';
+import 'package:inti/features/commitments/domain/commitment.dart';
+import 'package:inti/features/home/domain/forecast.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Lo que muestra el Inicio para la vista activa.
 @immutable

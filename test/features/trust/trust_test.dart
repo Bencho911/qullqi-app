@@ -4,17 +4,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/money/currency.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/privacy/domain/data_export.dart';
-import 'package:qullqi/features/profile/data/push_prefs.dart';
-import 'package:qullqi/features/reports/domain/summaries.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/money/currency.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/privacy/domain/data_export.dart';
+import 'package:inti/features/profile/data/push_prefs.dart';
+import 'package:inti/features/reports/domain/summaries.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 import '../../helpers/pump.dart';
 
@@ -306,7 +306,7 @@ void main() {
       await scrollIntoView(tester, find.text('Eliminar mi cuenta'));
       await tester.tap(find.text('Eliminar mi cuenta'));
       await tester.pumpAndSettle();
-      expect(find.text('¿Eliminar tu cuenta de Qullqi?'), findsOneWidget);
+      expect(find.text('¿Eliminar tu cuenta de Inti?'), findsOneWidget);
       await tester.tap(find.text('Conservar mi cuenta'));
       await tester.pumpAndSettle();
       expect(find.text('Mis datos'), findsWidgets);
@@ -360,8 +360,8 @@ void main() {
       expect(prefs.enabled, isTrue);
       expect(prefs.quiet, QuietHours.night);
       await tester.tap(find.text('Enviarme una notificación de prueba'));
-      await tester.pump();
-      expect(find.textContaining('Así te llegaría'), findsOneWidget);
+      await tester.pumpAndSettle();
+      expect(find.textContaining('notificación de prueba.'), findsOneWidget);
     });
 
     testWidgets('"Ahora no" deja los avisos apagados', (tester) async {

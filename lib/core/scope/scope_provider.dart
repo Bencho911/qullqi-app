@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
 
 /// Vista activa (Todo / Personal / Negocio). Se recuerda entre aperturas.
 /// Sin negocio, la vista es siempre Personal.

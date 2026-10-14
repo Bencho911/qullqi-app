@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/sharing/data/sharing_repositories.dart';
-import 'package:qullqi/features/sharing/domain/sharing.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/sharing/data/sharing_repositories.dart';
+import 'package:inti/features/sharing/domain/sharing.dart';
 
 /// Compartir: grupos, cuentas divididas, deudas y metas con otras personas.
 class SharingHubPage extends ConsumerWidget {

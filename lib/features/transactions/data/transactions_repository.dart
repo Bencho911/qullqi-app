@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/live_stream.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/live_stream.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Movimientos de todas las cuentas, del más reciente al más antiguo.
 abstract interface class TransactionsRepository {

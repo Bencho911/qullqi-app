@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/accountant.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/accountant.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
 
 final _email = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]{2,}$');
 

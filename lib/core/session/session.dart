@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
+import 'package:inti/core/storage/prefs.dart';
 
 /// Persona con sesión iniciada.
 @immutable

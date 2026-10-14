@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/core/theme/theme_mode.dart';
-import 'package:qullqi/core/widgets/scope_switcher.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/core/theme/theme_mode.dart';
+import 'package:inti/core/widgets/scope_switcher.dart';
 
 import '../helpers/pump.dart';
 

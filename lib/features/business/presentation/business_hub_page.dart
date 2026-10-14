@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/business/domain/reconcile.dart';
-import 'package:qullqi/features/sales/data/sales_repositories.dart';
-import 'package:qullqi/features/sales/domain/sales.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/business/domain/reconcile.dart';
+import 'package:inti/features/sales/data/sales_repositories.dart';
+import 'package:inti/features/sales/domain/sales.dart';
 
 /// "1 por cobrar" / "3 por cobrar".
 String _count(int n, String one, String many) => n == 1 ? '1 $one' : '$n $many';

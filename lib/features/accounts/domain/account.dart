@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:qullqi/core/money/currency.dart';
-import 'package:qullqi/core/scope/scope.dart';
+import 'package:inti/core/money/currency.dart';
+import 'package:inti/core/scope/scope.dart';
 
 enum AccountKind {
   savings('Ahorros'),

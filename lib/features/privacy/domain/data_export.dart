@@ -2,17 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/business/domain/accountant.dart' show csvCell;
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/planning/domain/plans.dart';
-import 'package:qullqi/features/rules/domain/category_rule.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/business/domain/accountant.dart' show csvCell;
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/planning/domain/plans.dart';
+import 'package:inti/features/rules/domain/category_rule.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
-/// Copia de los datos de la persona, tal como los guarda Qullqi.
+/// Copia de los datos de la persona, tal como los guarda Inti.
 @immutable
 class DataExport {
   const DataExport({required this.json, required this.counts});

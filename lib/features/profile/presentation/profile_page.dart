@@ -4,29 +4,29 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/security/biometrics_pref.dart';
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/theme/theme_mode.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/profile/data/notification_prefs.dart';
-import 'package:qullqi/features/profile/presentation/account_actions.dart';
-import 'package:qullqi/features/rules/data/rules_provider.dart';
-import 'package:qullqi/features/widgets/data/widget_bridge.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/security/biometrics_pref.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/theme/theme_mode.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/profile/data/notification_prefs.dart';
+import 'package:inti/features/profile/presentation/account_actions.dart';
+import 'package:inti/features/rules/data/rules_provider.dart';
+import 'package:inti/features/widgets/data/widget_bridge.dart';
 
 /// Versión que se muestra al final del perfil.
 const String appVersion = '0.1.0';
 
 /// Correo de ayuda.
-const String supportEmail = 'ayuda@qullqi.app';
+const String supportEmail = 'ayuda@inti.app';
 
 /// Perfil y ajustes. Se abre desde el avatar, encima de las pestañas.
 class ProfilePage extends ConsumerWidget {
@@ -81,7 +81,7 @@ class ProfilePage extends ConsumerWidget {
             'Para volver a entrar necesitas tu correo y contraseña. '
             'Borramos el PIN de este teléfono.',
         confirmLabel: 'Cerrar sesión',
-        cancelLabel: 'Seguir en Qullqi',
+        cancelLabel: 'Seguir en Inti',
       );
       if (!ok) return;
       await ref.read(identityVerifierProvider).clearPin();
@@ -215,7 +215,7 @@ class ProfilePage extends ConsumerWidget {
             SwitchRow(
               title: 'Mostrar montos en los widgets',
               subtitle:
-                  'Si lo apagas, los widgets dicen "Abre Qullqi" en vez '
+                  'Si lo apagas, los widgets dicen "Abre Inti" en vez '
                   'de tus cifras.',
               value: ref.watch(widgetAmountsProvider),
               onChanged: (v) =>
@@ -304,7 +304,7 @@ class ProfilePage extends ConsumerWidget {
           ),
           const SizedBox(height: AppSpace.md),
           Text(
-            'Qullqi $appVersion · Hecho en Colombia',
+            'Inti $appVersion · Hecho en Colombia',
             textAlign: TextAlign.center,
             style: AppTypography.caption.copyWith(color: c.inkSubtle),
           ),

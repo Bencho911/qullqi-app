@@ -1,10 +1,10 @@
 import 'package:flutter/foundation.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/commitments/domain/commitment.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/commitments/domain/commitment.dart';
+import 'package:inti/features/investments/domain/investment.dart';
 
 enum PaymentKind { card, bill, tax }
 
@@ -76,7 +76,7 @@ List<UpcomingPayment> upcomingPayments({
 
 /// Resumen del dinero para una vista.
 ///
-/// Regla central de Qullqi: **disponible para gastar** = dinero en cuentas
+/// Regla central de Inti: **disponible para gastar** = dinero en cuentas
 /// líquidas − pagos que vencen en los próximos `horizonDays` días (tarjetas
 /// por el valor del corte, pagos fijos e impuestos estimados).
 @immutable

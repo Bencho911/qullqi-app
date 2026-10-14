@@ -2,20 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/presentation/widgets/account_picker.dart';
-import 'package:qullqi/features/statements/data/statement_repository.dart';
-import 'package:qullqi/features/statements/domain/statement.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
-import 'package:qullqi/features/transactions/presentation/transactions_controller.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/presentation/widgets/account_picker.dart';
+import 'package:inti/features/statements/data/statement_repository.dart';
+import 'package:inti/features/statements/domain/statement.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/features/transactions/presentation/transactions_controller.dart';
 
 enum _Stage { choose, reading, review, done }
 
@@ -237,8 +237,8 @@ class _ImportStatementPageState extends ConsumerState<ImportStatementPage> {
             duplicates == 0
                 ? 'Quita los que no quieras traer.'
                 : duplicates == 1
-                ? 'Uno ya estaba en Qullqi: no lo traemos otra vez.'
-                : '$duplicates ya estaban en Qullqi: no los traemos otra '
+                ? 'Uno ya estaba en Inti: no lo traemos otra vez.'
+                : '$duplicates ya estaban en Inti: no los traemos otra '
                       'vez.',
             style: context.text.bodySmall,
           ),
@@ -346,7 +346,7 @@ class _LineRow extends StatelessWidget {
         if (income) 'Ingreso' else 'Gasto',
         Cop.spoken(l.amount.abs()),
         date,
-        if (candidate.duplicate) 'Ya está en Qullqi',
+        if (candidate.duplicate) 'Ya está en Inti',
       ].join('. '),
       // La acción va en este nodo: la casilla de adentro queda excluida.
       onTap: onChanged == null ? null : () => onChanged!(!selected),
@@ -369,7 +369,7 @@ class _LineRow extends StatelessWidget {
             if (candidate.duplicate)
               const Padding(
                 padding: EdgeInsets.only(top: AppSpace.xxs),
-                child: StatusPill('Ya está en Qullqi'),
+                child: StatusPill('Ya está en Inti'),
               ),
           ],
           trailing: MoneyText(

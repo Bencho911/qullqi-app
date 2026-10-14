@@ -8,7 +8,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:local_auth/local_auth.dart';
 
 /// Comprueba que quien usa el teléfono es la persona dueña de la cuenta:
-/// biometría del sistema (huella, Face ID) y un PIN de 6 dígitos de Qullqi.
+/// biometría del sistema (huella, Face ID) y un PIN de 6 dígitos de Inti.
 abstract interface class IdentityVerifier {
   /// Si el teléfono tiene huella o Face ID configurados.
   Future<bool> hasBiometrics();
@@ -22,7 +22,7 @@ abstract interface class IdentityVerifier {
   /// Guarda el PIN (reemplaza el anterior).
   Future<void> setPin(String pin);
 
-  /// Revisa el PIN de 6 dígitos de Qullqi.
+  /// Revisa el PIN de 6 dígitos de Inti.
   Future<bool> checkPin(String pin);
 
   /// Borra el PIN (al cerrar sesión).

@@ -5,13 +5,13 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show Override;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/app.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/security/identity.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
+import 'package:inti/app/app.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/security/identity.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/core/theme/app_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'contrast.dart';
@@ -23,7 +23,7 @@ const phone = Size(390, 844);
 /// Persona de prueba con sesión abierta.
 const testUser = AppUser(
   fullName: 'Camilo Restrepo Gómez',
-  email: 'camilo.restrepo@qullqi.app',
+  email: 'camilo.restrepo@inti.app',
   phone: '+57 310 555 0142',
   hasBusiness: true,
 );
@@ -89,7 +89,7 @@ Future<ProviderContainer> pumpApp(
       container: container,
       child: MediaQuery(
         data: _media(tester, textScale),
-        child: const QullqiApp(),
+        child: const IntiApp(),
       ),
     ),
   );

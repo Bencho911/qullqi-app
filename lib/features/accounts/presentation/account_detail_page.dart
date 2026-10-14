@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/security/confirm_identity.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/theme/app_typography.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/accounts/presentation/accounts_page.dart';
-import 'package:qullqi/features/move_money/presentation/move_money_page.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
-import 'package:qullqi/features/transactions/domain/transaction_filter.dart';
-import 'package:qullqi/features/transactions/presentation/transaction_tile.dart';
-import 'package:qullqi/features/transactions/presentation/transactions_controller.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/security/confirm_identity.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/theme/app_typography.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/accounts/presentation/accounts_page.dart';
+import 'package:inti/features/move_money/presentation/move_money_page.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
+import 'package:inti/features/transactions/domain/transaction_filter.dart';
+import 'package:inti/features/transactions/presentation/transaction_tile.dart';
+import 'package:inti/features/transactions/presentation/transactions_controller.dart';
 
 /// Movimientos recientes que se muestran en el detalle.
 const int _recentShown = 5;
@@ -42,7 +42,7 @@ class AccountDetailPage extends ConsumerWidget {
         AsyncValue(hasValue: true) => MessageBody(
           child: EmptyState(
             icon: Icons.search_off_rounded,
-            title: 'Esta cuenta ya no está en Qullqi',
+            title: 'Esta cuenta ya no está en Inti',
             message: 'Puede que la hayas desconectado.',
             actionLabel: 'Ver mis cuentas',
             onAction: () => context.go(Routes.accounts),
@@ -86,7 +86,7 @@ class _Detail extends ConsumerWidget {
             ? '¿Quitar ${a.shortName}?'
             : '¿Desconectar ${a.shortName}?',
         message: a.isManual
-            ? 'Se quita de Qullqi junto con su saldo. Tus movimientos ya '
+            ? 'Se quita de Inti junto con su saldo. Tus movimientos ya '
                   'registrados se conservan.'
             : 'Revocamos el permiso con ${a.institution} y dejamos de ver '
                   'sus saldos. Puedes conectarla de nuevo cuando quieras.',

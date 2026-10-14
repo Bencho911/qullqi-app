@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/features/sharing/data/sharing_repositories.dart';
-import 'package:qullqi/features/sharing/domain/sharing.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/features/sharing/data/sharing_repositories.dart';
+import 'package:inti/features/sharing/domain/sharing.dart';
 
 import '../../helpers/pump.dart';
 

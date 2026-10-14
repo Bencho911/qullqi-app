@@ -2,16 +2,16 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart'
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart'
     show ConnectionFailure;
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/investments/domain/investment_source.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/domain/investment_source.dart';
 
 import '../../helpers/pump.dart';
 
@@ -377,7 +377,7 @@ void main() {
       // Sin autorización no se continúa.
       final next = find.widgetWithText(FilledButton, 'Continuar a Davivienda');
       expect(tester.widget<FilledButton>(next).onPressed, isNull);
-      await tester.tap(find.textContaining('Autorizo a Qullqi'));
+      await tester.tap(find.textContaining('Autorizo a Inti'));
       await tester.pump();
       await tester.tap(next);
       await tester.pumpAndSettle();
@@ -394,7 +394,7 @@ void main() {
       await openRoute(tester, Routes.connectInvestment);
       await tester.tap(find.text('Porvenir'));
       await tester.pumpAndSettle();
-      await tester.tap(find.textContaining('Autorizo a Qullqi'));
+      await tester.tap(find.textContaining('Autorizo a Inti'));
       await tester.pump();
       await tester.tap(
         find.widgetWithText(FilledButton, 'Continuar a Porvenir'),

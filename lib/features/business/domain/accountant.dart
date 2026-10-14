@@ -1,9 +1,9 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 enum InviteStatus {
   pending('Invitación enviada'),

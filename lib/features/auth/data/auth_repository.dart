@@ -1,7 +1,7 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/session/session.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/session/session.dart';
 
 /// Algo salió mal al registrarse o ingresar; el mensaje es para la persona.
 class AuthFailure implements Exception {
@@ -13,7 +13,7 @@ class AuthFailure implements Exception {
   String toString() => message;
 }
 
-/// Cuentas de Qullqi en el backend. La app solo depende de esta interfaz.
+/// Cuentas de Inti en el backend. La app solo depende de esta interfaz.
 abstract interface class AuthRepository {
   /// Empieza el registro. Lanza [AuthFailure] si el correo ya existe.
   Future<void> startSignUp({
@@ -88,7 +88,7 @@ class MockAuthRepository implements AuthRepository {
     }
     return AppUser(
       fullName: _name ?? 'Camilo Restrepo Gómez',
-      email: _email ?? 'camilo.restrepo@qullqi.app',
+      email: _email ?? 'camilo.restrepo@inti.app',
       phone: '+57 ${_phone ?? '310 555 0142'}',
       hasBusiness: _business,
     );

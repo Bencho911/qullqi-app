@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/networth/domain/net_worth_history.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/networth/domain/net_worth_history.dart';
 
 /// Historial de patrimonio por ámbito.
 final netWorthHistoryProvider = Provider<AsyncValue<NetWorthHistory>>((ref) {

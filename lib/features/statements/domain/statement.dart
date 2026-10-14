@@ -3,8 +3,8 @@ import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/features/transactions/domain/transaction.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Tamaño máximo de un extracto (los de un año caben de sobra).
 const int maxStatementBytes = 10 * 1024 * 1024;
@@ -388,7 +388,7 @@ bool looksLikeTransfer(StatementLine line) {
   return _transferWords.any(text.contains);
 }
 
-/// Un renglón listo para importar: si ya estaba en Qullqi, viene marcado.
+/// Un renglón listo para importar: si ya estaba en Inti, viene marcado.
 @immutable
 class ImportCandidate {
   const ImportCandidate({required this.line, required this.duplicate});

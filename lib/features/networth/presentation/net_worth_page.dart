@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope_provider.dart';
-import 'package:qullqi/core/theme/app_theme.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
-import 'package:qullqi/core/widgets/widgets.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/networth/data/net_worth_provider.dart';
-import 'package:qullqi/features/networth/domain/net_worth_history.dart';
-import 'package:qullqi/features/networth/presentation/widgets/net_worth_chart.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope_provider.dart';
+import 'package:inti/core/theme/app_theme.dart';
+import 'package:inti/core/theme/app_tokens.dart';
+import 'package:inti/core/widgets/widgets.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/networth/data/net_worth_provider.dart';
+import 'package:inti/features/networth/domain/net_worth_history.dart';
+import 'package:inti/features/networth/presentation/widgets/net_worth_chart.dart';
 
 /// "+$1.234.000 (+5,8 %)" con signo y porcentaje.
 String changePhrase(List<NetWorthPoint> points) {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:qullqi/core/scope/scope.dart';
+import 'package:inti/core/scope/scope.dart';
 
 enum TransactionKind {
   expense('Gasto'),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/storage/prefs.dart';
+import 'package:inti/core/storage/prefs.dart';
 
 /// Tema elegido por la persona (claro, oscuro o el del teléfono). Se recuerda.
 /// Sin elegir, la app abre en claro.

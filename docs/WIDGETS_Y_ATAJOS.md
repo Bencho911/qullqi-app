@@ -11,9 +11,9 @@ en Codemagic puede pedir 1–3 ajustes mirando el log.
 | Foto de datos para widgets (`WidgetSnapshot`) | `lib/features/widgets/` | Pruebas Dart ✔ |
 | Recordatorios locales con diseño y acciones | `lib/features/reminders/` | Pruebas Dart ✔ |
 | Atajos del ícono (mantener pulsado) | `lib/app/quick_actions_service.dart` | Pruebas Dart ✔ |
-| Enlaces `qullqi:///atajo/<id>` | `lib/app/shortcuts.dart` | Pruebas Dart ✔ |
-| Widgets SwiftUI (3) | `ios/QullqiWidget/` | **Sin compilar** |
-| Atajos de Siri / app Atajos (App Intents) | `ios/Runner/QullqiShortcuts.swift` | **Sin compilar** |
+| Enlaces `inti:///atajo/<id>` | `lib/app/shortcuts.dart` | Pruebas Dart ✔ |
+| Widgets SwiftUI (3) | `ios/IntiWidget/` | **Sin compilar** |
+| Atajos de Siri / app Atajos (App Intents) | `ios/Runner/IntiShortcuts.swift` | **Sin compilar** |
 | Script que añade la extensión al proyecto | `ios/scripts/add_widget_extension.rb` | **Sin ejecutar** |
 
 ## Widgets
@@ -24,15 +24,15 @@ en Codemagic puede pedir 1–3 ajustes mirando el log.
 - **Atajos**: mediano, con Gasto / Mover / Escanear / Avisos.
 
 Privacidad: si ocultas los montos en la app (Perfil → "Mostrar montos en los
-widgets"), los widgets muestran "Abre Qullqi". Los montos usan
+widgets"), los widgets muestran "Abre Inti". Los montos usan
 `.privacySensitive()`, así que iOS los oculta también en la pantalla de bloqueo
 cuando corresponde.
 
 ## Atajos de Siri
 
-Frases (di "Oye Siri, …"): "Cuánto puedo gastar en Qullqi", "Registrar un gasto
-en Qullqi", "Mover plata en Qullqi", "Escanear una factura en Qullqi", "Mis
-próximos pagos en Qullqi". También aparecen en la app Atajos y en Spotlight.
+Frases (di "Oye Siri, …"): "Cuánto puedo gastar en Inti", "Registrar un gasto
+en Inti", "Mover plata en Inti", "Escanear una factura en Inti", "Mis
+próximos pagos en Inti". También aparecen en la app Atajos y en Spotlight.
 
 "¿Cuánto puedo gastar?" responde en voz alta sin abrir la app, leyendo la
 última foto que la app dejó. Los demás abren la app en la pantalla pedida.
@@ -41,8 +41,8 @@ próximos pagos en Qullqi". También aparecen en la app Atajos y en Spotlight.
 
 1. Sube el repo a GitHub (ya está conectado a Codemagic).
 2. En Codemagic elige el flujo **"iPhone con widgets y atajos (experimental)"**.
-3. Descarga `Qullqi-widgets.ipa` e instálalo con Sideloadly.
-4. Mantén pulsada la pantalla de inicio → `+` → Qullqi para añadir widgets.
+3. Descarga `Inti-widgets.ipa` e instálalo con Sideloadly.
+4. Mantén pulsada la pantalla de inicio → `+` → Inti para añadir widgets.
 
 Si ese flujo falla o Sideloadly rechaza el paquete, usa **"iPhone (sin
 firmar)"**: es la app completa, sin widgets ni atajos de Siri (los atajos del
@@ -67,4 +67,4 @@ firmar)"**: es la app completa, sin widgets ni atajos de Siri (los atajos del
 - *"No such module 'WidgetKit'"*, o error de firma en la extensión → pega el
   log de Codemagic y lo ajusto.
 - El widget sale en blanco → abre la app una vez (deja la primera foto).
-- Siri dice "abre Qullqi una vez" → igual: abre la app y vuelve a intentarlo.
+- Siri dice "abre Inti una vez" → igual: abre la app y vuelve a intentarlo.

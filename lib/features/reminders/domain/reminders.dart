@@ -2,18 +2,18 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart' show immutable;
 
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/format/dates.dart';
-import 'package:qullqi/core/money/money.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/home/domain/money_summary.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/notifications/domain/notice.dart';
-import 'package:qullqi/features/profile/data/push_prefs.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/format/dates.dart';
+import 'package:inti/core/money/money.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/home/domain/money_summary.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/notifications/domain/notice.dart';
+import 'package:inti/features/profile/data/push_prefs.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
 
 /// iOS guarda hasta 64 notificaciones programadas: nos quedamos por debajo.
 const int maxReminders = 60;

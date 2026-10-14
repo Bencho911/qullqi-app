@@ -1,25 +1,25 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/misc.dart' show ProviderBase;
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/session/session.dart';
-import 'package:qullqi/core/storage/prefs.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart';
-import 'package:qullqi/features/anomalies/domain/anomalies.dart';
-import 'package:qullqi/features/business/data/business_back_office.dart';
-import 'package:qullqi/features/business/data/invoices_repository.dart';
-import 'package:qullqi/features/business/domain/bill.dart';
-import 'package:qullqi/features/business/domain/business.dart';
-import 'package:qullqi/features/commitments/data/commitments_repository.dart';
-import 'package:qullqi/features/home/domain/home_data.dart';
-import 'package:qullqi/features/investments/data/investments_repository.dart';
-import 'package:qullqi/features/notifications/domain/notice.dart';
-import 'package:qullqi/features/planning/data/plans_repository.dart';
-import 'package:qullqi/features/profile/data/notification_prefs.dart';
-import 'package:qullqi/features/recurring/domain/recurring.dart';
-import 'package:qullqi/features/taxes/data/tax_document_provider.dart';
-import 'package:qullqi/features/taxes/domain/tax_calendar.dart';
-import 'package:qullqi/features/transactions/data/transactions_repository.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/session/session.dart';
+import 'package:inti/core/storage/prefs.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/anomalies/domain/anomalies.dart';
+import 'package:inti/features/business/data/business_back_office.dart';
+import 'package:inti/features/business/data/invoices_repository.dart';
+import 'package:inti/features/business/domain/bill.dart';
+import 'package:inti/features/business/domain/business.dart';
+import 'package:inti/features/commitments/data/commitments_repository.dart';
+import 'package:inti/features/home/domain/home_data.dart';
+import 'package:inti/features/investments/data/investments_repository.dart';
+import 'package:inti/features/notifications/domain/notice.dart';
+import 'package:inti/features/planning/data/plans_repository.dart';
+import 'package:inti/features/profile/data/notification_prefs.dart';
+import 'package:inti/features/recurring/domain/recurring.dart';
+import 'package:inti/features/taxes/data/tax_document_provider.dart';
+import 'package:inti/features/taxes/domain/tax_calendar.dart';
+import 'package:inti/features/transactions/data/transactions_repository.dart';
 
 /// Fuentes de los avisos (para reintentar si alguna falla).
 final List<ProviderBase<Object?>> noticeSources = [

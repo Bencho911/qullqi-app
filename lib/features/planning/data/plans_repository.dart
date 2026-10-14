@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/live_stream.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/planning/domain/plans.dart';
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/live_stream.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/planning/domain/plans.dart';
 
 /// Presupuestos y metas de la persona.
 abstract interface class PlansRepository {

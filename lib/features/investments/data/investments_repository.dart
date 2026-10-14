@@ -2,20 +2,20 @@ import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:qullqi/core/clock/clock.dart';
-import 'package:qullqi/core/data/latency.dart';
-import 'package:qullqi/core/data/live_stream.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/accounts/data/accounts_repository.dart'
+import 'package:inti/core/clock/clock.dart';
+import 'package:inti/core/data/latency.dart';
+import 'package:inti/core/data/live_stream.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart'
     show ConnectionFailure;
-import 'package:qullqi/features/accounts/domain/account.dart';
-import 'package:qullqi/features/investments/domain/investment.dart';
-import 'package:qullqi/features/investments/domain/investment_source.dart';
+import 'package:inti/features/accounts/domain/account.dart';
+import 'package:inti/features/investments/domain/investment.dart';
+import 'package:inti/features/investments/domain/investment_source.dart';
 
 /// Fuente de las inversiones de la persona. La implementación real hablará
 /// con el agregador; la app solo depende de esta interfaz.
 ///
-/// Qullqi solo **muestra** lo invertido: no compra ni vende.
+/// Inti solo **muestra** lo invertido: no compra ni vende.
 abstract interface class InvestmentsRepository {
   /// Emite la lista actual y cada cambio.
   Stream<List<Investment>> watch();
@@ -45,7 +45,7 @@ abstract interface class InvestmentsRepository {
   /// Cambia lo que vale hoy una inversión registrada a mano.
   Future<void> updateValue(String id, int value);
 
-  /// La quita de Qullqi (y revoca el permiso si venía de una entidad).
+  /// La quita de Inti (y revoca el permiso si venía de una entidad).
   Future<void> remove(String id);
 }
 

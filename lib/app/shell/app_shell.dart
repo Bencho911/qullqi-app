@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-import 'package:qullqi/app/shell/add_sheet.dart';
-import 'package:qullqi/app/shell/bottom_bar.dart';
-import 'package:qullqi/core/theme/app_tokens.dart';
+import 'package:inti/app/shell/add_sheet.dart';
+import 'package:inti/app/shell/bottom_bar.dart';
+import 'package:inti/core/theme/app_tokens.dart';
 
 const _destinations = [
   BarDestination(

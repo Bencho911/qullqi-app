@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' show ProviderContainer;
 import 'package:flutter_test/flutter_test.dart';
-import 'package:qullqi/app/router.dart';
-import 'package:qullqi/app/routes.dart';
-import 'package:qullqi/core/scope/scope.dart';
-import 'package:qullqi/features/debts/domain/debt_plan.dart';
-import 'package:qullqi/features/networth/domain/net_worth_history.dart';
-import 'package:qullqi/features/networth/presentation/widgets/net_worth_chart.dart';
+import 'package:inti/app/router.dart';
+import 'package:inti/app/routes.dart';
+import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/debts/domain/debt_plan.dart';
+import 'package:inti/features/networth/domain/net_worth_history.dart';
+import 'package:inti/features/networth/presentation/widgets/net_worth_chart.dart';
 
 import '../../helpers/pump.dart';
 

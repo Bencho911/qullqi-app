@@ -1,4 +1,4 @@
-# Qullqi: front completo antes del backend
+# Inti: front completo antes del backend
 
 Todo corre con datos de demostración detrás de las mismas interfaces
 (`*Repository`) que usará el backend. Cada hito terminó con: pruebas,
