@@ -32,6 +32,25 @@ limpio.
 | Historial de patrimonio | Serie de demostración | Foto diaria guardada |
 | Resúmenes | Texto para copiar | PDF generado (decidir librería o servidor) |
 
+## Correr contra el backend
+
+Sin configuración, la app usa los datos de demostración. Para usar el
+backend ([`inti-backend`](https://github.com/Bencho911/inti-backend)):
+
+```bash
+flutter run --dart-define=INTI_API_URL=http://10.0.2.2:3000   # emulador Android
+flutter run --dart-define=INTI_API_URL=http://localhost:3000  # simulador iOS
+```
+
+Con `INTI_API_URL` cambian a la versión real: registro e ingreso
+(`ApiAuthRepository`), cuentas (`ApiAccountsRepository`) y movimientos
+(`ApiTransactionsRepository`). Los tokens se guardan cifrados y se renuevan
+solos. Fuera de producción el código SMS es `123456`.
+
+Todavía de demostración aunque haya backend: planes, negocio, inversiones,
+compartir y avisos. Con backend, conectar un banco, mover plata y recuperar
+la contraseña muestran que aún no están disponibles, en lugar de simularlos.
+
 ## Decisiones que quedan abiertas
 - **PDF:** hoy los resúmenes se copian como texto. Un PDF necesita un paquete
   (`pdf` más uno para compartir) o generarlo en el servidor.

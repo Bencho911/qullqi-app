@@ -1,5 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:inti/core/api/api_client.dart';
 import 'package:inti/core/clock/clock.dart';
 import 'package:inti/core/data/latency.dart';
 import 'package:inti/features/accounts/data/accounts_repository.dart';
@@ -21,14 +21,36 @@ abstract interface class MoneyMover {
 }
 
 final moneyMoverProvider = Provider<MoneyMover>(
-  (ref) => MockMoneyMover(
-    accounts: ref.watch(accountsRepositoryProvider),
-    transactions: ref.watch(transactionsRepositoryProvider),
-    ledger: ref.watch(ledgerProvider),
-    now: ref.watch(clockProvider),
-    latency: ref.watch(mockLatencyProvider),
-  ),
+  (ref) => ref.watch(apiClientProvider) != null
+      ? UnavailableMoneyMover(now: ref.watch(clockProvider))
+      : MockMoneyMover(
+          accounts: ref.watch(accountsRepositoryProvider),
+          transactions: ref.watch(transactionsRepositoryProvider),
+          ledger: ref.watch(ledgerProvider),
+          now: ref.watch(clockProvider),
+          latency: ref.watch(mockLatencyProvider),
+        ),
 );
+
+/// Con el backend real, mover plata espera la iniciación de pagos del
+/// banco: se rechaza con un motivo claro en lugar de simularlo.
+class UnavailableMoneyMover implements MoneyMover {
+  UnavailableMoneyMover({required this.now});
+
+  final DateTime Function() now;
+
+  @override
+  Future<MoveResult> move({
+    required Account from,
+    required Account to,
+    required int amount,
+  }) async => MoveResult(
+    status: MoveStatus.rejected,
+    reference: '',
+    when: now(),
+    reason: 'Mover plata desde Inti llega con la conexión a tu banco.',
+  );
+}
 
 /// Simulación con las reglas del producto:
 /// - Nequi y Daviplata confirman al instante.
