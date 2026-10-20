@@ -1,11 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:inti/core/api/api_client.dart';
 import 'package:inti/core/clock/clock.dart';
 import 'package:inti/core/data/latency.dart';
 import 'package:inti/core/data/live_stream.dart';
 import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/accounts_repository.dart';
+import 'package:inti/features/transactions/data/api_transactions_repository.dart';
 import 'package:inti/features/transactions/domain/transaction.dart';
 
 /// Movimientos de todas las cuentas, del más reciente al más antiguo.
@@ -23,6 +25,15 @@ abstract interface class TransactionsRepository {
 }
 
 final transactionsRepositoryProvider = Provider<TransactionsRepository>((ref) {
+  final api = ref.watch(apiClientProvider);
+  if (api != null) {
+    final repo = ApiTransactionsRepository(
+      api,
+      onBalancesChanged: () => ref.read(accountsRepositoryProvider).sync(),
+    );
+    ref.onDispose(repo.dispose);
+    return repo;
+  }
   final repo = MockTransactionsRepository(
     now: ref.watch(clockProvider),
     latency: ref.watch(mockLatencyProvider),

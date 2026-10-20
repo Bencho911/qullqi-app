@@ -1,12 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:inti/core/api/api_client.dart';
 import 'package:inti/core/clock/clock.dart';
 import 'package:inti/core/data/latency.dart';
 import 'package:inti/core/data/live_stream.dart';
 import 'package:inti/core/money/currency.dart';
 import 'package:inti/core/scope/scope.dart';
+import 'package:inti/features/accounts/data/api_accounts_repository.dart';
 import 'package:inti/features/accounts/domain/account.dart';
 import 'package:inti/features/accounts/domain/institution.dart';
 
@@ -60,6 +61,12 @@ class ConnectionFailure implements Exception {
 }
 
 final accountsRepositoryProvider = Provider<AccountsRepository>((ref) {
+  final api = ref.watch(apiClientProvider);
+  if (api != null) {
+    final repo = ApiAccountsRepository(api);
+    ref.onDispose(repo.dispose);
+    return repo;
+  }
   final repo = MockAccountsRepository(
     now: ref.watch(clockProvider),
     latency: ref.watch(mockLatencyProvider),

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:inti/core/api/api_client.dart';
 import 'package:inti/core/storage/prefs.dart';
 
 /// Persona con sesión iniciada.
@@ -137,6 +137,7 @@ class SessionNotifier extends Notifier<SessionState> {
   }
 
   Future<void> signOut() async {
+    await ref.read(apiClientProvider)?.closeSession();
     await ref.read(sharedPreferencesProvider).remove(_key);
     state = const SessionState(SessionStatus.signedOut);
   }

@@ -1,7 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:inti/core/api/api_client.dart';
 import 'package:inti/core/data/latency.dart';
 import 'package:inti/core/session/session.dart';
+import 'package:inti/features/auth/data/api_auth_repository.dart';
 
 /// Algo salió mal al registrarse o ingresar; el mensaje es para la persona.
 class AuthFailure implements Exception {
@@ -36,9 +37,11 @@ abstract interface class AuthRepository {
   Future<void> sendPasswordReset(String email);
 }
 
-final authRepositoryProvider = Provider<AuthRepository>(
-  (ref) => MockAuthRepository(latency: ref.watch(mockLatencyProvider)),
-);
+final authRepositoryProvider = Provider<AuthRepository>((ref) {
+  final api = ref.watch(apiClientProvider);
+  if (api != null) return ApiAuthRepository(api);
+  return MockAuthRepository(latency: ref.watch(mockLatencyProvider));
+});
 
 /// Simulación con reglas de prueba:
 /// - El código SMS correcto es 123456.
